@@ -1,0 +1,11 @@
+# robots.txt for 3 Smash Palermo
+# https://3smashpalermo.it
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://3smashpalermo.it/sitemap.xml
+
+# Crawl-delay (opzionale, per ridurre carico server)
+Crawl-delay: 1

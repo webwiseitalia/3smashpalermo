@@ -7,7 +7,7 @@
 
     <!-- SEO Meta Tags -->
     <title>3 Smash Palermo | Smash Burger Artigianali al Mercato San Lorenzo</title>
-    <meta name="description" content="3 Smash Palermo - I migliori smash burger artigianali di Palermo al Mercato San Lorenzo. Ingredienti freschi, cottura perfetta su griddle e prezzi accessibili. Ordina ora!" />
+    <meta name="description" content="3 Smash Palermo - Smash burger artigianali al Mercato San Lorenzo. Carne fresca, cottura su griddle e prezzi accessibili." />
     <meta name="keywords" content="smashburger Palermo, hamburger Mercato San Lorenzo, 3 Smash Palermo, smash burger Sicilia, street food Palermo, burger artigianali" />
     <meta name="author" content="3 Smash Palermo" />
     <meta name="robots" content="index, follow" />
@@ -32,10 +32,51 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#1e3a8a" />
+    <meta name="theme-color" content="#3451a1" />
+
+    <!-- JSON-LD Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "3 Smash Palermo",
+      "image": "https://3smashpalermo.it/og-image.jpg",
+      "url": "https://3smashpalermo.it",
+      "telephone": "+39 333 123 4567",
+      "email": "info@3smashpalermo.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mercato San Lorenzo",
+        "addressLocality": "Palermo",
+        "addressRegion": "Sicilia",
+        "postalCode": "90133",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.1157,
+        "longitude": 13.3623
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ],
+      "servesCuisine": ["American", "Smash Burger", "Street Food"],
+      "priceRange": "€€",
+      "menu": "https://3smashpalermo.it/#menu",
+      "acceptsReservations": "false",
+      "sameAs": [
+        "https://instagram.com/3smashpalermo"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
