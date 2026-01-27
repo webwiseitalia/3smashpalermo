@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/logo.webp';
+import logoHero from '../assets/logo-hero-3smash.webp';
 import heroImg from '../assets/pig-smash-hero.webp';
 import smashGriddle from '../assets/smash-griddle-cipolla.webp';
 import smashSpatola from '../assets/smash-spatola-cipolla.webp';
@@ -166,16 +167,33 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Desktop Instagram button */}
-          <motion.a
-            href="https://instagram.com/3smashpalermo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:block text-white text-xs uppercase tracking-[0.2em] border border-white/50 px-5 py-3 hover:bg-white hover:text-black transition-all duration-500"
-            whileHover={{ rotate: 3, scale: 1.05 }}
-          >
-            IG
-          </motion.a>
+          {/* Desktop Social buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <motion.a
+              href="https://instagram.com/3smashpalermo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white p-2.5 border border-white/50 hover:bg-white hover:text-black transition-all duration-500 rounded-lg"
+              whileHover={{ rotate: 3, scale: 1.1 }}
+              aria-label="Seguici su Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </motion.a>
+            <motion.a
+              href="https://tiktok.com/@3smashpalermo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white p-2.5 border border-white/50 hover:bg-white hover:text-black transition-all duration-500 rounded-lg"
+              whileHover={{ rotate: -3, scale: 1.1 }}
+              aria-label="Seguici su TikTok"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+              </svg>
+            </motion.a>
+          </div>
 
           {/* Mobile burger button */}
           <motion.button
@@ -245,10 +263,18 @@ export default function HomePage() {
             </nav>
 
             {/* Decorative elements */}
-            <div className="absolute bottom-10 left-10 text-[#f5e6c8]/20 text-8xl font-display font-bold transform -rotate-12">
-              3S
+            <div className="absolute bottom-10 left-10 text-[#f5e6c8]/20 text-9xl font-black transform -rotate-12" style={{ fontFamily: 'system-ui' }}>
+              3
             </div>
-            <div className="absolute top-20 right-10 w-32 h-32 border-2 border-[#f5e6c8]/10 rounded-full" />
+            <div className="absolute top-20 right-10 text-[#f5e6c8]/10 text-7xl font-black transform rotate-15" style={{ fontFamily: 'system-ui' }}>
+              3
+            </div>
+            <div className="absolute top-1/3 left-1/4 text-[#f5e6c8]/[0.08] text-6xl font-black transform -rotate-6" style={{ fontFamily: 'system-ui' }}>
+              3
+            </div>
+            <div className="absolute bottom-1/4 right-1/4 text-[#f5e6c8]/15 text-8xl font-black transform rotate-20" style={{ fontFamily: 'system-ui' }}>
+              3
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -259,6 +285,12 @@ export default function HomePage() {
         <div className="absolute top-20 left-10 w-64 h-64 bg-[#f5e6c8]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#f5e6c8]/10 rounded-full blur-3xl" />
 
+        {/* Decorative 3s */}
+        <div className="absolute top-32 right-[15%] text-[#f5e6c8]/[0.07] text-[20rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
+        <div className="absolute bottom-10 left-[5%] text-[#f5e6c8]/[0.05] text-[15rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
+        <div className="absolute top-[60%] left-[45%] text-[#f5e6c8]/[0.04] text-[12rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(25deg)' }}>3</div>
+        <div className="absolute top-[20%] left-[35%] text-[#f5e6c8]/[0.03] text-[8rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-18deg)' }}>3</div>
+
         <div className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center w-full max-w-[1600px] mx-auto">
 
@@ -268,12 +300,16 @@ export default function HomePage() {
                 Mercato San Lorenzo — Palermo
               </p>
 
-              <h1 className="text-[#f5e6c8] text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] leading-[0.85] font-display font-bold uppercase">
-                <span className="block transform -rotate-2">Smash</span>
-                <span className="block transform rotate-1 ml-4 md:ml-8">Burger</span>
+              <h1 className="mb-0 -ml-4 md:-ml-8 lg:-ml-12">
+                <img
+                  src={logoHero}
+                  alt="3 Smash Palermo"
+                  title="3 Smash - Smash Burger Artigianali"
+                  className="w-full max-w-[500px] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px] h-auto -mb-2"
+                />
               </h1>
 
-              <p className="text-[#f5e6c8]/60 text-lg md:text-xl max-w-md mt-10 leading-relaxed transform rotate-1">
+              <p className="text-[#f5e6c8]/60 text-lg md:text-xl max-w-md leading-relaxed">
                 Carne fresca schiacciata sul griddle rovente. Quella crosticina caramellata che non dimentichi.
               </p>
 
@@ -316,9 +352,10 @@ export default function HomePage() {
                 </motion.div>
                 {/* Floating label */}
                 <motion.div
-                  className="float-element absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-[#0a0a0a] text-[#f5e6c8] px-6 py-3 font-display text-sm uppercase tracking-wider shadow-xl transform rotate-12 rounded-xl"
+                  className="float-element absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-[#0a0a0a] text-[#f5e6c8] px-6 py-3 font-display text-sm uppercase tracking-wider shadow-xl transform rotate-12 rounded-xl flex items-center gap-2"
                   style={{ animationDelay: '0.5s' }}
                 >
+                  <span className="font-black text-lg" style={{ fontFamily: 'system-ui' }}>3</span>
                   Best Seller
                 </motion.div>
               </div>
@@ -342,19 +379,23 @@ export default function HomePage() {
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex gap-12 items-center">
               <span>Smash Burger</span>
-              <span className="text-[#3451a1]/30">✦</span>
+              <span className="text-[#3451a1]/50 font-black" style={{ fontFamily: 'system-ui', transform: 'rotate(-5deg)', display: 'inline-block' }}>3</span>
               <span>Palermo</span>
-              <span className="text-[#3451a1]/30">✦</span>
+              <span className="text-[#3451a1]/50 font-black" style={{ fontFamily: 'system-ui', transform: 'rotate(5deg)', display: 'inline-block' }}>3</span>
               <span>Dal 2020</span>
-              <span className="text-[#3451a1]/30">✦</span>
+              <span className="text-[#3451a1]/50 font-black" style={{ fontFamily: 'system-ui', transform: 'rotate(-3deg)', display: 'inline-block' }}>3</span>
             </span>
           ))}
         </div>
       </section>
 
       {/* Gallery Strip - Tilted */}
-      <section className="py-16 bg-[#0a0a0a] overflow-hidden transform -rotate-1">
-        <div className="flex gap-6 animate-marquee">
+      <section className="py-16 bg-[#0a0a0a] overflow-hidden transform -rotate-1 relative">
+        {/* Decorative 3s */}
+        <div className="absolute top-4 left-[20%] text-[#3451a1]/15 text-[6rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-10deg)' }}>3</div>
+        <div className="absolute bottom-4 right-[25%] text-[#f5e6c8]/[0.06] text-[7rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(15deg)' }}>3</div>
+        <div className="absolute top-1/2 left-[60%] text-[#3451a1]/10 text-[5rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(8deg) translateY(-50%)' }}>3</div>
+        <div className="flex gap-6 animate-marquee relative z-10">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 flex-shrink-0">
               {[smashGriddle, burgerPatatine, clienteMercato, smashSpatola, sendFries, clientiFelici, packaging].map((img, i) => (
@@ -386,6 +427,10 @@ export default function HomePage() {
         {/* Background accent */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#3451a1]/5 transform skew-x-12" />
 
+        {/* Decorative 3s */}
+        <div className="absolute top-20 left-[8%] text-[#3451a1]/10 text-[18rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-15deg)' }}>3</div>
+        <div className="absolute bottom-40 right-[10%] text-[#f5e6c8]/[0.03] text-[25rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(20deg)' }}>3</div>
+
         <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto relative z-10">
           {/* Header - Asymmetric */}
           <div className="reveal-section mb-20 md:mb-32">
@@ -394,7 +439,8 @@ export default function HomePage() {
                 <span className="text-[#3451a1] text-xs uppercase tracking-[0.5em] block mb-6 transform -rotate-2">
                   Cosa offriamo
                 </span>
-                <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase leading-[0.9]">
+                <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase leading-[0.9] relative">
+                  <span className="absolute -left-4 md:-left-8 -top-4 text-3xl md:text-4xl lg:text-5xl font-black text-[#3451a1] opacity-70" style={{ fontFamily: 'system-ui', transform: 'rotate(-12deg)' }}>3</span>
                   <span className="block transform -rotate-1">Il Nostro</span>
                   <span className="block transform rotate-1 ml-8 md:ml-16">Menu</span>
                 </h2>
@@ -482,7 +528,8 @@ export default function HomePage() {
 
               {/* Content side */}
               <div className="order-1 lg:order-2">
-                <h3 className="text-[#f5e6c8] text-4xl md:text-5xl lg:text-6xl font-display font-bold uppercase mb-4 leading-[0.9]">
+                <h3 className="text-[#f5e6c8] text-4xl md:text-5xl lg:text-6xl font-display font-bold uppercase mb-4 leading-[0.9] relative">
+                  <span className="absolute -left-3 md:-left-5 -top-2 text-2xl md:text-3xl font-black text-[#3451a1] opacity-60" style={{ fontFamily: 'system-ui', transform: 'rotate(-10deg)' }}>3</span>
                   <span className="block transform -rotate-2">Sides</span>
                   <span className="block transform rotate-1 text-[#3451a1] ml-4">&</span>
                   <span className="block transform -rotate-1 ml-8">Drinks</span>
@@ -522,6 +569,10 @@ export default function HomePage() {
       <section id="chi-siamo" className="py-24 md:py-40 bg-[#3451a1] relative overflow-hidden">
         {/* Background decorative */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#f5e6c8]/5 rounded-full blur-3xl" />
+
+        {/* Decorative 3s */}
+        <div className="absolute top-10 right-[5%] text-[#f5e6c8]/[0.06] text-[22rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(10deg)' }}>3</div>
+        <div className="absolute bottom-20 left-[3%] text-[#f5e6c8]/[0.04] text-[16rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-12deg)' }}>3</div>
 
         <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -575,7 +626,8 @@ export default function HomePage() {
               <span className="text-[#f5e6c8]/50 text-xs uppercase tracking-[0.5em] block mb-6 transform rotate-2">
                 La nostra storia
               </span>
-              <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase leading-[0.9] mb-10">
+              <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase leading-[0.9] mb-10 relative">
+                <span className="absolute -left-4 md:-left-6 -top-2 text-2xl md:text-3xl lg:text-4xl font-black opacity-60" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</span>
                 <span className="block transform rotate-1">Chi</span>
                 <span className="block transform -rotate-2 ml-12">Siamo</span>
               </h2>
@@ -610,8 +662,12 @@ export default function HomePage() {
       </section>
 
       {/* Instagram Feed - Mosaic */}
-      <section className="py-20 md:py-32 bg-[#f5e6c8]">
-        <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
+      <section className="py-20 md:py-32 bg-[#f5e6c8] relative overflow-hidden">
+        {/* Decorative 3s */}
+        <div className="absolute top-8 left-[8%] text-[#3451a1]/[0.08] text-[12rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-12deg)' }}>3</div>
+        <div className="absolute bottom-12 right-[6%] text-[#3451a1]/[0.06] text-[14rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(18deg)' }}>3</div>
+        <div className="absolute top-1/2 right-[40%] text-[#3451a1]/[0.04] text-[8rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-5deg)' }}>3</div>
+        <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto relative z-10">
           <div className="reveal-section text-center mb-16">
             <h2 className="text-[#3451a1] text-4xl md:text-5xl lg:text-6xl font-display font-bold uppercase transform -rotate-1">
               @3smashpalermo
@@ -646,11 +702,15 @@ export default function HomePage() {
       </section>
 
       {/* Contact - Split design */}
-      <section id="contatti" className="py-24 md:py-40 bg-[#0a0a0a] relative">
+      <section id="contatti" className="py-24 md:py-40 bg-[#0a0a0a] relative overflow-hidden">
+        {/* Decorative 3s */}
+        <div className="absolute top-16 left-[6%] text-[#3451a1]/10 text-[14rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
+        <div className="absolute bottom-32 right-[8%] text-[#f5e6c8]/[0.04] text-[18rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(15deg)' }}>3</div>
         <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
           <div className="reveal-section text-center mb-20">
             <span className="text-[#3451a1] text-xs uppercase tracking-[0.5em] block mb-6">Ti aspettiamo</span>
-            <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase">
+            <h2 className="text-[#f5e6c8] text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase relative inline-block">
+              <span className="absolute -left-6 md:-left-10 -top-4 text-3xl md:text-4xl lg:text-5xl font-black text-[#3451a1] opacity-70" style={{ fontFamily: 'system-ui', transform: 'rotate(-10deg)' }}>3</span>
               <span className="block transform rotate-1">Vieni a</span>
               <span className="block transform -rotate-2 ml-8">Trovarci</span>
             </h2>
@@ -712,8 +772,11 @@ export default function HomePage() {
       </section>
 
       {/* Footer - Minimal */}
-      <footer className="py-12 bg-[#0a0a0a] border-t border-[#f5e6c8]/10">
-        <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
+      <footer className="py-12 bg-[#0a0a0a] border-t border-[#f5e6c8]/10 relative overflow-hidden">
+        {/* Decorative 3s */}
+        <div className="absolute top-4 right-[15%] text-[#3451a1]/10 text-[8rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(10deg)' }}>3</div>
+        <div className="absolute bottom-2 left-[10%] text-[#f5e6c8]/[0.03] text-[10rem] font-black select-none pointer-events-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
+        <div className="px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto relative z-10">
           <div className="flex flex-col gap-8">
             {/* Top row */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">

@@ -40,6 +40,8 @@ export const siteData = {
   social: {
     instagram: 'https://instagram.com/3smashpalermo',
     instagramHandle: '@3smashpalermo',
+    tiktok: 'https://tiktok.com/@3smashpalermo',
+    tiktokHandle: '@3smashpalermo',
   },
 
   // Coordinate
