@@ -21,7 +21,7 @@ export default {
         light: '#fafafa',
       },
       fontFamily: {
-        display: ['Oswald', 'sans-serif'],
+        display: ['Besgum', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
     },

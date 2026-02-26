@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Besgum';
+  src: url('./assets/Besgum-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -15,8 +23,8 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fredoka', system-ui, sans-serif;
-    font-weight: 600;
+    font-family: 'Besgum', system-ui, sans-serif;
+    font-style: italic;
   }
 
   ::selection {
@@ -27,7 +35,8 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Fredoka', system-ui, sans-serif;
+    font-family: 'Besgum', system-ui, sans-serif;
+    font-style: italic;
   }
 }
 
