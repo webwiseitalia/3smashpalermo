@@ -45,21 +45,23 @@ import siteData from '../constants/siteData';
 gsap.registerPlugin(ScrollTrigger);
 
 // Falling burgers — 3 colossal smash burgers stacking on the left, overflowing off-screen
+// Note: container is w-1/2 so left % values are relative to half the screen
 const fallingFood = [
   // Bottom burger — Beef (lands first, sits at very bottom of hero)
-  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-27%', bottom: '-240px', delay: 0.1, rotate: -6 },
+  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-54%', bottom: '-240px', delay: 0.1, rotate: -6 },
   // Middle burger — Pig (stacks on top)
-  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-24%', bottom: '-40px', delay: 0.35, rotate: 8 },
+  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-48%', bottom: '-40px', delay: 0.35, rotate: 8 },
   // Top burger — Chick (stacks on top)
-  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-21%', bottom: '160px', delay: 0.6, rotate: -5 },
+  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-42%', bottom: '160px', delay: 0.6, rotate: -5 },
 ];
 
 // Falling starters — stacking on the right side
+// Note: container is w-1/2 so right % values are relative to half the screen
 const fallingStarters = [
   // Bottom right — American Fries (lands first)
-  { img: scontAmericanFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-20%', bottom: '-240px', delay: 0.2, rotate: 6 },
+  { img: scontAmericanFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-40%', bottom: '-240px', delay: 0.2, rotate: 6 },
   // Fries (tilted -30°, overlapping American Fries from the left)
-  { img: scontFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-5%', bottom: '-240px', delay: 0.3, rotate: -30 },
+  { img: scontFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-10%', bottom: '-240px', delay: 0.3, rotate: -30 },
 ];
 
 export default function HomePage() {
@@ -368,8 +370,8 @@ export default function HomePage() {
         <div className="absolute top-32 -right-20 text-[#f5e6c8]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
         <div className="absolute -bottom-16 -left-16 text-[#f5e6c8]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
-        {/* Falling food animation — behind everything */}
-        <div className="absolute inset-0 overflow-hidden z-[1] group/burgers cursor-pointer">
+        {/* Falling food animation — left half */}
+        <div className="absolute top-0 left-0 bottom-0 w-1/2 overflow-hidden z-[1] group/burgers cursor-pointer">
           {fallingFood.map((item, i) => (
             <div
               key={i}
@@ -389,8 +391,8 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Falling starters animation — right side, behind everything */}
-        <div className="absolute inset-0 overflow-hidden z-[1] group/starters cursor-pointer">
+        {/* Falling starters animation — right half */}
+        <div className="absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden z-[1] group/starters cursor-pointer">
           {fallingStarters.map((item, i) => (
             <div
               key={i}
@@ -567,7 +569,7 @@ export default function HomePage() {
               Starters
             </h3>
 
-            <div className="retro-card p-6 md:p-8 relative overflow-hidden">
+            <div className="retro-card p-6 md:p-8 relative overflow-visible">
               {[...starters, ...newStarters].map((item, i) => (
                 <div
                   key={i}
