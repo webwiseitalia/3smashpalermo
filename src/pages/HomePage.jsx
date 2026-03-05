@@ -54,6 +54,14 @@ const fallingFood = [
   { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-21%', bottom: '160px', delay: 0.6, rotate: -5 },
 ];
 
+// Falling starters — stacking on the right side
+const fallingStarters = [
+  // Bottom right — American Fries (lands first)
+  { img: scontAmericanFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-20%', bottom: '-240px', delay: 0.2, rotate: 6 },
+  // Fries (tilted -30°, overlapping American Fries from the left)
+  { img: scontFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-5%', bottom: '-240px', delay: 0.3, rotate: -30 },
+];
+
 export default function HomePage() {
   const mainRef = useRef(null);
   const chiSiamoRef = useRef(null);
@@ -361,12 +369,33 @@ export default function HomePage() {
         <div className="absolute -bottom-16 -left-16 text-[#f5e6c8]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — behind everything */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+        <div className="absolute inset-0 overflow-hidden z-[1] group/burgers cursor-pointer">
           {fallingFood.map((item, i) => (
             <div
               key={i}
-              className={`falling-food absolute ${item.size}`}
-              style={{ left: item.left, bottom: item.bottom }}
+              className={`falling-food absolute ${item.size} group-hover/burgers:animate-[jiggle_0.5s_ease-in-out_infinite]`}
+              style={{ left: item.left, bottom: item.bottom, animationDelay: `${i * 0.1}s` }}
+              data-delay={item.delay}
+              data-rotate={item.rotate}
+            >
+              <img
+                src={item.img}
+                alt=""
+                className="w-full h-auto object-contain"
+                style={{ filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
+                loading="eager"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Falling starters animation — right side, behind everything */}
+        <div className="absolute inset-0 overflow-hidden z-[1] group/starters cursor-pointer">
+          {fallingStarters.map((item, i) => (
+            <div
+              key={i}
+              className={`falling-food absolute ${item.size} group-hover/starters:animate-[jiggle_0.5s_ease-in-out_infinite]`}
+              style={{ right: item.right, bottom: item.bottom, animationDelay: `${i * 0.1}s` }}
               data-delay={item.delay}
               data-rotate={item.rotate}
             >
