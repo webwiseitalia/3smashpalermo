@@ -31,9 +31,28 @@ import scontChick from '../assets/scontornati/Chick.webp';
 import scontPig from '../assets/scontornati/Pig.webp';
 import scontFries from '../assets/scontornati/Fries.webp';
 import scontNuggets from '../assets/scontornati/Nuggets.webp';
+import scontAmericanFries from '../assets/scontornati/American Fries.webp';
+import scontChickChock from '../assets/scontornati/Chick - Chock.webp';
+import scontMeatballs from '../assets/scontornati/Meat balls 2.webp';
+import scontPulledPork from '../assets/scontornati/Pulled Pork Balls.webp';
+import scontSasitz from '../assets/scontornati/Sasitz.webp';
+import scontRolly from '../assets/scontornati/Rolly.webp';
+import scontPorkins from "../assets/scontornati/Porkin's.webp";
+import scontNutellaBun from '../assets/scontornati/Nutella Bun.webp';
+import scontCookie from '../assets/scontornati/Cookies.webp';
 import siteData from '../constants/siteData';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Falling burgers — 3 colossal smash burgers stacking on the left, overflowing off-screen
+const fallingFood = [
+  // Bottom burger — Beef (lands first, sits at very bottom of hero)
+  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-27%', bottom: '-240px', delay: 0.1, rotate: -6 },
+  // Middle burger — Pig (stacks on top)
+  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-24%', bottom: '-40px', delay: 0.35, rotate: 8 },
+  // Top burger — Chick (stacks on top)
+  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-21%', bottom: '160px', delay: 0.6, rotate: -5 },
+];
 
 export default function HomePage() {
   const mainRef = useRef(null);
@@ -43,6 +62,27 @@ export default function HomePage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Falling burgers animation — 3 giant burgers stacking on the left
+      gsap.utils.toArray('.falling-food').forEach((el) => {
+        const delay = parseFloat(el.dataset.delay) || 0;
+        const rotate = parseFloat(el.dataset.rotate) || 0;
+        gsap.fromTo(el,
+          {
+            y: '-120vh',
+            rotation: rotate * 4,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            rotation: rotate,
+            opacity: 1,
+            duration: 1.8,
+            ease: 'bounce.out',
+            delay: delay,
+          }
+        );
+      });
+
       // Hero logo entrance
       gsap.from('.hero-logo', {
         scale: 0.6,
@@ -67,15 +107,6 @@ export default function HomePage() {
         duration: 0.8,
         ease: 'power3.out',
         delay: 0.6,
-      });
-
-      // Floating elements
-      gsap.to('.float-element', {
-        y: -12,
-        duration: 2.5,
-        ease: 'power1.inOut',
-        yoyo: true,
-        repeat: -1,
       });
 
       // Overlapping title reveals
@@ -174,38 +205,38 @@ export default function HomePage() {
   // Smash Burgers - from real menu
   const menuItems = [
     { name: "Beef", desc: "Patty di manzo, cheddar, cipolla, cetriolo e salsa burger", price: "4.90", img: smashBeef, extra: "Aggiungi uno smash €2,50" },
-    { name: "Pig", desc: "Patty di maiale, scamorza affumicata, cipolla in agrodolce e BBQ al Nero d'Avola", price: "4.90", img: smashPork },
+    { name: "Pig", desc: "Patty di maiale, scamorza affumicata, cipolla caramellata e BBQ al Nero d'Avola", price: "4.90", img: smashPork },
     { name: "Chick", desc: "Patty di pollo, Brie, pomodoro a fette e salsa Alabama Peppery", price: "4.90", img: smashChick },
     { name: "Intruso", desc: "Scopri il panino misterioso! Cambia ogni settimana", price: "4.90", img: smashIntruso },
   ];
 
   // Starters
   const starters = [
-    { name: "Fries", price: "2.50" },
-    { name: "American Fries", price: "3.90" },
-    { name: "Nuggets", desc: "6pz", price: "3.90" },
-    { name: "Chick-Chock", desc: "Sovracosce di pollo cotto a CBT e fritte — 4pz", price: "3.90" },
-    { name: "Meatballs", desc: "Polpette di manzo cotto CBT e fritte — 4pz", price: "3.90" },
-    { name: "Pulled Pork Balls", desc: "Polpette di pulled cotte al barbecue e fritte — 3pz", price: "3.90" },
+    { name: "Fries", price: "2.50", img: scontFries },
+    { name: "American Fries", price: "3.90", img: scontAmericanFries },
+    { name: "Nuggets", desc: "6pz", price: "3.90", img: scontNuggets },
+    { name: "Chick-Chock", desc: "Sovracosce di pollo cotte a CBT e fritte — 4pz", price: "3.90", img: scontChickChock },
+    { name: "Meatballs", desc: "Polpette di manzo cotte CBT e fritte — 4pz", price: "3.90", img: scontMeatballs },
+    { name: "Pulled Pork Balls", desc: "Polpette di pulled cotte al barbecue e fritte — 3pz", price: "3.90", img: scontPulledPork },
   ];
 
   // New Starters
   const newStarters = [
-    { name: "Sasitz", desc: "Salsiccia di maiale cotta a bassa temperatura e fritta — 6pz", price: "4.50" },
-    { name: "Rolly", desc: "2pz involtino salamino fritto + 2pz involtino lime fritto — 4pz", price: "4.50" },
-    { name: "Porkin's", desc: "Involtini di Pulled Pork fritti — 3pz", price: "4.50" },
+    { name: "Sasitz", desc: "Salsiccia di maiale cotta a CBT panata e fritta — 6pz", price: "4.50", img: scontSasitz },
+    { name: "Rolly", desc: "Involtino siciliano salamino fritto 2pz + involtino siciliano lime fritto 2pz — 4pz", price: "4.50", img: scontRolly },
+    { name: "Porkin's", desc: "Involtini primavera di Pulled Pork fritti — 3pz", price: "4.50", img: scontPorkins },
   ];
 
   // Sweets
   const sweets = [
-    { name: "Nutella Bun", desc: "Bun al cacao con Nutella", price: "2.50", img: sweetNutella },
-    { name: "Cookie", desc: "Con gocce di cioccolato", price: "1.50", img: sweetCookie },
+    { name: "Nutella Bun", desc: "Bun al cacao con Nutella", price: "2.50", img: sweetNutella, scontornato: scontNutellaBun },
+    { name: "Cookie", desc: "Con gocce di cioccolato", price: "1.50", img: sweetCookie, scontornato: scontCookie },
   ];
 
   // Bevande
   const drinks = [
-    { name: "Acqua", price: "1.20" },
-    { name: "Bibite", desc: "Coca Cola, Coca Cola Zero, Fanta, Sprite e Fuzetea", price: "2.50" },
+    { name: "Acqua", desc: "50cl", price: "1.20" },
+    { name: "Bibite", desc: "33cl — Coca Cola, Coca Cola Zero, Fanta, Sprite e Fuzetea", price: "2.50" },
   ];
 
   // Salse
@@ -215,56 +246,51 @@ export default function HomePage() {
     <div ref={mainRef} className="bg-[#faf3e3] overflow-x-hidden">
 
       {/* ===== NAVBAR ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#faf3e3] border-b-4 border-[#3451a1]">
-        <div className="checkerboard-sm h-[36px]" />
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#faf3e3]">
         <div className="flex justify-between items-center px-6 md:px-12 py-4">
-          <motion.a
+          <a
             href="#home"
-            className="relative z-10"
-            whileHover={{ scale: 1.05 }}
+            className="relative z-10 hover:scale-105 transition-transform duration-200"
           >
-            <img src={logo} alt="3 Smash Palermo - Logo" title="3 Smash Palermo" className="h-10 md:h-14 rounded-xl" width="56" height="56" loading="lazy" />
-          </motion.a>
+            <img src={logoHero} alt="3 Smash Palermo - Logo" title="3 Smash Palermo" className="h-10 md:h-14" width="120" height="56" loading="lazy" style={{ filter: 'brightness(0) saturate(100%) invert(22%) sepia(63%) saturate(1567%) hue-rotate(209deg) brightness(87%) contrast(92%)' }} />
+          </a>
 
           <div className="hidden md:flex gap-10 items-center">
             {['Menu', 'Chi Siamo', 'Contatti'].map((item) => (
-              <motion.a
+              <a
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-[#3451a1] text-sm uppercase tracking-[0.2em] font-bold hover:text-[#1a2d6b] transition-colors relative group"
-                whileHover={{ y: -2 }}
+                className="text-[#3451a1] text-sm uppercase tracking-[0.2em] font-bold hover:text-[#1a2d6b] hover:-translate-y-0.5 transition-all duration-200 relative group"
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#3451a1] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              </motion.a>
+              </a>
             ))}
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <motion.a
+            <a
               href="https://instagram.com/3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] transition-all duration-300 rounded-full"
-              whileHover={{ scale: 1.1 }}
+              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
               aria-label="Seguici su Instagram"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="https://tiktok.com/@3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] transition-all duration-300 rounded-full"
-              whileHover={{ scale: 1.1 }}
+              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
               aria-label="Seguici su TikTok"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
               </svg>
-            </motion.a>
+            </a>
           </div>
 
           <motion.button
@@ -277,6 +303,7 @@ export default function HomePage() {
             <motion.span className="w-7 h-0.5 bg-[#3451a1] block rounded-full" animate={mobileMenuOpen ? { rotate: -45, y: -8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#3451a1' }} transition={{ duration: 0.3 }} />
           </motion.button>
         </div>
+        <div className="checkerboard-sm h-[36px]" />
       </nav>
 
       {/* Mobile Menu */}
@@ -327,15 +354,34 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* ===== HERO - Big Centered Logo ===== */}
-      <section id="home" className="min-h-screen bg-[#3451a1] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: 'calc(72px + 50px)', paddingBottom: '120px' }}>
-        {/* Checkerboard under navbar */}
-        <div className="absolute top-[72px] left-0 right-0 checkerboard-cream h-[50px] z-10" />
+      <section id="home" className="min-h-screen bg-[#3451a1] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
 
         {/* Decorative 3s */}
         <div className="absolute top-32 -right-20 text-[#f5e6c8]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
         <div className="absolute -bottom-16 -left-16 text-[#f5e6c8]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
-        {/* Content */}
+        {/* Falling food animation — behind everything */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+          {fallingFood.map((item, i) => (
+            <div
+              key={i}
+              className={`falling-food absolute ${item.size}`}
+              style={{ left: item.left, bottom: item.bottom }}
+              data-delay={item.delay}
+              data-rotate={item.rotate}
+            >
+              <img
+                src={item.img}
+                alt=""
+                className="w-full h-auto object-contain"
+                style={{ filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
+                loading="eager"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Content — on top of falling food */}
         <div className="relative z-10 text-center px-6 flex flex-col items-center">
           <div className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-8 hero-sub">
             Mercato San Lorenzo — Palermo
@@ -355,22 +401,19 @@ export default function HomePage() {
           </p>
 
           <div className="hero-cta flex flex-wrap gap-5 justify-center">
-            <motion.a
+            <a
               href="#menu"
-              className="retro-btn retro-btn-cream text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="retro-btn retro-btn-cream text-sm md:text-base hover:scale-105 active:scale-95 transition-transform duration-200"
             >
               Scopri il Menu
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="#contatti"
-              className="retro-btn text-sm md:text-base border-[#f5e6c8] text-[#f5e6c8] bg-transparent"
+              className="retro-btn text-sm md:text-base border-[#f5e6c8] text-[#f5e6c8] bg-transparent hover:scale-105 transition-transform duration-200"
               style={{ boxShadow: '4px 4px 0 #f5e6c8' }}
-              whileHover={{ scale: 1.05 }}
             >
               Dove Siamo
-            </motion.a>
+            </a>
           </div>
         </div>
 
@@ -420,10 +463,9 @@ export default function HomePage() {
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-4 md:gap-6 flex-shrink-0">
                 {[content1, content2, content4, content5, content8, content3, content6].map((img, i) => (
-                  <motion.div
+                  <div
                     key={`${setIndex}-${i}`}
-                    className="relative group"
-                    whileHover={{ scale: 1.05, zIndex: 10 }}
+                    className="relative group hover:scale-105 hover:z-10 transition-transform duration-300"
                   >
                     <img
                       src={img}
@@ -435,7 +477,7 @@ export default function HomePage() {
                       height="224"
                       style={{ boxShadow: '4px 4px 0 #3451a1' }}
                     />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             ))}
@@ -454,10 +496,9 @@ export default function HomePage() {
           {/* Smash Burgers - 4 columns */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {menuItems.map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                className="menu-card group relative"
-                whileHover={{ y: -8 }}
+                className="menu-card group relative hover:-translate-y-2 transition-transform duration-300"
               >
                 <div className="relative">
                   <div className="overflow-hidden rounded-2xl border-3 border-[#3451a1]" style={{ boxShadow: '6px 6px 0 #3451a1' }}>
@@ -479,114 +520,130 @@ export default function HomePage() {
                 <p className="text-[#3451a1]/80 text-sm leading-relaxed mt-3 px-1">
                   {item.desc}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Extra smash note */}
-          <div className="mt-6 reveal-section">
+          {/* Extra smash note + CTA */}
+          <div className="mt-6 reveal-section flex flex-wrap items-center gap-6">
             <span className="retro-badge text-xs tracking-[0.2em]">Aggiungi uno smash — €2,50</span>
+            <Link to="/menu" className="retro-btn text-sm md:text-base hover:scale-105 active:scale-95 transition-transform duration-200" onClick={() => window.scrollTo(0, 0)}>
+              Scopri Tutto
+            </Link>
           </div>
 
-          {/* Starters — overlapping title on image */}
+          {/* Starters — compact list with hover image reveal */}
           <div className="mt-24 md:mt-36 reveal-section">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              <div className="relative">
-                <h3 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[6rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] text-center">
-                  Starters
-                </h3>
-                <motion.div className="relative z-10" whileHover={{ scale: 1.02 }} transition={{ duration: 0.5 }}>
-                  <img
-                    src={content7}
-                    alt="Patatine fritte croccanti - 3 Smash Palermo"
-                    className="w-full rounded-2xl border-4 border-[#3451a1]"
-                    loading="lazy"
-                    style={{ boxShadow: '8px 8px 0 #3451a1' }}
-                  />
-                </motion.div>
-              </div>
-              <div className="lg:pt-20">
-                <div className="retro-card p-6">
-                  {starters.map((item, i) => (
-                    <motion.div key={i} className={`flex justify-between items-center py-4 group ${i < starters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`} whileHover={{ x: 8 }}>
-                      <div>
-                        <span className="text-[#3451a1] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
-                        {item.desc && <span className="text-[#3451a1]/70 text-xs block">{item.desc}</span>}
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                        <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+            <h3 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-center">
+              Starters
+            </h3>
 
-                {/* New Starters */}
-                <div className="mt-6">
-                  <span className="retro-badge text-xs tracking-[0.2em] mb-4 inline-block">New</span>
-                  <div className="retro-card p-6">
-                    {newStarters.map((item, i) => (
-                      <motion.div key={i} className={`flex justify-between items-center py-4 group ${i < newStarters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`} whileHover={{ x: 8 }}>
-                        <div>
-                          <span className="text-[#3451a1] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
-                          {item.desc && <span className="text-[#3451a1]/70 text-xs block">{item.desc}</span>}
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                          <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
-                        </div>
-                      </motion.div>
-                    ))}
+            <div className="retro-card p-6 md:p-8 relative overflow-hidden">
+              {[...starters, ...newStarters].map((item, i) => (
+                <div
+                  key={i}
+                  className={`relative flex justify-between items-center py-5 group cursor-default hover:translate-x-2 transition-transform duration-200 ${i < starters.length + newStarters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                >
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3">
+                      <span className="text-[#3451a1] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
+                      {i >= starters.length && <span className="bg-[#3451a1] text-[#f5e6c8] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
+                    </div>
+                    {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
                   </div>
+                  <div className="flex items-center gap-4 relative z-10">
+                    <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
+                    <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
+                  </div>
+                  {/* Hover image reveal */}
+                  {item.img && (
+                    <div className="absolute right-28 md:right-40 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 z-0">
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="h-40 md:h-56 lg:h-64 w-auto object-contain drop-shadow-xl"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Sweets & Drinks */}
+          {/* ===== THE EXTRAS — Diner-style unified block ===== */}
           <div className="mt-24 md:mt-36 reveal-section">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Sweets */}
-              <div>
-                <h3 className="overlap-title text-[#3451a1] text-[2.5rem] md:text-[3.5rem] font-display font-bold uppercase leading-[0.85] mb-6">Sweets</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {sweets.map((item, i) => (
-                    <motion.div key={i} className="group" whileHover={{ y: -4 }}>
-                      <div className="overflow-hidden rounded-2xl border-3 border-[#3451a1] mb-3" style={{ boxShadow: '4px 4px 0 #3451a1' }}>
-                        <img src={item.img} alt={item.name} className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                      </div>
-                      <h4 className="text-[#3451a1] font-display font-bold text-lg uppercase">{item.name}</h4>
-                      <p className="text-[#3451a1]/70 text-xs">{item.desc}</p>
-                      <span className="text-[#3451a1] font-display font-bold text-lg">€{item.price}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+            <h3 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-right">
+              The Extras
+            </h3>
 
-              {/* Bevande */}
-              <div>
-                <h3 className="overlap-title text-[#3451a1] text-[2.5rem] md:text-[3.5rem] font-display font-bold uppercase leading-[0.85] mb-6">Bevande</h3>
-                <div className="retro-card p-6">
-                  {drinks.map((item, i) => (
-                    <motion.div key={i} className={`flex justify-between items-center py-4 group ${i < drinks.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`} whileHover={{ x: 8 }}>
-                      <div>
-                        <span className="text-[#3451a1] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
-                        {item.desc && <span className="text-[#3451a1]/70 text-xs block">{item.desc}</span>}
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                        <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+            <div className="retro-card p-0 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* LEFT — Sweets with big cutout images */}
+                <div className="p-6 md:p-10 border-b-4 lg:border-b-0 lg:border-r-4 border-dashed border-[#3451a1]/20 relative">
+                  <span className="retro-badge text-[10px] tracking-[0.3em] mb-8 inline-block">Dolci</span>
 
-              {/* Salse */}
-              <div>
-                <h3 className="overlap-title text-[#3451a1] text-[2.5rem] md:text-[3.5rem] font-display font-bold uppercase leading-[0.85] mb-6">Le Nostre Salse</h3>
-                <div className="retro-card p-6">
-                  <p className="text-[#3451a1]/90 text-base leading-relaxed">{salse}</p>
+                  <div className="space-y-8">
+                    {sweets.map((item, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-6 group cursor-default hover:translate-x-1.5 transition-transform duration-200"
+                      >
+                        {/* Cutout image */}
+                        <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 relative group-hover:scale-[1.08] group-hover:-rotate-3 transition-transform duration-300">
+                          <img
+                            src={item.scontornato}
+                            alt={item.name}
+                            className="w-full h-full object-contain drop-shadow-xl"
+                            loading="lazy"
+                          />
+                        </div>
+                        {/* Info */}
+                        <div className="flex-1">
+                          <div className="flex justify-between items-start">
+                            <h4 className="text-[#3451a1] font-display font-bold text-xl md:text-2xl uppercase leading-tight">{item.name}</h4>
+                            <span className="text-[#3451a1] font-display font-bold text-2xl md:text-3xl ml-4">€{item.price}</span>
+                          </div>
+                          <p className="text-[#3451a1]/70 text-sm mt-1">{item.desc}</p>
+                          <span className="h-px w-12 bg-[#3451a1]/20 group-hover:w-20 group-hover:bg-[#3451a1] transition-all block mt-3" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* RIGHT — Bevande + Salse compact lists */}
+                <div className="p-6 md:p-10 flex flex-col justify-between">
+                  {/* Bevande */}
+                  <div>
+                    <span className="retro-badge text-[10px] tracking-[0.3em] mb-6 inline-block">Bevande</span>
+                    <div className="space-y-0">
+                      {drinks.map((item, i) => (
+                        <div
+                          key={i}
+                          className={`flex justify-between items-center py-4 group cursor-default hover:translate-x-2 transition-transform duration-200 ${i < drinks.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                        >
+                          <div>
+                            <span className="text-[#3451a1] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
+                            {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
+                            <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="my-6 border-t-4 border-dotted border-[#3451a1]/15" />
+
+                  {/* Salse */}
+                  <div>
+                    <span className="retro-badge text-[10px] tracking-[0.3em] mb-4 inline-block">Le Salse</span>
+                    <p className="text-[#3451a1]/90 text-base leading-relaxed">{salse}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -627,10 +684,9 @@ export default function HomePage() {
               { img: content2, alt: "Stack di burger 3 Smash Palermo", h: "h-64 md:h-[380px] md:mt-8" },
               { img: content4, alt: "Pig burger in primo piano", h: "h-64 md:h-[400px] md:mt-4" },
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                className={`flex-shrink-0 w-[280px] md:w-[350px] lg:w-[400px] ${item.h}`}
-                whileHover={{ scale: 1.03, zIndex: 20 }}
+                className={`flex-shrink-0 w-[280px] md:w-[350px] lg:w-[400px] ${item.h} hover:scale-[1.03] hover:z-20 transition-transform duration-300`}
               >
                 <img
                   src={item.img}
@@ -639,7 +695,7 @@ export default function HomePage() {
                   loading="lazy"
                   style={{ boxShadow: '6px 6px 0 rgba(245,230,200,0.2)' }}
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -659,18 +715,17 @@ export default function HomePage() {
               </p>
             </div>
 
-            <motion.a
+            <a
               href="https://instagram.com/3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
-              className="retro-btn retro-btn-cream inline-flex items-center gap-4 mt-12 text-sm"
-              whileHover={{ scale: 1.05 }}
+              className="retro-btn retro-btn-cream inline-flex items-center gap-4 mt-12 text-sm hover:scale-105 transition-transform duration-200"
             >
               <span>Seguici</span>
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
-            </motion.a>
+            </a>
           </div>
         </div>
       </section>
@@ -690,13 +745,12 @@ export default function HomePage() {
         <div className="px-6 md:px-10 lg:px-16 relative z-10 pb-16 md:pb-24">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
             {[content5, content2, content3, content7, content4, content6].map((img, i) => (
-              <motion.a
+              <a
                 key={i}
                 href="https://instagram.com/3smashpalermo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="aspect-square overflow-hidden rounded-2xl group border-3 border-[#3451a1]"
-                whileHover={{ scale: 1.05, zIndex: 10 }}
+                className="aspect-square overflow-hidden rounded-2xl group border-3 border-[#3451a1] hover:scale-105 hover:z-10 transition-transform duration-300"
                 style={{ boxShadow: '4px 4px 0 #3451a1' }}
               >
                 <img
@@ -708,7 +762,7 @@ export default function HomePage() {
                   width="200"
                   height="200"
                 />
-              </motion.a>
+              </a>
             ))}
           </div>
           <p className="text-[#3451a1]/80 mt-6 text-lg">Seguici per novità e offerte esclusive</p>
@@ -722,7 +776,7 @@ export default function HomePage() {
       <section id="contatti" className="bg-[#faf3e3] relative overflow-hidden">
         <div className="px-6 md:px-10 lg:px-16">
           {/* Giant title — RIGHT aligned */}
-          <div className="relative pt-20 md:pt-32 text-right">
+          <div className="relative pt-20 md:pt-32 text-left">
             <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Ti aspettiamo</span>
             <h2 className="overlap-title text-[#3451a1] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
               Vieni a<br />Trovarci
@@ -730,10 +784,9 @@ export default function HomePage() {
           </div>
 
           {/* Map that title overlaps onto */}
-          <motion.div
-            className="relative z-10 rounded-2xl overflow-hidden h-80 md:h-[450px] border-4 border-[#3451a1]"
+          <div
+            className="relative z-10 rounded-2xl overflow-hidden h-80 md:h-[450px] border-4 border-[#3451a1] hover:-translate-y-1 transition-transform duration-300"
             style={{ boxShadow: '8px 8px 0 #3451a1' }}
-            whileHover={{ y: -4 }}
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.4!2d13.3623!3d38.1157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDA2JzU2LjUiTiAxM8KwMjEnNDQuMyJF!5e0!3m2!1sit!2sit!4v1234567890"
@@ -744,7 +797,7 @@ export default function HomePage() {
               loading="lazy"
               title="Mappa 3 Smash Palermo"
             />
-          </motion.div>
+          </div>
 
           {/* Contact info - inline below map */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 md:pt-16 pb-20 md:pb-32 reveal-section">
@@ -789,12 +842,11 @@ export default function HomePage() {
         <div className="py-12 px-6 md:px-10 lg:px-16 relative z-10">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <motion.img
+              <img
                 src={logo}
                 alt="3 Smash Palermo - Logo"
                 title="3 Smash Palermo - Smash Burger Artigianali"
-                className="h-10 opacity-70 hover:opacity-100 transition-opacity invert"
-                whileHover={{ scale: 1.05 }}
+                className="h-10 opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-200 invert"
                 width="40"
                 height="40"
               />
@@ -803,15 +855,14 @@ export default function HomePage() {
                 <a href={`mailto:${siteData.contact.email}`} className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors">{siteData.contact.email}</a>
                 <a href={`tel:${siteData.contact.phone}`} className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors">{siteData.contact.phoneFormatted}</a>
               </div>
-              <motion.a
+              <a
                 href={siteData.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] transition-colors text-sm uppercase tracking-wider font-bold"
-                whileHover={{ scale: 1.1 }}
+                className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] hover:scale-110 transition-all duration-200 text-sm uppercase tracking-wider font-bold"
               >
                 {siteData.social.instagramHandle}
-              </motion.a>
+              </a>
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-[#f5e6c8]/15">
               <p className="text-[#f5e6c8]/70 text-sm">
