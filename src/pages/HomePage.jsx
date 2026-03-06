@@ -557,8 +557,61 @@ export default function HomePage() {
         <div className="h-16 md:h-24" />
       </section>
 
-      {/* ===== Checkerboard Divider ===== */}
-      <div className="checkerboard h-[50px]" />
+      {/* ===== GALLERIA ===== */}
+      <section className="bg-[#3451a1] relative overflow-hidden">
+        <div className="checkerboard-cream h-[50px]" />
+
+        {/* Grid texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(#f5e6c8 1px, transparent 1px), linear-gradient(90deg, #f5e6c8 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }} />
+
+        {/* Giant overlapping title */}
+        <div className="relative pt-12 md:pt-20 px-6 md:px-10 lg:px-16">
+          <span className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
+            I nostri momenti
+          </span>
+          <h2 className="overlap-title text-[#f5e6c8] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
+            Galleria
+          </h2>
+        </div>
+
+        {/* Masonry-style photo grid */}
+        <div className="relative z-10 px-6 md:px-10 lg:px-16 pb-16 md:pb-24">
+          <div className="columns-2 md:columns-3 gap-4 md:gap-6">
+            {[
+              { img: content5, h: 'h-[280px] md:h-[350px]' },
+              { img: content2, h: 'h-[220px] md:h-[280px]' },
+              { img: content8, h: 'h-[300px] md:h-[400px]' },
+              { img: content3, h: 'h-[240px] md:h-[300px]' },
+              { img: content7, h: 'h-[280px] md:h-[360px]' },
+              { img: content4, h: 'h-[220px] md:h-[260px]' },
+              { img: content6, h: 'h-[260px] md:h-[320px]' },
+              { img: content1, h: 'h-[300px] md:h-[380px]' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`${item.h} mb-4 md:mb-6 break-inside-avoid group reveal-section`}
+              >
+                <div
+                  className="w-full h-full overflow-hidden rounded-2xl border-3 border-[#f5e6c8]/30 hover:border-[#f5e6c8]/60 hover:scale-[1.03] hover:z-10 transition-all duration-300"
+                  style={{ boxShadow: '6px 6px 0 rgba(245,230,200,0.15)' }}
+                >
+                  <img
+                    src={item.img}
+                    alt="3 Smash Palermo"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="checkerboard-cream h-[50px]" />
+      </section>
 
       {/* ===== MENU — Overlapping Titles on Photos ===== */}
       <section id="menu" className="bg-[#faf3e3] relative">
