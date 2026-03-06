@@ -48,18 +48,21 @@ gsap.registerPlugin(ScrollTrigger);
 // Note: container is w-1/2 so left % values are relative to half the screen
 const fallingFood = [
   // Bottom burger — Beef (lands first, sits at very bottom of hero)
-  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-54%', bottom: '-240px', delay: 0.1, rotate: -6 },
+  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-54%', bottom: '-390px', delay: 0.1, rotate: -6 },
   // Middle burger — Pig (stacks on top)
-  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-48%', bottom: '-40px', delay: 0.35, rotate: 8 },
+  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-48%', bottom: '-190px', delay: 0.35, rotate: 8 },
   // Top burger — Chick (stacks on top)
-  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-42%', bottom: '160px', delay: 0.6, rotate: -5 },
+  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-42%', bottom: '10px', delay: 0.6, rotate: -5 },
 ];
 
 // Falling starters — stacking on the right side
 // Note: container is w-1/2 so right % values are relative to half the screen
 const fallingStarters = [
-  // Bottom right — American Fries (lands first)
+  // Behind everything — Nuggets (lands first, sits behind the fries)
+  // Bottom right — American Fries
   { img: scontAmericanFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-40%', bottom: '-240px', delay: 0.2, rotate: 6 },
+  // Nuggets — nestled between the two fries
+  { img: scontNuggets, size: 'w-[18rem] md:w-[32rem] lg:w-[45rem]', right: '-24%', bottom: '-160px', delay: 0.25, rotate: -8 },
   // Fries (tilted -30°, overlapping American Fries from the left)
   { img: scontFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-10%', bottom: '-240px', delay: 0.3, rotate: -30 },
 ];
@@ -468,6 +471,95 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== EVENTO ===== */}
+      <section className="bg-[#faf3e3] relative overflow-hidden">
+        {/* Grid paper background — same as menu section */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(#3451a1 1px, transparent 1px), linear-gradient(90deg, #3451a1 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+          opacity: 0.04
+        }} />
+
+        {/* Giant overlapping title */}
+        <div className="relative pt-16 md:pt-24 pb-0">
+          <div className="px-6 md:px-10 lg:px-16 relative z-10">
+            <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Save the date</span>
+          </div>
+          <h2 className="overlap-title text-[#3451a1] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
+            Smash<br />Night
+          </h2>
+        </div>
+
+        {/* Event content — title overlaps onto it */}
+        <div className="relative z-10 px-6 md:px-10 lg:px-16">
+          <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+
+            {/* Left — Landscape photo with event details */}
+            <div className="flex-[2]">
+              <div
+                className="relative overflow-hidden rounded-2xl border-4 border-[#3451a1] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300"
+                style={{ boxShadow: '8px 8px 0 #3451a1' }}
+              >
+                <img
+                  src={content8}
+                  alt="Smash Night - Evento 3 Smash Palermo"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2040]/90 via-[#1a2040]/20 to-transparent" />
+
+                {/* Event details overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                  <p className="text-[#f5e6c8]/90 text-base md:text-lg max-w-xl leading-relaxed mb-6">
+                    Una serata speciale dedicata agli amanti dello smash burger. Musica dal vivo, birre artigianali e i nostri smash in edizione limitata.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                    <span className="bg-[#f5e6c8] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                      Sab 15 Marzo
+                    </span>
+                    <span className="bg-[#f5e6c8] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                      Ore 19:00
+                    </span>
+                    <span className="bg-[#3451a1] text-[#f5e6c8] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#f5e6c8]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
+                      Ingresso Libero
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — Vertical photo (Instagram post style) */}
+            <div className="flex-[1]">
+              <div
+                className="relative overflow-hidden rounded-2xl border-4 border-[#3451a1] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300 group"
+                style={{ boxShadow: '8px 8px 0 #3451a1' }}
+              >
+                <img
+                  src={content1}
+                  alt="Smash Night - Post Instagram"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                {/* Instagram-style indicator */}
+                <div className="absolute top-4 right-4 bg-[#faf3e3] text-[#3451a1] w-10 h-10 rounded-full flex items-center justify-center border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom spacing */}
+        <div className="h-16 md:h-24" />
+      </section>
+
+      {/* ===== Checkerboard Divider ===== */}
+      <div className="checkerboard h-[50px]" />
+
       {/* ===== MENU — Overlapping Titles on Photos ===== */}
       <section id="menu" className="bg-[#faf3e3] relative">
         {/* Grid paper background */}
@@ -592,7 +684,7 @@ export default function HomePage() {
                       <img
                         src={item.img}
                         alt={item.name}
-                        className="h-40 md:h-56 lg:h-64 w-auto object-contain drop-shadow-xl"
+                        className="h-60 md:h-80 lg:h-96 w-auto object-contain drop-shadow-xl"
                         loading="lazy"
                       />
                     </div>
@@ -831,13 +923,13 @@ export default function HomePage() {
           </div>
 
           {/* Contact info - inline below map */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 md:pt-16 pb-20 md:pb-32 reveal-section">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 md:pt-16 pb-20 md:pb-32 reveal-section text-center">
             {[
               { icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', title: 'Dove', info: ['Mercato San Lorenzo', 'Palermo'] },
               { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Quando', info: ['Mar — Dom: 11:00 — 22:00', 'Lunedì: Chiuso'] },
               { title: 'Social', info: ['@3smashpalermo'], isInstagram: true },
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-4">
+              <div key={i} className="flex flex-col items-center gap-4">
                 <div className="w-12 h-12 bg-[#3451a1] rounded-full flex items-center justify-center flex-shrink-0">
                   {item.isInstagram ? (
                     <svg className="w-5 h-5 text-[#f5e6c8]" fill="currentColor" viewBox="0 0 24 24">
@@ -874,12 +966,11 @@ export default function HomePage() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <img
-                src={logo}
+                src={logoHero}
                 alt="3 Smash Palermo - Logo"
                 title="3 Smash Palermo - Smash Burger Artigianali"
-                className="h-10 opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-200 invert"
-                width="40"
-                height="40"
+                className="h-10 md:h-14 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-200"
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
               <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                 <p className="text-[#f5e6c8]/80 text-sm">{siteData.address.full}</p>
