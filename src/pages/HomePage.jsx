@@ -78,9 +78,30 @@ export default function HomePage() {
   const [dragging, setDragging] = useState(null);
   const [topZ, setTopZ] = useState(20);
   const dragOffset = useRef({ x: 0, y: 0 });
+  const [showDragHint, setShowDragHint] = useState(false);
+  const [dragHintDismissed, setDragHintDismissed] = useState(false);
+  const dragHintRef = useRef(null);
+
+  useEffect(() => {
+    if (dragHintDismissed || !galleryRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !dragHintDismissed) {
+          setShowDragHint(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(galleryRef.current);
+    return () => observer.disconnect();
+  }, [dragHintDismissed]);
 
   const handlePointerDown = (e, i) => {
     e.preventDefault();
+    if (showDragHint) {
+      setShowDragHint(false);
+      setDragHintDismissed(true);
+    }
     const rect = galleryRef.current.getBoundingClientRect();
     const el = e.currentTarget;
     const elRect = el.getBoundingClientRect();
@@ -674,6 +695,36 @@ export default function HomePage() {
                 </div>
               );
             })}
+
+            {/* Drag hint — animated hand with ripple effect */}
+            {showDragHint && (
+              <div className="absolute z-50 pointer-events-none" style={{ top: '45%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                <div className="animate-drag-hint flex flex-col items-center">
+                  {/* Ripple circles */}
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#faf3e3]/20" style={{ animation: 'dragRipple 2.5s ease-out infinite' }} />
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#faf3e3]/15" style={{ animation: 'dragRipple 2.5s ease-out infinite 0.4s' }} />
+                    </div>
+                    {/* Hand icon with drag animation */}
+                    <div className="relative" style={{ animation: 'dragHandMove 2.5s ease-in-out infinite' }}>
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="md:w-14 md:h-14 drop-shadow-lg">
+                        <path d="M8 13V5.5C8 4.67 8.67 4 9.5 4S11 4.67 11 5.5V11h1V3.5C12 2.67 12.67 2 13.5 2S15 2.67 15 3.5V11h1V4.5C16 3.67 16.67 3 17.5 3S19 3.67 19 4.5V11h1V7.5C20 6.67 20.67 6 21.5 6S23 6.67 23 7.5V16c0 3.87-3.13 7-7 7H14c-2.79 0-5.2-1.64-6.32-4L4.49 12.78C4.18 12.3 4.32 11.66 4.8 11.35c.48-.31 1.12-.17 1.43.31L8 13z" fill="#faf3e3"/>
+                        <path d="M8 13V5.5C8 4.67 8.67 4 9.5 4S11 4.67 11 5.5V11h1V3.5C12 2.67 12.67 2 13.5 2S15 2.67 15 3.5V11h1V4.5C16 3.67 16.67 3 17.5 3S19 3.67 19 4.5V11h1V7.5C20 6.67 20.67 6 21.5 6S23 6.67 23 7.5V16c0 3.87-3.13 7-7 7H14c-2.79 0-5.2-1.64-6.32-4L4.49 12.78C4.18 12.3 4.32 11.66 4.8 11.35c.48-.31 1.12-.17 1.43.31L8 13z" stroke="#3451a1" strokeWidth="0.5" strokeOpacity="0.3"/>
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Label */}
+                  <div className="mt-4 bg-[#faf3e3] text-[#3451a1] px-5 py-2.5 rounded-full shadow-xl" style={{ animation: 'dragLabelPulse 2.5s ease-in-out infinite' }}>
+                    <span className="font-bold text-sm md:text-base tracking-wide" style={{ fontFamily: "'Caveat', cursive", fontSize: '1.2rem' }}>
+                      Trascina le foto!
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
 
         </div>
 
