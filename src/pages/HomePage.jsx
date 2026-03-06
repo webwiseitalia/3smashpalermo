@@ -568,7 +568,7 @@ export default function HomePage() {
         }} />
 
         {/* Giant overlapping title */}
-        <div className="relative pt-12 md:pt-20 px-6 md:px-10 lg:px-16">
+        <div className="relative pt-12 md:pt-20 px-6 md:px-10 lg:px-16 text-center">
           <span className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
             I nostri momenti
           </span>
@@ -577,33 +577,61 @@ export default function HomePage() {
           </h2>
         </div>
 
-        {/* Masonry-style photo grid */}
-        <div className="relative z-10 px-6 md:px-10 lg:px-16 pb-16 md:pb-24">
-          <div className="columns-2 md:columns-3 gap-4 md:gap-6">
+        {/* Scattered Polaroid gallery */}
+        <div className="relative z-10 px-6 md:px-10 lg:px-16 pb-16 md:pb-24 overflow-hidden">
+          <div className="relative min-h-[600px] md:min-h-[800px] lg:min-h-[900px]">
             {[
-              { img: content5, h: 'h-[280px] md:h-[350px]' },
-              { img: content2, h: 'h-[220px] md:h-[280px]' },
-              { img: content8, h: 'h-[300px] md:h-[400px]' },
-              { img: content3, h: 'h-[240px] md:h-[300px]' },
-              { img: content7, h: 'h-[280px] md:h-[360px]' },
-              { img: content4, h: 'h-[220px] md:h-[260px]' },
-              { img: content6, h: 'h-[260px] md:h-[320px]' },
-              { img: content1, h: 'h-[300px] md:h-[380px]' },
+              /* Left edge */
+              { img: content1, caption: 'Street food!', rotate: 8, top: '5%', left: '0%', w: 'w-[40%] md:w-[26%]', z: 1 },
+              { img: content4, caption: 'Sicilia mia', rotate: -10, top: '35%', left: '-2%', w: 'w-[38%] md:w-[24%]', z: 2 },
+              { img: content8, caption: 'Fuoco! 🔥', rotate: 13, top: '65%', left: '2%', w: 'w-[36%] md:w-[23%]', z: 3 },
+              /* Center-left */
+              { img: content5, caption: 'Smash time 🔥', rotate: -12, top: '0%', left: '20%', w: 'w-[42%] md:w-[28%]', z: 4 },
+              { img: content3, caption: 'Mercato vibes', rotate: 10, top: '18%', left: '28%', w: 'w-[38%] md:w-[25%]', z: 7 },
+              { img: content6, caption: 'Good times', rotate: -5, top: '38%', left: '24%', w: 'w-[43%] md:w-[28%]', z: 8 },
+              { img: content3, caption: 'Palermo style', rotate: 7, top: '55%', left: '18%', w: 'w-[41%] md:w-[27%]', z: 5 },
+              { img: content2, caption: 'Crosticina!', rotate: -6, top: '70%', left: '30%', w: 'w-[40%] md:w-[26%]', z: 6 },
+              /* Center */
+              { img: content2, caption: 'Stack perfetto', rotate: 6, top: '3%', left: '42%', w: 'w-[40%] md:w-[26%]', z: 5 },
+              { img: content7, caption: 'Cheese pull 🧀', rotate: -8, top: '22%', left: '50%', w: 'w-[42%] md:w-[27%]', z: 6 },
+              { img: content1, caption: 'Smash Night!', rotate: 8, top: '35%', left: '48%', w: 'w-[40%] md:w-[26%]', z: 3 },
+              { img: content7, caption: 'Che bontà', rotate: -9, top: '58%', left: '44%', w: 'w-[39%] md:w-[26%]', z: 9 },
+              { img: content6, caption: 'Best burger', rotate: 12, top: '72%', left: '48%', w: 'w-[38%] md:w-[25%]', z: 10 },
+              /* Center-right */
+              { img: content8, caption: 'Sul griddle', rotate: -3, top: '1%', left: '58%', w: 'w-[44%] md:w-[30%]', z: 3 },
+              { img: content4, caption: 'The Pig 🐷', rotate: 14, top: '16%', left: '16%', w: 'w-[36%] md:w-[24%]', z: 1 },
+              { img: content5, caption: 'Griddle life', rotate: -11, top: '40%', left: '60%', w: 'w-[38%] md:w-[25%]', z: 2 },
+              { img: content4, caption: 'Dal 2020 ❤️', rotate: 4, top: '52%', left: '60%', w: 'w-[42%] md:w-[28%]', z: 4 },
+              /* Right edge */
+              { img: content3, caption: 'San Lorenzo', rotate: -7, top: '8%', left: '76%', w: 'w-[36%] md:w-[24%]', z: 2 },
+              { img: content5, caption: 'Smash lover', rotate: 11, top: '40%', left: '78%', w: 'w-[34%] md:w-[23%]', z: 1 },
+              { img: content2, caption: 'Numero 3 ✌️', rotate: -5, top: '68%', left: '74%', w: 'w-[38%] md:w-[25%]', z: 3 },
             ].map((item, i) => (
               <div
                 key={i}
-                className={`${item.h} mb-4 md:mb-6 break-inside-avoid group reveal-section`}
+                className={`absolute ${item.w} group reveal-section cursor-pointer`}
+                style={{
+                  top: item.top,
+                  left: item.left,
+                  zIndex: item.z,
+                  transform: `rotate(${item.rotate}deg)`,
+                }}
               >
                 <div
-                  className="w-full h-full overflow-hidden rounded-2xl border-3 border-[#f5e6c8]/30 hover:border-[#f5e6c8]/60 hover:scale-[1.03] hover:z-10 transition-all duration-300"
-                  style={{ boxShadow: '6px 6px 0 rgba(245,230,200,0.15)' }}
+                  className="bg-[#faf3e3] p-2 md:p-3 pb-10 md:pb-14 rounded-sm hover:scale-105 hover:z-50 transition-all duration-300"
+                  style={{ boxShadow: '4px 6px 20px rgba(0,0,0,0.4)' }}
                 >
-                  <img
-                    src={item.img}
-                    alt="3 Smash Palermo"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
+                  <div className="overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt="3 Smash Palermo"
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="absolute bottom-2 md:bottom-4 left-3 md:left-4 text-[#3451a1]/80 text-xs md:text-sm font-medium" style={{ fontFamily: "'Caveat', cursive" }}>
+                    {item.caption}
+                  </p>
                 </div>
               </div>
             ))}
