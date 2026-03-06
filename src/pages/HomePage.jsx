@@ -72,6 +72,39 @@ export default function HomePage() {
   const chiSiamoRef = useRef(null);
   const chiSiamoTrackRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const galleryRef = useRef(null);
+  const [polaroidPositions, setPolaroidPositions] = useState({});
+  const [dragging, setDragging] = useState(null);
+  const [topZ, setTopZ] = useState(20);
+  const dragOffset = useRef({ x: 0, y: 0 });
+
+  const handlePointerDown = (e, i) => {
+    e.preventDefault();
+    const rect = galleryRef.current.getBoundingClientRect();
+    const el = e.currentTarget;
+    const elRect = el.getBoundingClientRect();
+    dragOffset.current = { x: e.clientX - elRect.left, y: e.clientY - elRect.top };
+    setDragging(i);
+    setTopZ(prev => prev + 1);
+    setPolaroidPositions(prev => ({ ...prev, [i]: { ...(prev[i] || {}), z: topZ + 1 } }));
+  };
+
+  useEffect(() => {
+    if (dragging === null) return;
+    const handleMove = (e) => {
+      const rect = galleryRef.current.getBoundingClientRect();
+      const x = Math.max(-5, Math.min(95, ((e.clientX - rect.left - dragOffset.current.x) / rect.width) * 100));
+      const y = Math.max(0, Math.min(90, ((e.clientY - rect.top - dragOffset.current.y) / rect.height) * 100));
+      setPolaroidPositions(prev => ({ ...prev, [dragging]: { ...prev[dragging], left: `${x}%`, top: `${y}%` } }));
+    };
+    const handleUp = () => setDragging(null);
+    window.addEventListener('pointermove', handleMove);
+    window.addEventListener('pointerup', handleUp);
+    return () => {
+      window.removeEventListener('pointermove', handleMove);
+      window.removeEventListener('pointerup', handleUp);
+    };
+  }, [dragging]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -336,7 +369,7 @@ export default function HomePage() {
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-[#f5e6c8] text-4xl md:text-5xl font-display font-bold uppercase"
+                  className="text-[#faf3e3] text-4xl md:text-5xl font-display font-bold uppercase"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -360,8 +393,8 @@ export default function HomePage() {
                 Instagram
               </motion.a>
             </nav>
-            <div className="absolute bottom-10 left-10 text-[#f5e6c8]/20 text-9xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
-            <div className="absolute top-20 right-10 text-[#f5e6c8]/10 text-7xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
+            <div className="absolute bottom-10 left-10 text-[#faf3e3]/20 text-9xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
+            <div className="absolute top-20 right-10 text-[#faf3e3]/10 text-7xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -370,8 +403,8 @@ export default function HomePage() {
       <section id="home" className="min-h-screen bg-[#3451a1] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
 
         {/* Decorative 3s */}
-        <div className="absolute top-32 -right-20 text-[#f5e6c8]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
-        <div className="absolute -bottom-16 -left-16 text-[#f5e6c8]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
+        <div className="absolute top-32 -right-20 text-[#faf3e3]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
+        <div className="absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — left half */}
         <div className="absolute top-0 left-0 bottom-0 w-1/2 overflow-hidden z-[1] group/burgers cursor-pointer">
@@ -417,7 +450,7 @@ export default function HomePage() {
 
         {/* Content — on top of falling food */}
         <div className="relative z-10 text-center px-6 flex flex-col items-center">
-          <div className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-8 hero-sub">
+          <div className="retro-badge-outline text-[#faf3e3] border-[#faf3e3] text-xs tracking-[0.3em] mb-8 hero-sub">
             Mercato San Lorenzo — Palermo
           </div>
 
@@ -427,10 +460,11 @@ export default function HomePage() {
               alt="3 Smash Palermo"
               title="3 Smash - Smash Burger Artigianali"
               className="w-[90vw] max-w-[900px] h-auto"
+              style={{ filter: 'brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(400%) hue-rotate(10deg) brightness(103%) contrast(96%)' }}
             />
           </h1>
 
-          <p className="hero-sub text-[#f5e6c8]/90 text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed mb-10">
+          <p className="hero-sub text-[#faf3e3]/90 text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed mb-10">
             Carne fresca schiacciata sul griddle rovente. Quella crosticina caramellata che non dimentichi.
           </p>
 
@@ -443,8 +477,8 @@ export default function HomePage() {
             </a>
             <a
               href="#contatti"
-              className="retro-btn text-sm md:text-base border-[#f5e6c8] text-[#f5e6c8] bg-transparent hover:scale-105 transition-transform duration-200"
-              style={{ boxShadow: '4px 4px 0 #f5e6c8' }}
+              className="retro-btn text-sm md:text-base border-[#faf3e3] text-[#faf3e3] bg-transparent hover:scale-105 transition-transform duration-200"
+              style={{ boxShadow: '4px 4px 0 #faf3e3' }}
             >
               Dove Siamo
             </a>
@@ -456,7 +490,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== Scrolling Text Banner ===== */}
-      <section className="scroll-text-container py-5 bg-[#f5e6c8] overflow-hidden border-b-4 border-[#3451a1]">
+      <section className="scroll-text-container py-5 bg-[#faf3e3] overflow-hidden border-b-4 border-[#3451a1]">
         <div className="scroll-text flex gap-12 whitespace-nowrap text-[#3451a1] text-4xl md:text-6xl font-display font-bold uppercase">
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex gap-12 items-center">
@@ -511,17 +545,17 @@ export default function HomePage() {
 
                 {/* Event details overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                  <p className="text-[#f5e6c8]/90 text-base md:text-lg max-w-xl leading-relaxed mb-6">
+                  <p className="text-[#faf3e3]/90 text-base md:text-lg max-w-xl leading-relaxed mb-6">
                     Una serata speciale dedicata agli amanti dello smash burger. Musica dal vivo, birre artigianali e i nostri smash in edizione limitata.
                   </p>
                   <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                    <span className="bg-[#f5e6c8] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                    <span className="bg-[#faf3e3] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
                       Sab 15 Marzo
                     </span>
-                    <span className="bg-[#f5e6c8] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                    <span className="bg-[#faf3e3] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
                       Ore 19:00
                     </span>
-                    <span className="bg-[#3451a1] text-[#f5e6c8] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#f5e6c8]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
+                    <span className="bg-[#3451a1] text-[#faf3e3] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#faf3e3]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
                       Ingresso Libero
                     </span>
                   </div>
@@ -558,28 +592,27 @@ export default function HomePage() {
       </section>
 
       {/* ===== GALLERIA ===== */}
-      <section className="bg-[#3451a1] relative overflow-hidden">
-        <div className="checkerboard-cream h-[50px]" />
+      <section className="bg-[#3451a1] relative">
+        <div className="checkerboard-cream h-[50px] relative z-30" />
 
-        {/* Grid texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(#f5e6c8 1px, transparent 1px), linear-gradient(90deg, #f5e6c8 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
+        {/* Drag area — overflow hidden clips polaroids at borders */}
+        <div ref={galleryRef} className="relative min-h-[600px] md:min-h-[800px] lg:min-h-[900px] overflow-hidden">
 
-        {/* Giant overlapping title */}
-        <div className="relative pt-12 md:pt-20 px-6 md:px-10 lg:px-16 text-center">
-          <span className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
-            I nostri momenti
-          </span>
-          <h2 className="overlap-title text-[#f5e6c8] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
-            Galleria
-          </h2>
-        </div>
+          {/* Grid texture */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+            backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }} />
 
-        {/* Scattered Polaroid gallery */}
-        <div className="relative z-10 px-6 md:px-10 lg:px-16 pb-16 md:pb-24 overflow-hidden">
-          <div className="relative min-h-[600px] md:min-h-[800px] lg:min-h-[900px]">
+          {/* Giant overlapping title — absolute + z-40 so polaroids never cover it */}
+          <div className="absolute top-0 left-0 right-0 pt-12 md:pt-20 px-6 md:px-10 lg:px-16 text-center z-40 pointer-events-none">
+            <span className="retro-badge-outline text-xs tracking-[0.3em] mb-8 inline-block reveal-section" style={{ color: '#faf3e3', borderColor: '#faf3e3' }}>
+              I nostri momenti
+            </span>
+            <h2 className="overlap-title text-[#faf3e3] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85]">
+              Galleria
+            </h2>
+          </div>
             {[
               /* Left edge */
               { img: content1, caption: 'Street food!', rotate: 8, top: '5%', left: '0%', w: 'w-[40%] md:w-[26%]', z: 1 },
@@ -606,39 +639,46 @@ export default function HomePage() {
               { img: content3, caption: 'San Lorenzo', rotate: -7, top: '8%', left: '76%', w: 'w-[36%] md:w-[24%]', z: 2 },
               { img: content5, caption: 'Smash lover', rotate: 11, top: '40%', left: '78%', w: 'w-[34%] md:w-[23%]', z: 1 },
               { img: content2, caption: 'Numero 3 ✌️', rotate: -5, top: '68%', left: '74%', w: 'w-[38%] md:w-[25%]', z: 3 },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className={`absolute ${item.w} group reveal-section cursor-pointer`}
-                style={{
-                  top: item.top,
-                  left: item.left,
-                  zIndex: item.z,
-                  transform: `rotate(${item.rotate}deg)`,
-                }}
-              >
+            ].map((item, i) => {
+              const pos = polaroidPositions[i] || {};
+              return (
                 <div
-                  className="bg-[#faf3e3] p-2 md:p-3 pb-10 md:pb-14 rounded-sm hover:scale-105 hover:z-50 transition-all duration-300"
-                  style={{ boxShadow: '4px 6px 20px rgba(0,0,0,0.4)' }}
+                  key={i}
+                  className={`absolute ${item.w} group reveal-section touch-none select-none`}
+                  style={{
+                    top: pos.top || item.top,
+                    left: pos.left || item.left,
+                    zIndex: pos.z || item.z,
+                    transform: `rotate(${item.rotate}deg)`,
+                    cursor: dragging === i ? 'grabbing' : 'grab',
+                    transition: dragging === i ? 'none' : 'box-shadow 0.3s',
+                  }}
+                  onPointerDown={(e) => handlePointerDown(e, i)}
                 >
-                  <div className="overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt="3 Smash Palermo"
-                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
-                    />
+                  <div
+                    className={`bg-[#faf3e3] p-2 md:p-3 pb-10 md:pb-14 rounded-sm ${dragging === i ? 'scale-105' : 'hover:scale-105'}`}
+                    style={{ boxShadow: dragging === i ? '8px 12px 30px rgba(0,0,0,0.5)' : '4px 6px 20px rgba(0,0,0,0.4)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                  >
+                    <div className="overflow-hidden pointer-events-none">
+                      <img
+                        src={item.img}
+                        alt="3 Smash Palermo"
+                        className="w-full aspect-[4/3] object-cover"
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </div>
+                    <p className="absolute bottom-2 md:bottom-4 left-3 md:left-4 text-[#3451a1]/80 text-xs md:text-sm font-medium pointer-events-none" style={{ fontFamily: "'Caveat', cursive" }}>
+                      {item.caption}
+                    </p>
                   </div>
-                  <p className="absolute bottom-2 md:bottom-4 left-3 md:left-4 text-[#3451a1]/80 text-xs md:text-sm font-medium" style={{ fontFamily: "'Caveat', cursive" }}>
-                    {item.caption}
-                  </p>
                 </div>
-              </div>
-            ))}
-          </div>
+              );
+            })}
+
         </div>
 
-        <div className="checkerboard-cream h-[50px]" />
+        <div className="checkerboard-cream h-[50px] relative z-30" />
       </section>
 
       {/* ===== MENU — Overlapping Titles on Photos ===== */}
@@ -717,7 +757,7 @@ export default function HomePage() {
                   <h3 className="text-[#3451a1] text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase leading-[0.9] -mt-5 md:-mt-7 relative z-10 px-1" style={{ textShadow: '2px 2px 0 #faf3e3, -2px -2px 0 #faf3e3, 2px -2px 0 #faf3e3, -2px 2px 0 #faf3e3, 0 2px 0 #faf3e3, 0 -2px 0 #faf3e3, 2px 0 0 #faf3e3, -2px 0 0 #faf3e3' }}>
                     {item.name}
                   </h3>
-                  <div className="absolute top-3 right-3 bg-[#f5e6c8] text-[#3451a1] px-4 py-1.5 font-display text-lg font-bold rounded-full border-3 border-[#3451a1] z-10" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                  <div className="absolute top-3 right-3 bg-[#faf3e3] text-[#3451a1] px-4 py-1.5 font-display text-lg font-bold rounded-full border-3 border-[#3451a1] z-10" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
                     €{item.price}
                   </div>
                 </div>
@@ -751,7 +791,7 @@ export default function HomePage() {
                   <div className="relative z-10">
                     <div className="flex items-center gap-3">
                       <span className="text-[#3451a1] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
-                      {i >= starters.length && <span className="bg-[#3451a1] text-[#f5e6c8] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
+                      {i >= starters.length && <span className="bg-[#3451a1] text-[#faf3e3] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
                     </div>
                     {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
                   </div>
@@ -862,16 +902,16 @@ export default function HomePage() {
       <section id="chi-siamo" ref={chiSiamoRef} className="bg-[#3451a1] relative overflow-hidden">
         {/* Grid texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(#f5e6c8 1px, transparent 1px), linear-gradient(90deg, #f5e6c8 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
           backgroundSize: '60px 60px'
         }} />
 
         {/* Giant overlapping title — RIGHT aligned */}
         <div className="relative pt-20 md:pt-32 px-6 md:px-10 lg:px-16 text-right">
-          <span className="retro-badge-outline text-[#f5e6c8] border-[#f5e6c8] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
+          <span className="retro-badge-outline text-[#faf3e3] border-[#faf3e3] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
             La nostra storia
           </span>
-          <h2 className="overlap-title text-[#f5e6c8] text-[4rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem]">
+          <h2 className="overlap-title text-[#faf3e3] text-[4rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem]">
             Chi<br />Siamo
           </h2>
         </div>
@@ -895,7 +935,7 @@ export default function HomePage() {
                 <img
                   src={item.img}
                   alt={item.alt}
-                  className="w-full h-full object-cover rounded-2xl border-4 border-[#f5e6c8]/30"
+                  className="w-full h-full object-cover rounded-2xl border-4 border-[#faf3e3]/30"
                   loading="lazy"
                   style={{ boxShadow: '6px 6px 0 rgba(245,230,200,0.2)' }}
                 />
@@ -907,15 +947,15 @@ export default function HomePage() {
         {/* Text content */}
         <div className="relative z-10 px-6 md:px-10 lg:px-16 pt-12 md:pt-20 pb-20 md:pb-32">
           <div className="max-w-2xl reveal-section">
-            <div className="space-y-6 text-[#f5e6c8]/90 text-lg md:text-xl leading-relaxed">
+            <div className="space-y-6 text-[#faf3e3]/90 text-lg md:text-xl leading-relaxed">
               <p>
-                <strong className="text-[#f5e6c8]">3 Smash</strong> è nato dalla passione per lo street food autentico americano, reinterpretato con l'anima siciliana.
+                <strong className="text-[#faf3e3]">3 Smash</strong> è nato dalla passione per lo street food autentico americano, reinterpretato con l'anima siciliana.
               </p>
               <p>
                 La tecnica dello smash è semplice ma perfetta: una palla di carne fresca schiacciata sul griddle rovente crea quella crosticina caramellata unica.
               </p>
               <p>
-                Ci trovi al <strong className="text-[#f5e6c8]">Mercato San Lorenzo</strong>, il cuore di Palermo.
+                Ci trovi al <strong className="text-[#faf3e3]">Mercato San Lorenzo</strong>, il cuore di Palermo.
               </p>
             </div>
 
@@ -1013,11 +1053,11 @@ export default function HomePage() {
               <div key={i} className="flex flex-col items-center gap-4">
                 <div className="w-12 h-12 bg-[#3451a1] rounded-full flex items-center justify-center flex-shrink-0">
                   {item.isInstagram ? (
-                    <svg className="w-5 h-5 text-[#f5e6c8]" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#faf3e3]" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                   ) : (
-                    <svg className="w-5 h-5 text-[#f5e6c8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#faf3e3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                     </svg>
                   )}
@@ -1054,28 +1094,28 @@ export default function HomePage() {
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <p className="text-[#f5e6c8]/80 text-sm">{siteData.address.full}</p>
-                <a href={`mailto:${siteData.contact.email}`} className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors">{siteData.contact.email}</a>
-                <a href={`tel:${siteData.contact.phone}`} className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors">{siteData.contact.phoneFormatted}</a>
+                <p className="text-[#faf3e3]/80 text-sm">{siteData.address.full}</p>
+                <a href={`mailto:${siteData.contact.email}`} className="text-[#faf3e3]/80 hover:text-[#faf3e3] text-sm transition-colors">{siteData.contact.email}</a>
+                <a href={`tel:${siteData.contact.phone}`} className="text-[#faf3e3]/80 hover:text-[#faf3e3] text-sm transition-colors">{siteData.contact.phoneFormatted}</a>
               </div>
               <a
                 href={siteData.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] hover:scale-110 transition-all duration-200 text-sm uppercase tracking-wider font-bold"
+                className="text-[#faf3e3]/80 hover:text-[#faf3e3] hover:scale-110 transition-all duration-200 text-sm uppercase tracking-wider font-bold"
               >
                 {siteData.social.instagramHandle}
               </a>
             </div>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-[#f5e6c8]/15">
-              <p className="text-[#f5e6c8]/70 text-sm">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-[#faf3e3]/15">
+              <p className="text-[#faf3e3]/70 text-sm">
                 © {new Date().getFullYear()} {siteData.name}. Tutti i diritti riservati.
               </p>
               <div className="flex gap-6">
-                <Link to="/privacy-policy" className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors" onClick={() => window.scrollTo(0, 0)}>
+                <Link to="/privacy-policy" className="text-[#faf3e3]/80 hover:text-[#faf3e3] text-sm transition-colors" onClick={() => window.scrollTo(0, 0)}>
                   Privacy Policy
                 </Link>
-                <Link to="/cookie-policy" className="text-[#f5e6c8]/80 hover:text-[#f5e6c8] text-sm transition-colors" onClick={() => window.scrollTo(0, 0)}>
+                <Link to="/cookie-policy" className="text-[#faf3e3]/80 hover:text-[#faf3e3] text-sm transition-colors" onClick={() => window.scrollTo(0, 0)}>
                   Cookie Policy
                 </Link>
               </div>

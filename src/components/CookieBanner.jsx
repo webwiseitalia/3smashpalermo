@@ -55,20 +55,20 @@ export default function CookieBanner() {
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="max-w-4xl mx-auto bg-[#1a1a1a] border border-[#f5e6c8]/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <div className="max-w-4xl mx-auto bg-[#1a1a1a] border border-[#faf3e3]/20 rounded-2xl p-6 md:p-8 shadow-2xl">
               {/* Header */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-[#3451a1] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-[#f5e6c8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#faf3e3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-[#f5e6c8] text-xl md:text-2xl font-display font-bold uppercase mb-2">
+                  <h3 className="text-[#faf3e3] text-xl md:text-2xl font-display font-bold uppercase mb-2">
                     Informativa Cookie
                   </h3>
-                  <p className="text-[#f5e6c8]/60 text-sm md:text-base leading-relaxed">
-                    Questo sito utilizza <strong className="text-[#f5e6c8]">solo cookie tecnici</strong> necessari al funzionamento.
+                  <p className="text-[#faf3e3]/60 text-sm md:text-base leading-relaxed">
+                    Questo sito utilizza <strong className="text-[#faf3e3]">solo cookie tecnici</strong> necessari al funzionamento.
                     Non utilizziamo cookie di profilazione o tracciamento.
                     Per maggiori informazioni, consulta la nostra{' '}
                     <Link to="/cookie-policy" className="text-[#3451a1] hover:underline">
@@ -86,13 +86,13 @@ export default function CookieBanner() {
               <div className="flex flex-col sm:flex-row gap-3 sm:justify-end">
                 <button
                   onClick={handleReject}
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#f5e6c8]/30 text-[#f5e6c8] font-semibold uppercase tracking-wider text-sm hover:bg-[#f5e6c8]/10 transition-all rounded-lg"
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#faf3e3]/30 text-[#faf3e3] font-semibold uppercase tracking-wider text-sm hover:bg-[#faf3e3]/10 transition-all rounded-lg"
                 >
                   Rifiuta
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#3451a1] bg-[#3451a1] text-[#f5e6c8] font-semibold uppercase tracking-wider text-sm hover:bg-[#4563b5] hover:border-[#4563b5] transition-all rounded-lg"
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#3451a1] bg-[#3451a1] text-[#faf3e3] font-semibold uppercase tracking-wider text-sm hover:bg-[#4563b5] hover:border-[#4563b5] transition-all rounded-lg"
                 >
                   Accetta
                 </button>
