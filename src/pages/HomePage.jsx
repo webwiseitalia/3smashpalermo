@@ -48,23 +48,22 @@ gsap.registerPlugin(ScrollTrigger);
 // Note: container is w-1/2 so left % values are relative to half the screen
 const fallingFood = [
   // Bottom burger — Beef (lands first, sits at very bottom of hero)
-  { img: scontBeef, size: 'w-[32rem] md:w-[56rem] lg:w-[80rem]', left: '-54%', bottom: '-390px', delay: 0.1, rotate: -6 },
+  { img: scontBeef, size: 'w-[36rem] md:w-[56rem] lg:w-[80rem]', left: '-85%', mdLeft: '-54%', bottom: '-150px', mdBottom: '-390px', delay: 0.1, rotate: -6 },
   // Middle burger — Pig (stacks on top)
-  { img: scontPig, size: 'w-[30rem] md:w-[52rem] lg:w-[75rem]', left: '-48%', bottom: '-190px', delay: 0.35, rotate: 8 },
+  { img: scontPig, size: 'w-[32rem] md:w-[52rem] lg:w-[75rem]', left: '-80%', mdLeft: '-48%', bottom: '-30px', mdBottom: '-190px', delay: 0.35, rotate: 8 },
   // Top burger — Chick (stacks on top)
-  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-42%', bottom: '10px', delay: 0.6, rotate: -5 },
+  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-75%', mdLeft: '-42%', bottom: '100px', mdBottom: '10px', delay: 0.6, rotate: -5 },
 ];
 
 // Falling starters — stacking on the right side
 // Note: container is w-1/2 so right % values are relative to half the screen
 const fallingStarters = [
-  // Behind everything — Nuggets (lands first, sits behind the fries)
   // Bottom right — American Fries
-  { img: scontAmericanFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-40%', bottom: '-240px', delay: 0.2, rotate: 6 },
+  { img: scontAmericanFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-75%', mdRight: '-40%', bottom: '-70px', mdBottom: '-240px', delay: 0.2, rotate: 6 },
   // Nuggets — nestled between the two fries
-  { img: scontNuggets, size: 'w-[18rem] md:w-[32rem] lg:w-[45rem]', right: '-24%', bottom: '-160px', delay: 0.25, rotate: -8 },
+  { img: scontNuggets, size: 'w-[20rem] md:w-[32rem] lg:w-[45rem]', right: '-65%', mdRight: '-24%', bottom: '-20px', mdBottom: '-160px', delay: 0.25, rotate: -8 },
   // Fries (tilted -30°, overlapping American Fries from the left)
-  { img: scontFries, size: 'w-[20rem] md:w-[36rem] lg:w-[50rem]', right: '-10%', bottom: '-240px', delay: 0.3, rotate: -30 },
+  { img: scontFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-50%', mdRight: '-10%', bottom: '-70px', mdBottom: '-240px', delay: 0.3, rotate: -30 },
 ];
 
 export default function HomePage() {
@@ -407,12 +406,12 @@ export default function HomePage() {
         <div className="absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — left half */}
-        <div className="absolute top-0 left-0 bottom-0 w-1/2 overflow-hidden z-[1] group/burgers cursor-pointer">
+        <div className="absolute top-0 left-0 bottom-0 w-1/2 md:overflow-hidden z-[1]">
           {fallingFood.map((item, i) => (
             <div
               key={i}
-              className={`falling-food absolute ${item.size} group-hover/burgers:animate-[jiggle_0.5s_ease-in-out_infinite]`}
-              style={{ left: item.left, bottom: item.bottom, animationDelay: `${i * 0.1}s` }}
+              className={`falling-food absolute ${item.size} falling-burger-${i}`}
+              style={{ '--mob-left': item.left, '--mob-bottom': item.bottom, '--desk-left': item.mdLeft, '--desk-bottom': item.mdBottom }}
               data-delay={item.delay}
               data-rotate={item.rotate}
             >
@@ -420,7 +419,6 @@ export default function HomePage() {
                 src={item.img}
                 alt=""
                 className="w-full h-auto object-contain"
-                style={{ filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
                 loading="eager"
               />
             </div>
@@ -428,12 +426,12 @@ export default function HomePage() {
         </div>
 
         {/* Falling starters animation — right half */}
-        <div className="absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden z-[1] group/starters cursor-pointer">
+        <div className="absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden z-[1]">
           {fallingStarters.map((item, i) => (
             <div
               key={i}
-              className={`falling-food absolute ${item.size} group-hover/starters:animate-[jiggle_0.5s_ease-in-out_infinite]`}
-              style={{ right: item.right, bottom: item.bottom, animationDelay: `${i * 0.1}s` }}
+              className={`falling-food absolute ${item.size} falling-starter-${i}`}
+              style={{ '--mob-right': item.right, '--mob-bottom': item.bottom, '--desk-right': item.mdRight, '--desk-bottom': item.mdBottom }}
               data-delay={item.delay}
               data-rotate={item.rotate}
             >
@@ -441,7 +439,6 @@ export default function HomePage() {
                 src={item.img}
                 alt=""
                 className="w-full h-auto object-contain"
-                style={{ filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
                 loading="eager"
               />
             </div>
@@ -609,7 +606,7 @@ export default function HomePage() {
             <span className="retro-badge-outline text-xs tracking-[0.3em] mb-8 inline-block reveal-section" style={{ color: '#faf3e3', borderColor: '#faf3e3' }}>
               I nostri momenti
             </span>
-            <h2 className="overlap-title text-[#faf3e3] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85]">
+            <h2 className="overlap-title text-[#faf3e3] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
               Galleria
             </h2>
           </div>

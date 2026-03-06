@@ -154,19 +154,26 @@
   box-shadow: 0 0 0 #3451a1;
 }
 
-/* Jiggle animation for falling burgers on hover */
-@keyframes jiggle {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
+/* Responsive positioning for falling hero food items */
+.falling-food[style] {
+  left: var(--mob-left);
+  right: var(--mob-right);
+  bottom: var(--mob-bottom);
+}
+
+.falling-food img {
+  filter: drop-shadow(0 20px 15px rgba(0,0,0,0.5));
+}
+
+@media (min-width: 768px) {
+  .falling-food[style] {
+    left: var(--desk-left, var(--mob-left));
+    right: var(--desk-right, var(--mob-right));
+    bottom: var(--desk-bottom, var(--mob-bottom));
   }
-  25% {
-    transform: translateY(-15px) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(0) rotate(0deg);
-  }
-  75% {
-    transform: translateY(-10px) rotate(2deg);
+
+  .falling-food img {
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
   }
 }
 
