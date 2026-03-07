@@ -425,6 +425,12 @@ export default function HomePage() {
       {/* ===== HERO - Big Centered Logo ===== */}
       <section id="home" className="min-h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
 
+        {/* Grid texture — same as Chi Siamo */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+          backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }} />
+
         {/* Decorative 3s */}
         <div className="absolute top-32 -right-20 text-[#faf3e3]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
         <div className="absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
