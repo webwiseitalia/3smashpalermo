@@ -73,6 +73,7 @@ export default function HomePage() {
   const chiSiamoRef = useRef(null);
   const chiSiamoTrackRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeStarter, setActiveStarter] = useState(null);
   const galleryRef = useRef(null);
   const [polaroidPositions, setPolaroidPositions] = useState({});
   const [dragging, setDragging] = useState(null);
@@ -836,22 +837,37 @@ export default function HomePage() {
               {[...starters, ...newStarters].map((item, i) => (
                 <div
                   key={i}
-                  className={`relative flex justify-between items-center py-5 group cursor-default hover:translate-x-2 transition-transform duration-200 ${i < starters.length + newStarters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                  className={`relative py-5 group cursor-default md:hover:translate-x-2 transition-transform duration-200 ${i < starters.length + newStarters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                  onClick={() => item.img && setActiveStarter(activeStarter === i ? null : i)}
                 >
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[#3451a1] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
-                      {i >= starters.length && <span className="bg-[#3451a1] text-[#faf3e3] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
+                  <div className="flex justify-between items-center">
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#3451a1] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
+                        {i >= starters.length && <span className="bg-[#3451a1] text-[#faf3e3] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
+                      </div>
+                      {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
                     </div>
-                    {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
+                    <div className="flex items-center gap-4 relative z-10">
+                      <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
+                      <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4 relative z-10">
-                    <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                    <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
-                  </div>
-                  {/* Hover image reveal */}
+                  {/* Mobile: image below text when active */}
+                  {item.img && activeStarter === i && (
+                    <div className="md:hidden flex justify-center pt-3">
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="h-40 w-auto object-contain drop-shadow-xl"
+                        style={{ animation: 'fadeInHint 0.3s ease-out' }}
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  {/* Desktop: hover image reveal */}
                   {item.img && (
-                    <div className="absolute right-28 md:right-40 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 z-0">
+                    <div className="hidden md:block absolute right-28 md:right-40 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 z-0">
                       <img
                         src={item.img}
                         alt={item.name}
@@ -881,10 +897,10 @@ export default function HomePage() {
                     {sweets.map((item, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-6 group cursor-default hover:translate-x-1.5 transition-transform duration-200"
+                        className="flex items-center gap-4 md:gap-6 group cursor-default hover:translate-x-1.5 transition-transform duration-200"
                       >
                         {/* Cutout image */}
-                        <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 relative group-hover:scale-[1.08] group-hover:-rotate-3 transition-transform duration-300">
+                        <div className="flex-shrink-0 w-20 h-20 md:w-40 md:h-40 relative group-hover:scale-[1.08] group-hover:-rotate-3 transition-transform duration-300">
                           <img
                             src={item.scontornato}
                             alt={item.name}
@@ -893,10 +909,10 @@ export default function HomePage() {
                           />
                         </div>
                         {/* Info */}
-                        <div className="flex-1">
-                          <div className="flex justify-between items-start">
-                            <h4 className="text-[#3451a1] font-display font-bold text-xl md:text-2xl uppercase leading-tight">{item.name}</h4>
-                            <span className="text-[#3451a1] font-display font-bold text-2xl md:text-3xl ml-4">€{item.price}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex justify-between items-start gap-2">
+                            <h4 className="text-[#3451a1] font-display font-bold text-lg md:text-2xl uppercase leading-tight">{item.name}</h4>
+                            <span className="text-[#3451a1] font-display font-bold text-xl md:text-3xl flex-shrink-0">€{item.price}</span>
                           </div>
                           <p className="text-[#3451a1]/70 text-sm mt-1">{item.desc}</p>
                           <span className="h-px w-12 bg-[#3451a1]/20 group-hover:w-20 group-hover:bg-[#3451a1] transition-all block mt-3" />
