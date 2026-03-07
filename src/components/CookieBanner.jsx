@@ -58,7 +58,7 @@ export default function CookieBanner() {
             <div className="max-w-4xl mx-auto bg-[#1a1a1a] border border-[#faf3e3]/20 rounded-2xl p-6 md:p-8 shadow-2xl">
               {/* Header */}
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#3451a1] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#2D2C72] rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-[#faf3e3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -71,11 +71,11 @@ export default function CookieBanner() {
                     Questo sito utilizza <strong className="text-[#faf3e3]">solo cookie tecnici</strong> necessari al funzionamento.
                     Non utilizziamo cookie di profilazione o tracciamento.
                     Per maggiori informazioni, consulta la nostra{' '}
-                    <Link to="/cookie-policy" className="text-[#3451a1] hover:underline">
+                    <Link to="/cookie-policy" className="text-[#2D2C72] hover:underline">
                       Cookie Policy
                     </Link>{' '}
                     e{' '}
-                    <Link to="/privacy-policy" className="text-[#3451a1] hover:underline">
+                    <Link to="/privacy-policy" className="text-[#2D2C72] hover:underline">
                       Privacy Policy
                     </Link>.
                   </p>
@@ -92,7 +92,7 @@ export default function CookieBanner() {
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#3451a1] bg-[#3451a1] text-[#faf3e3] font-semibold uppercase tracking-wider text-sm hover:bg-[#4563b5] hover:border-[#4563b5] transition-all rounded-lg"
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#2D2C72] bg-[#2D2C72] text-[#faf3e3] font-semibold uppercase tracking-wider text-sm hover:bg-[#4a498f] hover:border-[#4a498f] transition-all rounded-lg"
                 >
                   Accetta
                 </button>

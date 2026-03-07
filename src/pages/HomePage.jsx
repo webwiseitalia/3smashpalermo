@@ -329,10 +329,10 @@ export default function HomePage() {
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-[#3451a1] text-sm uppercase tracking-[0.2em] font-bold hover:text-[#1a2d6b] hover:-translate-y-0.5 transition-all duration-200 relative group"
+                className="text-[#2D2C72] text-sm uppercase tracking-[0.2em] font-bold hover:text-[#1a1a45] hover:-translate-y-0.5 transition-all duration-200 relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#3451a1] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#2D2C72] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </a>
             ))}
           </div>
@@ -342,7 +342,7 @@ export default function HomePage() {
               href="https://instagram.com/3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
+              className="text-[#2D2C72] p-2.5 border-2 border-[#2D2C72] hover:bg-[#2D2C72] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
               aria-label="Seguici su Instagram"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -353,7 +353,7 @@ export default function HomePage() {
               href="https://tiktok.com/@3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#3451a1] p-2.5 border-2 border-[#3451a1] hover:bg-[#3451a1] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
+              className="text-[#2D2C72] p-2.5 border-2 border-[#2D2C72] hover:bg-[#2D2C72] hover:text-[#faf3e3] hover:scale-110 transition-all duration-300 rounded-full"
               aria-label="Seguici su TikTok"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -367,9 +367,9 @@ export default function HomePage() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            <motion.span className="w-7 h-0.5 bg-[#3451a1] block rounded-full" animate={mobileMenuOpen ? { rotate: 45, y: 8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#3451a1' }} transition={{ duration: 0.3 }} />
-            <motion.span className="w-7 h-0.5 bg-[#3451a1] block rounded-full" animate={mobileMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} transition={{ duration: 0.3 }} />
-            <motion.span className="w-7 h-0.5 bg-[#3451a1] block rounded-full" animate={mobileMenuOpen ? { rotate: -45, y: -8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#3451a1' }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: 45, y: 8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#2D2C72' }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: -45, y: -8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#2D2C72' }} transition={{ duration: 0.3 }} />
           </motion.button>
         </div>
         <div className="checkerboard-sm h-[36px]" />
@@ -379,7 +379,7 @@ export default function HomePage() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#3451a1] flex flex-col justify-center items-center"
+            className="fixed inset-0 z-40 bg-[#2D2C72] flex flex-col justify-center items-center"
             initial={{ clipPath: 'circle(0% at calc(100% - 40px) 40px)' }}
             animate={{ clipPath: 'circle(150% at calc(100% - 40px) 40px)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 40px) 40px)' }}
@@ -423,7 +423,7 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* ===== HERO - Big Centered Logo ===== */}
-      <section id="home" className="min-h-screen bg-[#3451a1] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
+      <section id="home" className="min-h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
 
         {/* Decorative 3s */}
         <div className="absolute top-32 -right-20 text-[#faf3e3]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
@@ -511,16 +511,16 @@ export default function HomePage() {
       </section>
 
       {/* ===== Scrolling Text Banner ===== */}
-      <section className="scroll-text-container py-5 bg-[#faf3e3] overflow-hidden border-b-4 border-[#3451a1]">
-        <div className="scroll-text flex gap-12 whitespace-nowrap text-[#3451a1] text-4xl md:text-6xl font-display font-bold uppercase">
+      <section className="scroll-text-container py-5 bg-[#faf3e3] overflow-hidden border-b-4 border-[#2D2C72]">
+        <div className="scroll-text flex gap-12 whitespace-nowrap text-[#2D2C72] text-4xl md:text-6xl font-display font-bold uppercase">
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex gap-12 items-center">
               <span>Smash Burger</span>
-              <span className="text-[#3451a1]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
+              <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
               <span>Palermo</span>
-              <span className="text-[#3451a1]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
+              <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
               <span>Dal 2020</span>
-              <span className="text-[#3451a1]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
+              <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
             </span>
           ))}
         </div>
@@ -530,7 +530,7 @@ export default function HomePage() {
       <section className="bg-[#faf3e3] relative overflow-hidden">
         {/* Grid paper background — same as menu section */}
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(#3451a1 1px, transparent 1px), linear-gradient(90deg, #3451a1 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(#2D2C72 1px, transparent 1px), linear-gradient(90deg, #2D2C72 1px, transparent 1px)',
           backgroundSize: '60px 60px',
           opacity: 0.04
         }} />
@@ -540,7 +540,7 @@ export default function HomePage() {
           <div className="px-6 md:px-10 lg:px-16 relative z-10">
             <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Save the date</span>
           </div>
-          <h2 className="overlap-title text-[#3451a1] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
+          <h2 className="overlap-title text-[#2D2C72] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
             Smash<br />Night
           </h2>
         </div>
@@ -552,8 +552,8 @@ export default function HomePage() {
             {/* Left — Landscape photo with event details */}
             <div className="flex-[2]">
               <div
-                className="relative overflow-hidden rounded-2xl border-4 border-[#3451a1] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300"
-                style={{ boxShadow: '8px 8px 0 #3451a1' }}
+                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300"
+                style={{ boxShadow: '8px 8px 0 #2D2C72' }}
               >
                 <img
                   src={content8}
@@ -570,13 +570,13 @@ export default function HomePage() {
                     Una serata speciale dedicata agli amanti dello smash burger. Musica dal vivo, birre artigianali e i nostri smash in edizione limitata.
                   </p>
                   <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                    <span className="bg-[#faf3e3] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                    <span className="bg-[#faf3e3] text-[#2D2C72] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
                       Sab 15 Marzo
                     </span>
-                    <span className="bg-[#faf3e3] text-[#3451a1] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                    <span className="bg-[#faf3e3] text-[#2D2C72] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
                       Ore 19:00
                     </span>
-                    <span className="bg-[#3451a1] text-[#faf3e3] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#faf3e3]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
+                    <span className="bg-[#2D2C72] text-[#faf3e3] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#faf3e3]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
                       Ingresso Libero
                     </span>
                   </div>
@@ -587,8 +587,8 @@ export default function HomePage() {
             {/* Right — Vertical photo (Instagram post style) */}
             <div className="flex-[1]">
               <div
-                className="relative overflow-hidden rounded-2xl border-4 border-[#3451a1] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300 group"
-                style={{ boxShadow: '8px 8px 0 #3451a1' }}
+                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300 group"
+                style={{ boxShadow: '8px 8px 0 #2D2C72' }}
               >
                 <img
                   src={content1}
@@ -597,7 +597,7 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 {/* Instagram-style indicator */}
-                <div className="absolute top-4 right-4 bg-[#faf3e3] text-[#3451a1] w-10 h-10 rounded-full flex items-center justify-center border-3 border-[#3451a1]" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                <div className="absolute top-4 right-4 bg-[#faf3e3] text-[#2D2C72] w-10 h-10 rounded-full flex items-center justify-center border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
@@ -613,7 +613,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== GALLERIA ===== */}
-      <section className="bg-[#3451a1] relative">
+      <section className="bg-[#2D2C72] relative">
         <div className="checkerboard-cream h-[50px] relative z-30" />
 
         {/* Drag area — overflow hidden clips polaroids at borders */}
@@ -689,7 +689,7 @@ export default function HomePage() {
                         draggable={false}
                       />
                     </div>
-                    <p className="absolute bottom-2 md:bottom-4 left-3 md:left-4 text-[#3451a1]/80 text-xs md:text-sm font-medium pointer-events-none" style={{ fontFamily: "'Caveat', cursive" }}>
+                    <p className="absolute bottom-2 md:bottom-4 left-3 md:left-4 text-[#2D2C72]/80 text-xs md:text-sm font-medium pointer-events-none" style={{ fontFamily: "'Caveat', cursive" }}>
                       {item.caption}
                     </p>
                   </div>
@@ -713,12 +713,12 @@ export default function HomePage() {
                     <div className="relative" style={{ animation: 'dragHandMove 2.5s ease-in-out infinite' }}>
                       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="md:w-14 md:h-14 drop-shadow-lg">
                         <path d="M8 13V5.5C8 4.67 8.67 4 9.5 4S11 4.67 11 5.5V11h1V3.5C12 2.67 12.67 2 13.5 2S15 2.67 15 3.5V11h1V4.5C16 3.67 16.67 3 17.5 3S19 3.67 19 4.5V11h1V7.5C20 6.67 20.67 6 21.5 6S23 6.67 23 7.5V16c0 3.87-3.13 7-7 7H14c-2.79 0-5.2-1.64-6.32-4L4.49 12.78C4.18 12.3 4.32 11.66 4.8 11.35c.48-.31 1.12-.17 1.43.31L8 13z" fill="#faf3e3"/>
-                        <path d="M8 13V5.5C8 4.67 8.67 4 9.5 4S11 4.67 11 5.5V11h1V3.5C12 2.67 12.67 2 13.5 2S15 2.67 15 3.5V11h1V4.5C16 3.67 16.67 3 17.5 3S19 3.67 19 4.5V11h1V7.5C20 6.67 20.67 6 21.5 6S23 6.67 23 7.5V16c0 3.87-3.13 7-7 7H14c-2.79 0-5.2-1.64-6.32-4L4.49 12.78C4.18 12.3 4.32 11.66 4.8 11.35c.48-.31 1.12-.17 1.43.31L8 13z" stroke="#3451a1" strokeWidth="0.5" strokeOpacity="0.3"/>
+                        <path d="M8 13V5.5C8 4.67 8.67 4 9.5 4S11 4.67 11 5.5V11h1V3.5C12 2.67 12.67 2 13.5 2S15 2.67 15 3.5V11h1V4.5C16 3.67 16.67 3 17.5 3S19 3.67 19 4.5V11h1V7.5C20 6.67 20.67 6 21.5 6S23 6.67 23 7.5V16c0 3.87-3.13 7-7 7H14c-2.79 0-5.2-1.64-6.32-4L4.49 12.78C4.18 12.3 4.32 11.66 4.8 11.35c.48-.31 1.12-.17 1.43.31L8 13z" stroke="#2D2C72" strokeWidth="0.5" strokeOpacity="0.3"/>
                       </svg>
                     </div>
                   </div>
                   {/* Label */}
-                  <div className="mt-4 bg-[#faf3e3] text-[#3451a1] px-5 py-2.5 rounded-full shadow-xl" style={{ animation: 'dragLabelPulse 2.5s ease-in-out infinite' }}>
+                  <div className="mt-4 bg-[#faf3e3] text-[#2D2C72] px-5 py-2.5 rounded-full shadow-xl" style={{ animation: 'dragLabelPulse 2.5s ease-in-out infinite' }}>
                     <span className="font-bold text-sm md:text-base tracking-wide" style={{ fontFamily: "'Caveat', cursive", fontSize: '1.2rem' }}>
                       Trascina le foto!
                     </span>
@@ -736,7 +736,7 @@ export default function HomePage() {
       <section id="menu" className="bg-[#faf3e3] relative">
         {/* Grid paper background */}
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(#3451a1 1px, transparent 1px), linear-gradient(90deg, #3451a1 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(#2D2C72 1px, transparent 1px), linear-gradient(90deg, #2D2C72 1px, transparent 1px)',
           backgroundSize: '60px 60px',
           opacity: 0.04
         }} />
@@ -747,7 +747,7 @@ export default function HomePage() {
             <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Cosa offriamo</span>
           </div>
           {/* Giant title — LEFT aligned */}
-          <h2 className="overlap-title text-[#3451a1] text-[4rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem]">
+          <h2 className="overlap-title text-[#2D2C72] text-[4rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem]">
             Il Nostro<br />Menu
           </h2>
         </div>
@@ -766,11 +766,11 @@ export default function HomePage() {
                       src={img}
                       alt="3 Smash Palermo - Galleria"
                       title="Smash burger e momenti al Mercato San Lorenzo"
-                      className="h-40 md:h-56 w-auto object-cover rounded-2xl border-3 border-[#3451a1]"
+                      className="h-40 md:h-56 w-auto object-cover rounded-2xl border-3 border-[#2D2C72]"
                       loading="lazy"
                       width="300"
                       height="224"
-                      style={{ boxShadow: '4px 4px 0 #3451a1' }}
+                      style={{ boxShadow: '4px 4px 0 #2D2C72' }}
                     />
                   </div>
                 ))}
@@ -781,7 +781,7 @@ export default function HomePage() {
 
         {/* Menu description */}
         <div className="px-6 md:px-10 lg:px-16 relative z-10 pt-10 md:pt-16">
-          <p className="text-[#3451a1]/80 max-w-lg text-lg reveal-section">
+          <p className="text-[#2D2C72]/80 max-w-lg text-lg reveal-section">
             Ogni burger è preparato al momento con ingredienti freschi. Carne 100% italiana, pane artigianale.
           </p>
         </div>
@@ -796,7 +796,7 @@ export default function HomePage() {
                 className="menu-card group relative hover:-translate-y-2 transition-transform duration-300"
               >
                 <div className="relative">
-                  <div className="overflow-hidden rounded-2xl border-3 border-[#3451a1]" style={{ boxShadow: '6px 6px 0 #3451a1' }}>
+                  <div className="overflow-hidden rounded-2xl border-3 border-[#2D2C72]" style={{ boxShadow: '6px 6px 0 #2D2C72' }}>
                     <img
                       src={item.img}
                       alt={`${item.name} - Smash burger di 3 Smash Palermo`}
@@ -805,14 +805,14 @@ export default function HomePage() {
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="text-[#3451a1] text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase leading-[0.9] -mt-5 md:-mt-7 relative z-10 px-1" style={{ textShadow: '2px 2px 0 #faf3e3, -2px -2px 0 #faf3e3, 2px -2px 0 #faf3e3, -2px 2px 0 #faf3e3, 0 2px 0 #faf3e3, 0 -2px 0 #faf3e3, 2px 0 0 #faf3e3, -2px 0 0 #faf3e3' }}>
+                  <h3 className="text-[#2D2C72] text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase leading-[0.9] -mt-5 md:-mt-7 relative z-10 px-1" style={{ textShadow: '2px 2px 0 #faf3e3, -2px -2px 0 #faf3e3, 2px -2px 0 #faf3e3, -2px 2px 0 #faf3e3, 0 2px 0 #faf3e3, 0 -2px 0 #faf3e3, 2px 0 0 #faf3e3, -2px 0 0 #faf3e3' }}>
                     {item.name}
                   </h3>
-                  <div className="absolute top-3 right-3 bg-[#faf3e3] text-[#3451a1] px-4 py-1.5 font-display text-lg font-bold rounded-full border-3 border-[#3451a1] z-10" style={{ boxShadow: '3px 3px 0 #3451a1' }}>
+                  <div className="absolute top-3 right-3 bg-[#faf3e3] text-[#2D2C72] px-4 py-1.5 font-display text-lg font-bold rounded-full border-3 border-[#2D2C72] z-10" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
                     €{item.price}
                   </div>
                 </div>
-                <p className="text-[#3451a1]/80 text-sm leading-relaxed mt-3 px-1">
+                <p className="text-[#2D2C72]/80 text-sm leading-relaxed mt-3 px-1">
                   {item.desc}
                 </p>
               </div>
@@ -829,7 +829,7 @@ export default function HomePage() {
 
           {/* Starters — compact list with hover image reveal */}
           <div className="mt-24 md:mt-36 reveal-section">
-            <h3 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-center">
+            <h3 className="overlap-title text-[#2D2C72] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-center">
               Starters
             </h3>
 
@@ -837,20 +837,20 @@ export default function HomePage() {
               {[...starters, ...newStarters].map((item, i) => (
                 <div
                   key={i}
-                  className={`relative py-5 group cursor-default md:hover:translate-x-2 transition-transform duration-200 ${i < starters.length + newStarters.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                  className={`relative py-5 group cursor-default md:hover:translate-x-2 transition-transform duration-200 ${i < starters.length + newStarters.length - 1 ? 'border-b-2 border-dashed border-[#2D2C72]/20' : ''}`}
                   onClick={() => item.img && setActiveStarter(activeStarter === i ? null : i)}
                 >
                   <div className="flex justify-between items-center">
                     <div className="relative z-10">
                       <div className="flex items-center gap-3">
-                        <span className="text-[#3451a1] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
-                        {i >= starters.length && <span className="bg-[#3451a1] text-[#faf3e3] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
+                        <span className="text-[#2D2C72] text-lg md:text-xl font-medium group-hover:font-bold transition-all">{item.name}</span>
+                        {i >= starters.length && <span className="bg-[#2D2C72] text-[#faf3e3] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>}
                       </div>
-                      {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
+                      {item.desc && <span className="text-[#2D2C72]/70 text-xs block mt-0.5">{item.desc}</span>}
                     </div>
                     <div className="flex items-center gap-4 relative z-10">
-                      <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                      <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
+                      <span className="h-px w-8 bg-[#2D2C72]/30 group-hover:w-14 group-hover:bg-[#2D2C72] transition-all" />
+                      <span className="text-[#2D2C72] font-display font-bold text-xl">€{item.price}</span>
                     </div>
                   </div>
                   {/* Mobile: image below text when active */}
@@ -883,14 +883,14 @@ export default function HomePage() {
 
           {/* ===== THE EXTRAS — Diner-style unified block ===== */}
           <div className="mt-24 md:mt-36 reveal-section">
-            <h3 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-right">
+            <h3 className="overlap-title text-[#2D2C72] text-[3rem] md:text-[5rem] lg:text-[7rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-6 text-right">
               The Extras
             </h3>
 
             <div className="retro-card p-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* LEFT — Sweets with big cutout images */}
-                <div className="p-6 md:p-10 border-b-4 lg:border-b-0 lg:border-r-4 border-dashed border-[#3451a1]/20 relative">
+                <div className="p-6 md:p-10 border-b-4 lg:border-b-0 lg:border-r-4 border-dashed border-[#2D2C72]/20 relative">
                   <span className="retro-badge text-[10px] tracking-[0.3em] mb-8 inline-block">Dolci</span>
 
                   <div className="space-y-8">
@@ -911,11 +911,11 @@ export default function HomePage() {
                         {/* Info */}
                         <div className="flex-1 min-w-0">
                           <div className="flex justify-between items-start gap-2">
-                            <h4 className="text-[#3451a1] font-display font-bold text-lg md:text-2xl uppercase leading-tight">{item.name}</h4>
-                            <span className="text-[#3451a1] font-display font-bold text-xl md:text-3xl flex-shrink-0">€{item.price}</span>
+                            <h4 className="text-[#2D2C72] font-display font-bold text-lg md:text-2xl uppercase leading-tight">{item.name}</h4>
+                            <span className="text-[#2D2C72] font-display font-bold text-xl md:text-3xl flex-shrink-0">€{item.price}</span>
                           </div>
-                          <p className="text-[#3451a1]/70 text-sm mt-1">{item.desc}</p>
-                          <span className="h-px w-12 bg-[#3451a1]/20 group-hover:w-20 group-hover:bg-[#3451a1] transition-all block mt-3" />
+                          <p className="text-[#2D2C72]/70 text-sm mt-1">{item.desc}</p>
+                          <span className="h-px w-12 bg-[#2D2C72]/20 group-hover:w-20 group-hover:bg-[#2D2C72] transition-all block mt-3" />
                         </div>
                       </div>
                     ))}
@@ -931,15 +931,15 @@ export default function HomePage() {
                       {drinks.map((item, i) => (
                         <div
                           key={i}
-                          className={`flex justify-between items-center py-4 group cursor-default hover:translate-x-2 transition-transform duration-200 ${i < drinks.length - 1 ? 'border-b-2 border-dashed border-[#3451a1]/20' : ''}`}
+                          className={`flex justify-between items-center py-4 group cursor-default hover:translate-x-2 transition-transform duration-200 ${i < drinks.length - 1 ? 'border-b-2 border-dashed border-[#2D2C72]/20' : ''}`}
                         >
                           <div>
-                            <span className="text-[#3451a1] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
-                            {item.desc && <span className="text-[#3451a1]/70 text-xs block mt-0.5">{item.desc}</span>}
+                            <span className="text-[#2D2C72] text-lg font-medium group-hover:font-bold transition-all">{item.name}</span>
+                            {item.desc && <span className="text-[#2D2C72]/70 text-xs block mt-0.5">{item.desc}</span>}
                           </div>
                           <div className="flex items-center gap-4">
-                            <span className="h-px w-8 bg-[#3451a1]/30 group-hover:w-14 group-hover:bg-[#3451a1] transition-all" />
-                            <span className="text-[#3451a1] font-display font-bold text-xl">€{item.price}</span>
+                            <span className="h-px w-8 bg-[#2D2C72]/30 group-hover:w-14 group-hover:bg-[#2D2C72] transition-all" />
+                            <span className="text-[#2D2C72] font-display font-bold text-xl">€{item.price}</span>
                           </div>
                         </div>
                       ))}
@@ -947,12 +947,12 @@ export default function HomePage() {
                   </div>
 
                   {/* Divider */}
-                  <div className="my-6 border-t-4 border-dotted border-[#3451a1]/15" />
+                  <div className="my-6 border-t-4 border-dotted border-[#2D2C72]/15" />
 
                   {/* Salse */}
                   <div>
                     <span className="retro-badge text-[10px] tracking-[0.3em] mb-4 inline-block">Le Salse</span>
-                    <p className="text-[#3451a1]/90 text-base leading-relaxed">{salse}</p>
+                    <p className="text-[#2D2C72]/90 text-base leading-relaxed">{salse}</p>
                   </div>
                 </div>
               </div>
@@ -965,7 +965,7 @@ export default function HomePage() {
       <div className="checkerboard h-[50px]" />
 
       {/* ===== CHI SIAMO — Giant Title + Horizontal Scrolling Photos ===== */}
-      <section id="chi-siamo" ref={chiSiamoRef} className="bg-[#3451a1] relative overflow-hidden">
+      <section id="chi-siamo" ref={chiSiamoRef} className="bg-[#2D2C72] relative overflow-hidden">
         {/* Grid texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
@@ -1047,7 +1047,7 @@ export default function HomePage() {
       <section className="bg-[#faf3e3] relative overflow-hidden">
         <div className="relative pt-16 md:pt-24 px-6 md:px-10 lg:px-16 text-center">
           {/* Giant title — CENTERED */}
-          <h2 className="overlap-title text-[#3451a1] text-[3rem] md:text-[5rem] lg:text-[7rem] xl:text-[9rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1rem] md:mb-[-2.5rem] lg:mb-[-4rem]">
+          <h2 className="overlap-title text-[#2D2C72] text-[3rem] md:text-[5rem] lg:text-[7rem] xl:text-[9rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1rem] md:mb-[-2.5rem] lg:mb-[-4rem]">
             @3smash<br className="md:hidden" />palermo
           </h2>
         </div>
@@ -1060,8 +1060,8 @@ export default function HomePage() {
                 href="https://instagram.com/3smashpalermo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="aspect-square overflow-hidden rounded-2xl group border-3 border-[#3451a1] hover:scale-105 hover:z-10 transition-transform duration-300"
-                style={{ boxShadow: '4px 4px 0 #3451a1' }}
+                className="aspect-square overflow-hidden rounded-2xl group border-3 border-[#2D2C72] hover:scale-105 hover:z-10 transition-transform duration-300"
+                style={{ boxShadow: '4px 4px 0 #2D2C72' }}
               >
                 <img
                   src={img}
@@ -1075,7 +1075,7 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-          <p className="text-[#3451a1]/80 mt-6 text-lg">Seguici per novità e offerte esclusive</p>
+          <p className="text-[#2D2C72]/80 mt-6 text-lg">Seguici per novità e offerte esclusive</p>
         </div>
       </section>
 
@@ -1088,15 +1088,15 @@ export default function HomePage() {
           {/* Giant title — RIGHT aligned */}
           <div className="relative pt-20 md:pt-32 text-left">
             <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Ti aspettiamo</span>
-            <h2 className="overlap-title text-[#3451a1] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
+            <h2 className="overlap-title text-[#2D2C72] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
               Vieni a<br />Trovarci
             </h2>
           </div>
 
           {/* Map that title overlaps onto */}
           <div
-            className="relative z-10 rounded-2xl overflow-hidden h-80 md:h-[450px] border-4 border-[#3451a1] hover:-translate-y-1 transition-transform duration-300"
-            style={{ boxShadow: '8px 8px 0 #3451a1' }}
+            className="relative z-10 rounded-2xl overflow-hidden h-80 md:h-[450px] border-4 border-[#2D2C72] hover:-translate-y-1 transition-transform duration-300"
+            style={{ boxShadow: '8px 8px 0 #2D2C72' }}
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.4!2d13.3623!3d38.1157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDA2JzU2LjUiTiAxM8KwMjEnNDQuMyJF!5e0!3m2!1sit!2sit!4v1234567890"
@@ -1117,7 +1117,7 @@ export default function HomePage() {
               { title: 'Social', info: ['@3smashpalermo'], isInstagram: true },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 bg-[#3451a1] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#2D2C72] rounded-full flex items-center justify-center flex-shrink-0">
                   {item.isInstagram ? (
                     <svg className="w-5 h-5 text-[#faf3e3]" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -1129,14 +1129,14 @@ export default function HomePage() {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-[#3451a1] text-xl font-display font-bold uppercase mb-1">{item.title}</h3>
+                  <h3 className="text-[#2D2C72] text-xl font-display font-bold uppercase mb-1">{item.title}</h3>
                   {item.info.map((line, j) => (
                     item.isInstagram ? (
-                      <a key={j} href="https://instagram.com/3smashpalermo" target="_blank" rel="noopener noreferrer" className="text-[#3451a1]/80 hover:text-[#3451a1] transition-colors block font-medium">
+                      <a key={j} href="https://instagram.com/3smashpalermo" target="_blank" rel="noopener noreferrer" className="text-[#2D2C72]/80 hover:text-[#2D2C72] transition-colors block font-medium">
                         {line}
                       </a>
                     ) : (
-                      <p key={j} className="text-[#3451a1]/80">{line}</p>
+                      <p key={j} className="text-[#2D2C72]/80">{line}</p>
                     )
                   ))}
                 </div>
@@ -1147,7 +1147,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-[#3451a1] relative overflow-hidden">
+      <footer className="bg-[#2D2C72] relative overflow-hidden">
         <div className="checkerboard-cream h-[50px]" />
         <div className="py-12 px-6 md:px-10 lg:px-16 relative z-10">
           <div className="flex flex-col gap-8">

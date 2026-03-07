@@ -5,9 +5,9 @@ import logoHero from '../assets/logo-hero-3smash.webp';
 
 export default function MenuPage() {
   return (
-    <div className="bg-[#3451a1] min-h-screen">
+    <div className="bg-[#2D2C72] min-h-screen">
       {/* Top bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#faf3e3] border-b-4 border-[#3451a1]">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#faf3e3] border-b-4 border-[#2D2C72]">
         <div className="flex justify-between items-center px-6 md:px-12 py-4">
           <Link to="/" className="relative z-10">
             <img
@@ -22,8 +22,8 @@ export default function MenuPage() {
           </Link>
           <Link
             to="/"
-            className="retro-btn text-sm border-[#3451a1] text-[#3451a1] bg-transparent hover:scale-105 active:scale-95 transition-transform duration-200"
-            style={{ boxShadow: '3px 3px 0 #3451a1' }}
+            className="retro-btn text-sm border-[#2D2C72] text-[#2D2C72] bg-transparent hover:scale-105 active:scale-95 transition-transform duration-200"
+            style={{ boxShadow: '3px 3px 0 #2D2C72' }}
             onClick={() => window.scrollTo(0, 0)}
           >
             Torna alla Home

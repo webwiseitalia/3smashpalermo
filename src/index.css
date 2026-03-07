@@ -28,7 +28,7 @@
   }
 
   ::selection {
-    background: #3451a1;
+    background: #2D2C72;
     color: #faf3e3;
   }
 }
@@ -43,20 +43,20 @@
 /* Checkerboard pattern */
 .checkerboard {
   background-image:
-    linear-gradient(45deg, #3451a1 25%, transparent 25%),
-    linear-gradient(-45deg, #3451a1 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #3451a1 75%),
-    linear-gradient(-45deg, transparent 75%, #3451a1 75%);
+    linear-gradient(45deg, #2D2C72 25%, transparent 25%),
+    linear-gradient(-45deg, #2D2C72 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2D2C72 75%),
+    linear-gradient(-45deg, transparent 75%, #2D2C72 75%);
   background-size: 50px 50px;
   background-position: 0 0, 0 25px, 25px -25px, -25px 0px;
 }
 
 .checkerboard-sm {
   background-image:
-    linear-gradient(45deg, #3451a1 25%, transparent 25%),
-    linear-gradient(-45deg, #3451a1 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #3451a1 75%),
-    linear-gradient(-45deg, transparent 75%, #3451a1 75%);
+    linear-gradient(45deg, #2D2C72 25%, transparent 25%),
+    linear-gradient(-45deg, #2D2C72 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2D2C72 75%),
+    linear-gradient(-45deg, transparent 75%, #2D2C72 75%);
   background-size: 36px 36px;
   background-position: 0 0, 0 18px, 18px -18px, -18px 0px;
 }
@@ -74,22 +74,22 @@
 /* Retro card style */
 .retro-card {
   background: #faf3e3;
-  border: 3px solid #3451a1;
+  border: 3px solid #2D2C72;
   border-radius: 16px;
-  box-shadow: 6px 6px 0 #3451a1;
+  box-shadow: 6px 6px 0 #2D2C72;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .retro-card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 #3451a1;
+  box-shadow: 9px 9px 0 #2D2C72;
 }
 
 /* Retro badge */
 .retro-badge {
-  background: #3451a1;
+  background: #2D2C72;
   color: #faf3e3;
-  border: 3px solid #3451a1;
+  border: 3px solid #2D2C72;
   border-radius: 50px;
   padding: 6px 20px;
   font-family: 'Besgum', system-ui, sans-serif;
@@ -101,8 +101,8 @@
 
 .retro-badge-outline {
   background: transparent;
-  color: #3451a1;
-  border: 3px solid #3451a1;
+  color: #2D2C72;
+  border: 3px solid #2D2C72;
   border-radius: 50px;
   padding: 6px 20px;
   font-family: 'Besgum', system-ui, sans-serif;
@@ -114,9 +114,9 @@
 
 /* Retro button */
 .retro-btn {
-  background: #3451a1;
+  background: #2D2C72;
   color: #faf3e3;
-  border: 3px solid #1a2d6b;
+  border: 3px solid #1a1a45;
   border-radius: 50px;
   padding: 14px 36px;
   font-family: 'Besgum', system-ui, sans-serif;
@@ -124,34 +124,34 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 4px 4px 0 #1a2d6b;
+  box-shadow: 4px 4px 0 #1a1a45;
   transition: all 0.2s;
   cursor: pointer;
 }
 
 .retro-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #1a2d6b;
+  box-shadow: 6px 6px 0 #1a1a45;
 }
 
 .retro-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 0 0 0 #1a2d6b;
+  box-shadow: 0 0 0 #1a1a45;
 }
 
 .retro-btn-cream {
   background: #faf3e3;
-  color: #3451a1;
-  border: 3px solid #3451a1;
-  box-shadow: 4px 4px 0 #3451a1;
+  color: #2D2C72;
+  border: 3px solid #2D2C72;
+  box-shadow: 4px 4px 0 #2D2C72;
 }
 
 .retro-btn-cream:hover {
-  box-shadow: 6px 6px 0 #3451a1;
+  box-shadow: 6px 6px 0 #2D2C72;
 }
 
 .retro-btn-cream:active {
-  box-shadow: 0 0 0 #3451a1;
+  box-shadow: 0 0 0 #2D2C72;
 }
 
 /* Responsive positioning for falling hero food items */
@@ -262,12 +262,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3451a1;
+  background: #2D2C72;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4563b5;
+  background: #4a498f;
 }
 
 /* Image styles */
@@ -292,9 +292,9 @@ img {
 
 /* Sticker effect for images */
 .sticker-img {
-  border: 4px solid #3451a1;
+  border: 4px solid #2D2C72;
   border-radius: 20px;
-  box-shadow: 5px 5px 0 #3451a1;
+  box-shadow: 5px 5px 0 #2D2C72;
 }
 
 /* Wavy divider */

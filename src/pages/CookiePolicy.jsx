@@ -11,7 +11,7 @@ export default function CookiePolicy() {
   return (
     <div className="bg-[#0a0a0a] min-h-screen">
       {/* Header */}
-      <header className="bg-[#3451a1] py-8 md:py-12">
+      <header className="bg-[#2D2C72] py-8 md:py-12">
         <div className="px-6 md:px-12 lg:px-20 max-w-[1200px] mx-auto">
           <Link to="/" className="inline-flex items-center gap-2 text-[#faf3e3]/70 hover:text-[#faf3e3] transition-colors mb-6 text-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +21,7 @@ export default function CookiePolicy() {
           </Link>
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-[#faf3e3] rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-[#3451a1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-[#2D2C72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -136,7 +136,7 @@ export default function CookiePolicy() {
                   <tbody>
                     <tr className="border-b border-[#faf3e3]/10">
                       <td className="text-[#faf3e3]/70 py-3 px-4">{siteData.cookieKey}</td>
-                      <td className="py-3 px-4"><span className="text-xs bg-[#3451a1]/30 text-[#faf3e3] px-2 py-1 rounded">Tecnico</span></td>
+                      <td className="py-3 px-4"><span className="text-xs bg-[#2D2C72]/30 text-[#faf3e3] px-2 py-1 rounded">Tecnico</span></td>
                       <td className="text-[#faf3e3]/70 py-3 px-4">Memorizza lo stato di espansione/chiusura della barra laterale per migliorare l'esperienza di navigazione</td>
                       <td className="text-[#faf3e3]/70 py-3 px-4">7 giorni</td>
                     </tr>
@@ -163,19 +163,19 @@ export default function CookiePolicy() {
               <p className="text-[#faf3e3] font-semibold mb-3">Disabilitare i cookie tramite il browser:</p>
               <ul className="text-[#faf3e3]/70 space-y-2 mb-6">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span><strong className="text-[#faf3e3]">Google Chrome:</strong> Impostazioni → Privacy e sicurezza → Cookie e altri dati dei siti</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span><strong className="text-[#faf3e3]">Mozilla Firefox:</strong> Preferenze → Privacy e sicurezza → Cookie e dati dei siti web</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span><strong className="text-[#faf3e3]">Safari:</strong> Preferenze → Privacy → Cookie e dati dei siti web</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span><strong className="text-[#faf3e3]">Microsoft Edge:</strong> Impostazioni → Cookie e autorizzazioni del sito → Gestisci e elimina cookie</span>
                 </li>
               </ul>
@@ -221,19 +221,19 @@ export default function CookiePolicy() {
               </p>
               <ul className="text-[#faf3e3]/70 space-y-2">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span>Regolamento (UE) 2016/679 del Parlamento Europeo (GDPR)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span>Direttiva 2002/58/CE (Direttiva ePrivacy) aggiornata dalla Direttiva 2009/136/CE</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span>Provvedimento del Garante per la protezione dei dati personali dell'8 maggio 2014, n. 229</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#3451a1]">•</span>
+                  <span className="text-[#2D2C72]">•</span>
                   <span>Linee guida cookie e altri strumenti di tracciamento del 10 giugno 2021</span>
                 </li>
               </ul>
@@ -247,11 +247,11 @@ export default function CookiePolicy() {
               <p className="text-[#faf3e3]/70 mb-4">
                 Per domande o chiarimenti su questa Cookie Policy, puoi contattarci:
               </p>
-              <div className="bg-[#3451a1]/10 border-l-4 border-[#3451a1] p-4 rounded-r-lg">
+              <div className="bg-[#2D2C72]/10 border-l-4 border-[#2D2C72] p-4 rounded-r-lg">
                 <p className="text-[#faf3e3] font-semibold">{siteData.name}</p>
                 <p className="text-[#faf3e3]/70 text-sm mt-1">{siteData.address.full}</p>
-                <p className="text-[#faf3e3]/70 text-sm">Email: <a href={`mailto:${siteData.contact.email}`} className="text-[#3451a1] hover:underline">{siteData.contact.email}</a></p>
-                <p className="text-[#faf3e3]/70 text-sm">Tel: <a href={`tel:${siteData.contact.phone}`} className="text-[#3451a1] hover:underline">{siteData.contact.phone}</a></p>
+                <p className="text-[#faf3e3]/70 text-sm">Email: <a href={`mailto:${siteData.contact.email}`} className="text-[#2D2C72] hover:underline">{siteData.contact.email}</a></p>
+                <p className="text-[#faf3e3]/70 text-sm">Tel: <a href={`tel:${siteData.contact.phone}`} className="text-[#2D2C72] hover:underline">{siteData.contact.phone}</a></p>
               </div>
             </section>
 
@@ -279,7 +279,7 @@ export default function CookiePolicy() {
             </Link>
             <Link
               to="/privacy-policy"
-              className="text-center bg-[#3451a1] text-[#faf3e3] px-8 py-4 uppercase tracking-wider text-sm font-semibold hover:bg-[#4563b5] transition-all"
+              className="text-center bg-[#2D2C72] text-[#faf3e3] px-8 py-4 uppercase tracking-wider text-sm font-semibold hover:bg-[#4a498f] transition-all"
             >
               Leggi la Privacy Policy
             </Link>
