@@ -431,8 +431,7 @@ export default function HomePage() {
           backgroundSize: '60px 60px'
         }} />
 
-        {/* Decorative 3s */}
-        <div className="absolute top-32 -right-20 text-[#faf3e3]/[0.05] text-[30rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(12deg)' }}>3</div>
+        {/* Decorative 3 */}
         <div className="absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — left half */}
