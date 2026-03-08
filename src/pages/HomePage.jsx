@@ -982,13 +982,13 @@ export default function HomePage() {
           <span className="retro-badge-outline text-[#faf3e3] border-[#faf3e3] text-xs tracking-[0.3em] mb-4 inline-block reveal-section">
             La nostra storia
           </span>
-          <h2 className="overlap-title text-[#faf3e3] text-[4rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem]">
+          <h2 className="overlap-title text-[#faf3e3] text-[3.5rem] md:text-[7rem] lg:text-[10rem] xl:text-[12rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-4rem] lg:mb-[-6rem]" style={{ paddingRight: '0.15em' }}>
             Chi<br />Siamo
           </h2>
         </div>
 
         {/* Horizontal scrolling photos — driven by scroll on desktop, swipeable strip on mobile */}
-        <div className="relative z-10 overflow-hidden">
+        <div className="relative z-10 overflow-x-auto md:overflow-hidden" style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <div ref={chiSiamoTrackRef} className="flex gap-6 md:gap-8 px-6 md:px-10 lg:px-16 py-4">
             {[
               { img: content8, alt: "Smash burger in preparazione sul griddle rovente", h: "h-64 md:h-[420px]" },
