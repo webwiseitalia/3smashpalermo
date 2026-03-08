@@ -218,7 +218,7 @@ export default function HomePage() {
             y: 0,
             rotation: rotate,
             opacity: 1,
-            duration: 1.8,
+            duration: 2.8,
             ease: 'bounce.out',
             delay: delay,
           }
@@ -440,9 +440,9 @@ export default function HomePage() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: 45, y: 8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#2D2C72' }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }} transition={{ duration: 0.3 }} />
             <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} transition={{ duration: 0.3 }} />
-            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: -45, y: -8, backgroundColor: '#faf3e3' } : { rotate: 0, y: 0, backgroundColor: '#2D2C72' }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-7 h-0.5 bg-[#2D2C72] block rounded-full" animate={mobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }} transition={{ duration: 0.3 }} />
           </motion.button>
         </div>
         <div className="checkerboard-sm h-[36px]" />
@@ -489,8 +489,6 @@ export default function HomePage() {
                 Instagram
               </motion.a>
             </nav>
-            <div className="absolute bottom-10 left-10 text-[#faf3e3]/20 text-9xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
-            <div className="absolute top-20 right-10 text-[#faf3e3]/10 text-7xl font-black" style={{ fontFamily: 'system-ui' }}>3</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -505,7 +503,7 @@ export default function HomePage() {
         }} />
 
         {/* Decorative 3 */}
-        <div className="absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
+        <div className="hidden md:block absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — left half */}
         <div className="absolute top-0 left-0 bottom-0 w-1/2 md:overflow-hidden z-[1]">
@@ -566,7 +564,7 @@ export default function HomePage() {
                   <path id="clickArc" d="M 8 45 Q 60 2 112 45" fill="none" />
                 </defs>
                 <text fill="#faf3e3" fontFamily="'Besgum', system-ui, sans-serif" fontStyle="italic" fontWeight="bold" fontSize="14" letterSpacing="3" textAnchor="middle">
-                  <textPath href="#clickArc" startOffset="50%">CLICCAMI!</textPath>
+                  <textPath href="#clickArc" startOffset="50%">SMASH ME!</textPath>
                 </text>
               </svg>
             </div>

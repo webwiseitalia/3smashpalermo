@@ -248,6 +248,12 @@
   will-change: transform;
 }
 
+@media (max-width: 767px) {
+  .animate-marquee {
+    animation-duration: 12s;
+  }
+}
+
 .animate-marquee:hover {
   animation-play-state: paused;
 }

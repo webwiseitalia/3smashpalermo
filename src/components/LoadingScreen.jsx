@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import logoNormal from '../assets/animation/logo-non-smashed.webp';
 import logoSmashed from '../assets/animation/logo-smashed.webp';
+import pressImage from '../assets/animation/animation-1.webp';
 import pol1 from '../assets/content/content-1.webp';
 import pol2 from '../assets/content/content-5.webp';
 import pol3 from '../assets/content/content-3.webp';
@@ -108,7 +109,7 @@ export default function LoadingScreen({ onFinished }) {
   // Press landing: pressTop + PRESS_H = CONTAINER_H - BAR_H
   const CONTAINER_H = 400;
   const pressTopIdle = -PRESS_H + 30; // just the bottom of the plate peeks in
-  const pressTopDown = CONTAINER_H - BAR_H - PRESS_H;
+  const pressTopDown = CONTAINER_H - BAR_H - PRESS_H + 40;
 
   const pressTop = (() => {
     if (phase === 'idle') return pressTopIdle;
@@ -269,7 +270,7 @@ export default function LoadingScreen({ onFinished }) {
         transformOrigin: 'center center',
       }}>
 
-        {/* Press assembly (handle + body + plate) */}
+        {/* Press assembly — image */}
         <div style={{
           position: 'absolute',
           top: pressTop,
@@ -277,25 +278,17 @@ export default function LoadingScreen({ onFinished }) {
           transform: 'translateX(-50%)',
           transition: pressTransition,
           zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          width: PLATE_W,
         }}>
-          {/* Body */}
-          <div style={{
-            width: BODY_W,
-            height: BODY_H,
-            background: 'linear-gradient(90deg, #666, #888, #666)',
-            borderRadius: '8px 8px 0 0',
-          }} />
-          {/* Plate */}
-          <div style={{
-            width: PLATE_W,
-            height: PLATE_H,
-            background: 'linear-gradient(180deg, #999, #777)',
-            borderRadius: '0 0 6px 6px',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.4)',
-          }} />
+          <img
+            src={pressImage}
+            alt=""
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+            }}
+          />
         </div>
 
         {/* Logo — sits just above the bar, anchored to bottom */}
