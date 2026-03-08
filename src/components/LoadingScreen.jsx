@@ -1,6 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import logoNormal from '../assets/animation/logo-non-smashed.webp';
 import logoSmashed from '../assets/animation/logo-smashed.webp';
+import pol1 from '../assets/content/content-1.webp';
+import pol2 from '../assets/content/content-5.webp';
+import pol3 from '../assets/content/content-3.webp';
+import pol4 from '../assets/content/content-7.webp';
+
+const polaroids = [
+  { src: pol1, top: '10%',  left: '5%',   rotate: -8,  size: 340 },
+  { src: pol2, bottom: '10%', left: '6%', rotate: 6,   size: 323 },
+  { src: pol3, top: '8%',   right: '5%',  rotate: 10,  size: 332 },
+  { src: pol4, bottom: '8%', right: '6%', rotate: -6,  size: 315 },
+];
 
 const TIMINGS = {
   idle: 1000,
@@ -161,6 +172,87 @@ export default function LoadingScreen({ onFinished }) {
         backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
         backgroundSize: '60px 60px',
       }} />
+
+      {/* Scattered polaroids */}
+      {polaroids.map((p, i) => (
+        <div key={i} style={{
+          position: 'absolute',
+          top: p.top,
+          left: p.left,
+          right: p.right,
+          bottom: p.bottom,
+          transform: `rotate(${p.rotate}deg)`,
+          opacity: 1,
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}>
+          {/* Thumbtack / Spilletta */}
+          <div style={{
+            position: 'absolute',
+            top: -6,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 2,
+          }}>
+            {/* Tack head — dome shape */}
+            <div style={{
+              width: 24,
+              height: 24,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle at 38% 32%, #5b5acd, #2D2C72, #1a1a45)',
+              boxShadow: '0 3px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(150,150,255,0.4), inset 0 -2px 3px rgba(0,0,0,0.3)',
+              position: 'relative',
+            }}>
+              {/* Shine highlight */}
+              <div style={{
+                position: 'absolute',
+                top: 5,
+                left: 6,
+                width: 7,
+                height: 5,
+                borderRadius: '50%',
+                background: 'rgba(255,255,255,0.45)',
+              }} />
+            </div>
+            {/* Needle tip visible below head */}
+            <div style={{
+              width: 3,
+              height: 8,
+              background: 'linear-gradient(180deg, #999, #666)',
+              margin: '-2px auto 0',
+              borderRadius: '0 0 2px 2px',
+            }} />
+            {/* Shadow on polaroid surface */}
+            <div style={{
+              width: 14,
+              height: 5,
+              borderRadius: '50%',
+              background: 'rgba(0,0,0,0.12)',
+              margin: '0 auto',
+            }} />
+          </div>
+          {/* Polaroid */}
+          <div style={{
+            background: '#faf3e3',
+            padding: '6px 6px 20px 6px',
+            borderRadius: 3,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            width: p.size,
+          }}>
+            <img
+              src={p.src}
+              alt=""
+              style={{
+                width: '100%',
+                height: p.size - 26,
+                objectFit: 'cover',
+                display: 'block',
+                borderRadius: 2,
+              }}
+            />
+          </div>
+        </div>
+      ))}
 
       {/* Scaled container — scales down on small screens */}
       <div style={{
