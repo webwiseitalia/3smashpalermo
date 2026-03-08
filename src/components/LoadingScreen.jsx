@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import logoNormal from '../assets/animation/logo-non-smashed.webp';
 import logoSmashed from '../assets/animation/logo-smashed.webp';
 import pol1 from '../assets/content/content-1.webp';
@@ -134,6 +134,25 @@ export default function LoadingScreen({ onFinished }) {
   })();
 
   const isSmashed = phase === 'covered' || phase === 'lifting' || phase === 'smashed';
+  const showSplash = phase === 'covered' || phase === 'lifting';
+
+  // Generate splash particles once
+  const particles = useMemo(() => {
+    const items = [];
+    const shapes = ['circle', 'star', 'line'];
+    for (let i = 0; i < 20; i++) {
+      const side = i < 10 ? -1 : 1;
+      const xDist = 60 + Math.random() * 200;
+      const yDist = -(40 + Math.random() * 140);
+      const size = 8 + Math.random() * 16;
+      const delay = Math.random() * 100;
+      const duration = 400 + Math.random() * 300;
+      const rotate = Math.random() * 360;
+      const shape = shapes[Math.floor(Math.random() * shapes.length)];
+      items.push({ side, xDist, yDist, size, delay, duration, rotate, shape });
+    }
+    return items;
+  }, []);
 
   const barWidth = (() => {
     if (phase === 'idle') return '0%';
@@ -320,6 +339,24 @@ export default function LoadingScreen({ onFinished }) {
             }}
           />
         </div>
+
+        {/* Splash particles */}
+        {showSplash && particles.map((p, i) => (
+          <div key={i} style={{
+            position: 'absolute',
+            bottom: BAR_H + PLATE_H / 2,
+            left: '50%',
+            width: p.size,
+            height: p.size,
+            borderRadius: '50%',
+            background: '#faf3e3',
+            opacity: 0,
+            zIndex: 15,
+            animation: `splash-particle ${p.duration}ms ease-out ${p.delay}ms forwards`,
+            '--splash-x': `${p.side * p.xDist}px`,
+            '--splash-y': `${p.yDist}px`,
+          }} />
+        ))}
 
         {/* Loading bar (the griddle base) */}
         <div style={{
