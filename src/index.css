@@ -271,6 +271,11 @@
   }
 }
 
+/* Hide scrollbar on chi siamo photo strip (mobile) */
+.chi-siamo-strip::-webkit-scrollbar {
+  display: none;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

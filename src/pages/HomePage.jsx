@@ -784,11 +784,12 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Menu description */}
-        <div className="px-6 md:px-10 lg:px-16 relative z-10 pt-10 md:pt-16">
+        {/* Menu description + extra smash badge */}
+        <div className="px-6 md:px-10 lg:px-16 relative z-10 pt-10 md:pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-[#2D2C72]/80 max-w-lg text-lg reveal-section">
             Ogni burger è preparato al momento con ingredienti freschi. Carne 100% italiana, pane artigianale.
           </p>
+          <span className="retro-badge text-xs tracking-[0.2em] flex-shrink-0 reveal-section">Aggiungi uno smash — €2,50</span>
         </div>
 
         {/* Burgers Grid */}
@@ -824,10 +825,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Extra smash note + CTA */}
-          <div className="mt-6 reveal-section flex flex-wrap items-center gap-6">
-            <span className="retro-badge text-xs tracking-[0.2em]">Aggiungi uno smash — €2,50</span>
-            <Link to="/menu" className="retro-btn text-sm md:text-base hover:scale-105 active:scale-95 transition-transform duration-200" onClick={() => window.scrollTo(0, 0)}>
+          {/* CTA centered */}
+          <div className="mt-8 reveal-section text-center">
+            <Link to="/menu" className="retro-btn text-sm md:text-base hover:scale-105 active:scale-95 transition-transform duration-200 inline-block" onClick={() => window.scrollTo(0, 0)}>
               Scopri Tutto
             </Link>
           </div>
@@ -988,7 +988,7 @@ export default function HomePage() {
         </div>
 
         {/* Horizontal scrolling photos — driven by scroll on desktop, swipeable strip on mobile */}
-        <div className="relative z-10 overflow-x-auto md:overflow-hidden" style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div className="chi-siamo-strip relative z-10 overflow-x-auto md:overflow-hidden" style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <div ref={chiSiamoTrackRef} className="flex gap-6 md:gap-8 px-6 md:px-10 lg:px-16 py-4">
             {[
               { img: content8, alt: "Smash burger in preparazione sul griddle rovente", h: "h-64 md:h-[420px]" },
