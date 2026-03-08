@@ -327,16 +327,12 @@ export default function HomePage() {
         });
       }
 
-      // Horizontal scroll text
+      // Horizontal scroll text — continuous loop
       gsap.to('.scroll-text', {
         xPercent: -50,
         ease: 'none',
-        scrollTrigger: {
-          trigger: '.scroll-text-container',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
+        duration: 7,
+        repeat: -1,
       });
 
     }, mainRef);
@@ -611,12 +607,15 @@ export default function HomePage() {
         </div>
 
         {/* Checkerboard bottom */}
-        <div className="absolute bottom-0 left-0 right-0 checkerboard-cream h-[50px]" />
+        <div className="absolute bottom-0 left-0 right-0 z-[5]">
+          <div className="checkerboard-cream h-[50px] bg-[#2D2C72]" />
+          <div className="h-1 bg-[#2D2C72]" />
+        </div>
       </section>
 
       {/* ===== Scrolling Text Banner ===== */}
-      <section className="scroll-text-container py-5 bg-[#faf3e3] overflow-hidden border-b-4 border-[#2D2C72]">
-        <div className="scroll-text flex gap-12 whitespace-nowrap text-[#2D2C72] text-4xl md:text-6xl font-display font-bold uppercase">
+      <section className="scroll-text-container bg-[#faf3e3] overflow-hidden border-b-4 border-[#2D2C72]">
+        <div className="scroll-text flex gap-12 whitespace-nowrap text-[#2D2C72] text-4xl md:text-6xl font-display font-bold uppercase items-center pt-6 pb-2" style={{ lineHeight: 1 }}>
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex gap-12 items-center">
               <span>Smash Burger</span>

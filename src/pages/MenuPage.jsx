@@ -18,7 +18,7 @@ export default function MenuPage() {
               className="h-10 md:h-14"
               width="120"
               height="56"
-              style={{ filter: 'brightness(0) saturate(100%) invert(22%) sepia(63%) saturate(1567%) hue-rotate(209deg) brightness(87%) contrast(92%)' }}
+              style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(47%) saturate(2267%) hue-rotate(222deg) brightness(90%) contrast(93%)' }}
             />
           </Link>
           <Link
