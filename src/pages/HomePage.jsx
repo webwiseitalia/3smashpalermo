@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../assets/logo.webp';
 import logoHero from '../assets/logo-hero-3smash.webp';
+import pressAnimation from '../assets/animation/animation-1.webp';
 import sidesPatatine from '../assets/sides-patatine-nuggets.webp';
 // Smash burger photos (blue background)
 import smashBeef from '../assets/smash/Beef.webp';
@@ -82,6 +83,57 @@ export default function HomePage() {
   const [showDragHint, setShowDragHint] = useState(false);
   const [dragHintDismissed, setDragHintDismissed] = useState(false);
   const dragHintRef = useRef(null);
+  const pressRef = useRef(null);
+  const heroLogoRef = useRef(null);
+  const pressAnimating = useRef(false);
+  const pressTl = useRef(null);
+
+  const handleLogoEnter = () => {
+    if (pressAnimating.current || !pressRef.current) return;
+    pressAnimating.current = true;
+
+    pressTl.current = gsap.timeline();
+
+    // Press falls from above with bounce
+    pressTl.current.fromTo(pressRef.current,
+      { y: '-120%', opacity: 1 },
+      { y: '0%', duration: 0.4, ease: 'power2.in' }
+    )
+    .to(pressRef.current, {
+      y: '-10%',
+      duration: 0.15,
+      ease: 'power2.out',
+    })
+    .to(pressRef.current, {
+      y: '0%',
+      duration: 0.1,
+      ease: 'power2.in',
+    });
+  };
+
+  const handleLogoLeave = () => {
+    if (!pressRef.current) return;
+
+    // If still falling, let it finish then go up
+    if (pressTl.current && pressTl.current.isActive()) {
+      pressTl.current.then(() => {
+        gsap.to(pressRef.current, {
+          y: '-120%',
+          duration: 0.5,
+          ease: 'power2.in',
+          onComplete: () => { pressAnimating.current = false; }
+        });
+      });
+    } else {
+      // Press goes back up
+      gsap.to(pressRef.current, {
+        y: '-120%',
+        duration: 0.5,
+        ease: 'power2.in',
+        onComplete: () => { pressAnimating.current = false; }
+      });
+    }
+  };
 
   useEffect(() => {
     if (dragHintDismissed || !galleryRef.current) return;
@@ -480,7 +532,22 @@ export default function HomePage() {
             Mercato San Lorenzo — Palermo
           </div>
 
-          <h1 className="hero-logo mb-8">
+          <h1
+            className="hero-logo mb-8 relative cursor-pointer"
+            onMouseEnter={handleLogoEnter}
+            onMouseLeave={handleLogoLeave}
+          >
+            {/* Press image — hidden above, falls on hover */}
+            <img
+              ref={pressRef}
+              src={pressAnimation}
+              alt=""
+              className="absolute left-1/2 w-[90vw] max-w-[900px] pointer-events-none z-20"
+              style={{
+                transform: 'translateX(-50%) translateY(-120%)',
+                top: 0,
+              }}
+            />
             <img
               src={logoHero}
               alt="3 Smash Palermo"
