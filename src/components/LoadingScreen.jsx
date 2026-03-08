@@ -15,8 +15,8 @@ const PLATE_W = 320;       // plate width (reference)
 const PLATE_H = 50;        // plate height
 const BODY_W = 80;         // press body width
 const BODY_H = 140;        // press body height
-const HANDLE_W = 22;       // handle width
-const HANDLE_H = 45;       // handle height
+const HANDLE_W = 0;        // handle removed
+const HANDLE_H = 0;        // handle removed
 const LOGO_W = PLATE_W - 40; // logo slightly narrower than plate
 const BAR_H = 14;          // loading bar height
 
@@ -183,13 +183,6 @@ export default function LoadingScreen({ onFinished }) {
           flexDirection: 'column',
           alignItems: 'center',
         }}>
-          {/* Handle */}
-          <div style={{
-            width: HANDLE_W,
-            height: HANDLE_H,
-            background: 'linear-gradient(90deg, #888, #aaa, #888)',
-            borderRadius: '6px 6px 0 0',
-          }} />
           {/* Body */}
           <div style={{
             width: BODY_W,
@@ -253,14 +246,14 @@ export default function LoadingScreen({ onFinished }) {
         {/* Percentage counter */}
         <div style={{
           position: 'absolute',
-          bottom: -40,
+          bottom: -95,
           left: 0,
           width: PLATE_W,
           textAlign: 'center',
           fontFamily: "'Besgum', system-ui, sans-serif",
           fontStyle: 'italic',
           fontWeight: 'bold',
-          fontSize: 22,
+          fontSize: 50,
           color: '#faf3e3',
           letterSpacing: '0.1em',
           opacity: 0.8,
