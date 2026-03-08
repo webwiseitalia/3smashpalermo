@@ -87,6 +87,9 @@ export default function HomePage() {
   const heroLogoRef = useRef(null);
   const pressAnimating = useRef(false);
   const pressTl = useRef(null);
+  const mobileTimerRef = useRef(null);
+
+  const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   const handleLogoEnter = () => {
     if (pressAnimating.current || !pressRef.current) return;
@@ -134,6 +137,24 @@ export default function HomePage() {
       });
     }
   };
+
+  const handleLogoTap = () => {
+    if (!isTouchDevice()) return;
+    if (mobileTimerRef.current) clearTimeout(mobileTimerRef.current);
+    if (pressAnimating.current) {
+      handleLogoLeave();
+      return;
+    }
+    handleLogoEnter();
+    mobileTimerRef.current = setTimeout(() => {
+      handleLogoLeave();
+      mobileTimerRef.current = null;
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => { if (mobileTimerRef.current) clearTimeout(mobileTimerRef.current); };
+  }, []);
 
   useEffect(() => {
     if (dragHintDismissed || !galleryRef.current) return;
@@ -536,8 +557,20 @@ export default function HomePage() {
             className="hero-logo mb-8 relative cursor-pointer"
             onMouseEnter={handleLogoEnter}
             onMouseLeave={handleLogoLeave}
+            onClick={handleLogoTap}
           >
-            {/* Press image — hidden above, falls on hover */}
+            {/* Mobile "cliccami" arc — behind logo, left side */}
+            <div className="md:hidden absolute top-1/2 left-0 z-[0] pointer-events-none" style={{ transform: 'translate(-10%, calc(-50% - 60px)) rotate(-40deg)' }}>
+              <svg width="120" height="50" viewBox="0 0 120 50">
+                <defs>
+                  <path id="clickArc" d="M 8 45 Q 60 2 112 45" fill="none" />
+                </defs>
+                <text fill="#faf3e3" fontFamily="'Besgum', system-ui, sans-serif" fontStyle="italic" fontWeight="bold" fontSize="14" letterSpacing="3" textAnchor="middle">
+                  <textPath href="#clickArc" startOffset="50%">CLICCAMI!</textPath>
+                </text>
+              </svg>
+            </div>
+            {/* Press image — hidden above, falls on hover/tap */}
             <img
               ref={pressRef}
               src={pressAnimation}
@@ -546,6 +579,7 @@ export default function HomePage() {
               style={{
                 transform: 'translateX(-50%) translateY(-120%)',
                 top: 0,
+                opacity: 0,
               }}
             />
             <img
