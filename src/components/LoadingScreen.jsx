@@ -14,11 +14,11 @@ const polaroids = [
 ];
 
 const TIMINGS = {
-  idle: 1000,
-  pressing: 1500,
-  covered: 600,
-  lifting: 1000,
-  fadeOut: 500,
+  idle: 300,
+  pressing: 500,
+  covered: 150,
+  lifting: 300,
+  fadeOut: 250,
 };
 
 // All sizes relative to plate width for consistent proportions
@@ -163,6 +163,12 @@ export default function LoadingScreen({ onFinished }) {
       transition: `opacity ${TIMINGS.fadeOut}ms ease`,
       pointerEvents: visible ? 'auto' : 'none',
     }}>
+      {/* Checkerboard top */}
+      <div className="checkerboard-cream h-[50px] absolute top-0 left-0 right-0" style={{ zIndex: 2 }} />
+
+      {/* Checkerboard bottom */}
+      <div className="checkerboard-cream h-[50px] absolute bottom-0 left-0 right-0" style={{ zIndex: 2 }} />
+
       {/* Grid texture */}
       <div style={{
         position: 'absolute',
