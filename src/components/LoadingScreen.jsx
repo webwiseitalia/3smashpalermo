@@ -9,7 +9,7 @@ import pol4 from '../assets/content/content-7.webp';
 const polaroids = [
   { src: pol1, top: '10%',  left: '5%',   rotate: -8,  size: 340 },
   { src: pol2, bottom: '10%', left: '6%', rotate: 6,   size: 323 },
-  { src: pol3, top: '8%',   right: '5%',  rotate: 10,  size: 332 },
+  { src: pol3, top: '14%',  right: '5%',  rotate: 10,  size: 332 },
   { src: pol4, bottom: '8%', right: '6%', rotate: -6,  size: 315 },
 ];
 
@@ -179,9 +179,9 @@ export default function LoadingScreen({ onFinished }) {
         backgroundSize: '60px 60px',
       }} />
 
-      {/* Scattered polaroids */}
+      {/* Scattered polaroids (desktop only) */}
       {polaroids.map((p, i) => (
-        <div key={i} style={{
+        <div key={i} className="hidden md:block" style={{
           position: 'absolute',
           top: p.top,
           left: p.left,
