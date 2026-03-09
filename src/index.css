@@ -162,9 +162,11 @@
 }
 
 @media (min-width: 768px) {
-  .falling-food:hover {
+  .falling-group:hover .falling-food {
     animation: wiggle 0.5s ease-in-out infinite;
   }
+  .falling-group:hover .falling-food:nth-child(2) { animation-delay: 0.1s; }
+  .falling-group:hover .falling-food:nth-child(3) { animation-delay: 0.2s; }
 }
 
 /* Responsive positioning for falling hero food items */

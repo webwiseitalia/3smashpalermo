@@ -502,7 +502,7 @@ export default function HomePage() {
         <div className="hidden md:block absolute -bottom-16 -left-16 text-[#faf3e3]/[0.04] text-[24rem] font-black select-none pointer-events-none leading-none" style={{ fontFamily: 'system-ui', transform: 'rotate(-8deg)' }}>3</div>
 
         {/* Falling food animation — left half */}
-        <div className="absolute top-0 left-0 bottom-0 w-1/2 md:overflow-hidden z-[1]">
+        <div className="falling-group absolute top-0 left-0 bottom-0 w-1/2 md:overflow-hidden z-[1]">
           {fallingFood.map((item, i) => (
             <div
               key={i}
@@ -522,7 +522,7 @@ export default function HomePage() {
         </div>
 
         {/* Falling starters animation — right half */}
-        <div className="absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden z-[1]">
+        <div className="falling-group absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden z-[1]">
           {fallingStarters.map((item, i) => (
             <div
               key={i}
