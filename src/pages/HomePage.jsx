@@ -888,7 +888,10 @@ export default function HomePage() {
           <p className="text-[#2D2C72]/80 max-w-lg text-lg reveal-section">
             Ogni burger è preparato al momento con ingredienti freschi. Carne 100% italiana, pane artigianale.
           </p>
-          <span className="retro-badge text-xs tracking-[0.2em] flex-shrink-0 reveal-section">Aggiungi uno smash — €2,50</span>
+          <span className="retro-badge text-sm md:text-base tracking-[0.2em] flex-shrink-0 reveal-section relative pr-2">
+            Aggiungi uno smash — €2,50
+            <span className="absolute -top-4 -right-6 md:-right-8 bg-red-600 text-white text-[11px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider leading-none border-2 border-[#faf3e3] animate-badge-swing">Max 3</span>
+          </span>
         </div>
 
         {/* Burgers Grid */}

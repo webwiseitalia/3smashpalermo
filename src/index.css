@@ -273,6 +273,23 @@
   animation-play-state: paused;
 }
 
+/* Badge swing animation — swings then pauses, then repeats */
+@keyframes badge-swing {
+  0% { transform: rotate(18deg); }
+  4% { transform: rotate(30deg); }
+  8% { transform: rotate(12deg); }
+  12% { transform: rotate(24deg); }
+  16% { transform: rotate(16deg); }
+  20% { transform: rotate(20deg); }
+  24% { transform: rotate(18deg); }
+  100% { transform: rotate(18deg); }
+}
+
+.animate-badge-swing {
+  animation: badge-swing 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
 /* Splash particles for loading screen */
 @keyframes splash-particle {
   0% {
