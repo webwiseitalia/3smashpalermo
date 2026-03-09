@@ -1204,16 +1204,20 @@ export default function HomePage() {
           <div className="relative z-20 flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 pt-[3rem] md:pt-[5rem] lg:pt-[7rem]">
             <button
               onClick={() => setActiveSede('rivoluzione')}
-              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 relative whitespace-nowrap ${activeSede === 'rivoluzione' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30'}`}
-              style={{ boxShadow: activeSede === 'rivoluzione' ? '5px 5px 0 #1a1a45' : 'none' }}
+              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 relative whitespace-nowrap ${activeSede === 'rivoluzione' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30 hover:bg-[#2D2C72] hover:text-[#faf3e3] hover:border-[#2D2C72] hover:scale-105'}`}
+              style={{ boxShadow: activeSede === 'rivoluzione' ? '5px 5px 0 #1a1a45' : undefined }}
+              onMouseEnter={(e) => { if (activeSede !== 'rivoluzione') e.currentTarget.style.boxShadow = '5px 5px 0 #1a1a45'; }}
+              onMouseLeave={(e) => { if (activeSede !== 'rivoluzione') e.currentTarget.style.boxShadow = 'none'; }}
             >
               Piazza Rivoluzione
-              <span className="absolute -top-2.5 -right-2.5 bg-[#2D2C72] text-[#faf3e3] text-[8px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider leading-none border-2 border-[#faf3e3] animate-pulse">New</span>
+              <span className="absolute -top-4 -right-6 md:-right-8 bg-red-600 text-white text-[11px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider leading-none border-2 border-[#faf3e3] animate-badge-swing">New</span>
             </button>
             <button
               onClick={() => setActiveSede('sanlorenzo')}
-              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 whitespace-nowrap ${activeSede === 'sanlorenzo' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30'}`}
-              style={{ boxShadow: activeSede === 'sanlorenzo' ? '5px 5px 0 #1a1a45' : 'none' }}
+              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 whitespace-nowrap ${activeSede === 'sanlorenzo' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30 hover:bg-[#2D2C72] hover:text-[#faf3e3] hover:border-[#2D2C72] hover:scale-105'}`}
+              style={{ boxShadow: activeSede === 'sanlorenzo' ? '5px 5px 0 #1a1a45' : undefined }}
+              onMouseEnter={(e) => { if (activeSede !== 'sanlorenzo') e.currentTarget.style.boxShadow = '5px 5px 0 #1a1a45'; }}
+              onMouseLeave={(e) => { if (activeSede !== 'sanlorenzo') e.currentTarget.style.boxShadow = 'none'; }}
             >
               Sanlorenzo Mercato
             </button>
