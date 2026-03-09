@@ -75,6 +75,7 @@ export default function HomePage() {
   const chiSiamoTrackRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeStarter, setActiveStarter] = useState(null);
+  const [activeSede, setActiveSede] = useState('rivoluzione');
   const galleryRef = useRef(null);
   const [polaroidPositions, setPolaroidPositions] = useState({});
   const [dragging, setDragging] = useState(null);
@@ -1188,7 +1189,7 @@ export default function HomePage() {
       {/* ===== CONTATTI — Overlapping Title on Map ===== */}
       <section id="contatti" className="bg-[#faf3e3] relative overflow-hidden">
         <div className="px-6 md:px-10 lg:px-16">
-          {/* Giant title — RIGHT aligned */}
+          {/* Giant title */}
           <div className="relative pt-20 md:pt-32 text-left">
             <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Ti aspettiamo</span>
             <h2 className="overlap-title text-[#2D2C72] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
@@ -1196,26 +1197,80 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Map that title overlaps onto */}
+          {/* Sede switch tabs */}
+          <div className="relative z-20 flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 pt-[3rem] md:pt-[5rem] lg:pt-[7rem]">
+            <button
+              onClick={() => setActiveSede('rivoluzione')}
+              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 relative whitespace-nowrap ${activeSede === 'rivoluzione' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30'}`}
+              style={{ boxShadow: activeSede === 'rivoluzione' ? '5px 5px 0 #1a1a45' : 'none' }}
+            >
+              Piazza Rivoluzione
+              <span className="absolute -top-2.5 -right-2.5 bg-[#2D2C72] text-[#faf3e3] text-[8px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider leading-none border-2 border-[#faf3e3] animate-pulse">New</span>
+            </button>
+            <button
+              onClick={() => setActiveSede('sanlorenzo')}
+              className={`retro-btn text-xs sm:text-sm md:text-base transition-all duration-300 whitespace-nowrap ${activeSede === 'sanlorenzo' ? 'bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] scale-105' : 'bg-[#faf3e3] text-[#2D2C72]/50 border-[#2D2C72]/30'}`}
+              style={{ boxShadow: activeSede === 'sanlorenzo' ? '5px 5px 0 #1a1a45' : 'none' }}
+            >
+              Sanlorenzo Mercato
+            </button>
+          </div>
+
+          {/* Map — switches based on active sede */}
           <div
             className="relative z-10 rounded-2xl overflow-hidden h-80 md:h-[450px] border-4 border-[#2D2C72] hover:-translate-y-1 transition-transform duration-300"
             style={{ boxShadow: '8px 8px 0 #2D2C72' }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.4!2d13.3623!3d38.1157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDA2JzU2LjUiTiAxM8KwMjEnNDQuMyJF!5e0!3m2!1sit!2sit!4v1234567890"
+              key={activeSede}
+              src={activeSede === 'rivoluzione'
+                ? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1581.8!2d13.3627!3d38.1138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319e5f3a0a0a0a1%3A0x1234567890abcdef!2sPiazza+della+Rivoluzione%2C+11%2C+90133+Palermo+PA!5e0!3m2!1sit!2sit'
+                : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.4!2d13.3623!3d38.1157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDA2JzU2LjUiTiAxM8KwMjEnNDQuMyJF!5e0!3m2!1sit!2sit!4v1234567890'
+              }
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
-              title="Mappa 3 Smash Palermo"
+              title={activeSede === 'rivoluzione' ? 'Mappa 3 Smash - Piazza Rivoluzione' : 'Mappa 3 Smash - Sanlorenzo Mercato'}
             />
           </div>
 
-          {/* Contact info - inline below map */}
+          {/* Address info card */}
+          <div className="mt-6 retro-card p-6 md:p-8 reveal-section">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h3 className="text-[#2D2C72] text-xl md:text-2xl font-display font-bold uppercase">
+                  {activeSede === 'rivoluzione' ? 'Piazza Rivoluzione' : 'Sanlorenzo Mercato'}
+                </h3>
+                <p className="text-[#2D2C72]/70 mt-1">
+                  {activeSede === 'rivoluzione'
+                    ? 'Piazza Rivoluzione 11, 90133 Palermo'
+                    : 'Via San Lorenzo 288, 90146 Palermo'
+                  }
+                </p>
+                {activeSede === 'rivoluzione' && (
+                  <span className="inline-block mt-2 bg-[#2D2C72] text-[#faf3e3] text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Nuova apertura</span>
+                )}
+              </div>
+              <a
+                href={activeSede === 'rivoluzione'
+                  ? 'https://maps.google.com/?q=Piazza+della+Rivoluzione+11+Palermo'
+                  : 'https://maps.google.com/?q=Sanlorenzo+Mercato+Via+San+Lorenzo+288+Palermo'
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="retro-btn text-sm bg-[#2D2C72] text-[#faf3e3] border-[#2D2C72] hover:scale-105 active:scale-95 transition-transform duration-200 text-center"
+                style={{ boxShadow: '4px 4px 0 #1a1a45' }}
+              >
+                Portami qui
+              </a>
+            </div>
+          </div>
+
+          {/* Contact info - inline below */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 md:pt-16 pb-20 md:pb-32 reveal-section text-center">
             {[
-              { icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', title: 'Dove', info: ['Mercato San Lorenzo', 'Palermo'] },
               { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Quando', info: ['Mar — Dom: 11:00 — 22:00', 'Lunedì: Chiuso'] },
               { title: 'Social', info: ['@3smashpalermo'], isInstagram: true },
             ].map((item, i) => (
