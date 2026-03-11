@@ -850,7 +850,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== Brand Partners Slider ===== */}
-      <section className="bg-[#faf3e3] overflow-hidden border-b-4 border-[#2D2C72] py-6">
+      <section className="bg-[#faf3e3] overflow-hidden border-t-4 border-b-4 border-[#2D2C72] py-6">
         <div className="brand-slider flex items-center gap-20 whitespace-nowrap">
           {[...Array(10)].map((_, i) => (
             <div key={i} className="flex items-center gap-20 shrink-0">
