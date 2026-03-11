@@ -9,6 +9,9 @@ import logo from '../assets/logo.webp';
 import logoHero from '../assets/logo-hero-3smash.webp';
 import pressAnimation from '../assets/animation/animation-1.webp';
 import sidesPatatine from '../assets/sides-patatine-nuggets.webp';
+// Brand logos
+import brandCocaCola from '../assets/brand/Coca-Cola_logo.svg';
+import brandNutella from '../assets/brand/Logo_Nutella.svg';
 // Smash burger photos (blue background)
 import smashBeef from '../assets/smash/Beef.webp';
 import smashPork from '../assets/smash/Pork.webp';
@@ -331,6 +334,16 @@ export default function HomePage() {
       // Horizontal scroll text — continuous loop
       gsap.to('.scroll-text', {
         xPercent: -50,
+        ease: 'none',
+        duration: 7,
+        repeat: -1,
+      });
+
+      // Brand logos slider — continuous loop, opposite direction
+      gsap.fromTo('.brand-slider', {
+        xPercent: -50,
+      }, {
+        xPercent: 0,
         ease: 'none',
         duration: 7,
         repeat: -1,
@@ -834,6 +847,18 @@ export default function HomePage() {
         </div>
 
         <div className="checkerboard-cream h-[50px] relative z-30" />
+      </section>
+
+      {/* ===== Brand Partners Slider ===== */}
+      <section className="bg-[#faf3e3] overflow-hidden border-b-4 border-[#2D2C72] py-6">
+        <div className="brand-slider flex items-center gap-20 whitespace-nowrap">
+          {[...Array(10)].map((_, i) => (
+            <div key={i} className="flex items-center gap-20 shrink-0">
+              <img src={brandCocaCola} alt="Coca-Cola" className="h-10 md:h-14 w-auto" />
+              <img src={brandNutella} alt="Nutella" className="h-10 md:h-14 w-auto" />
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* ===== MENU — Overlapping Titles on Photos ===== */}
