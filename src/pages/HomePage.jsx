@@ -55,24 +55,24 @@ gsap.registerPlugin(ScrollTrigger);
 // Note: container is w-1/2 so left % values are relative to half the screen
 const fallingFood = [
   // Bottom burger — Beef (lands first, sits at very bottom of hero)
-  { img: scontBeef, size: 'w-[36rem] md:w-[56rem] lg:w-[80rem]', left: '-85%', mdLeft: '-54%', bottom: '-150px', mdBottom: '-390px', delay: 0.1, rotate: -6 },
+  { img: scontBeef, size: 'w-[36rem] md:w-[56rem] lg:w-[80rem]', left: '-85%', mdLeft: '-54%', bottom: '-100px', mdBottom: '-340px', delay: 0.1, rotate: -6 },
   // Middle burger — Pig (stacks on top)
-  { img: scontPig, size: 'w-[32rem] md:w-[52rem] lg:w-[75rem]', left: '-80%', mdLeft: '-48%', bottom: '-30px', mdBottom: '-190px', delay: 0.35, rotate: 8 },
+  { img: scontPig, size: 'w-[32rem] md:w-[52rem] lg:w-[75rem]', left: '-80%', mdLeft: '-48%', bottom: '20px', mdBottom: '-140px', delay: 0.35, rotate: 8 },
   // Top burger — Chick (stacks on top)
-  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-75%', mdLeft: '-42%', bottom: '100px', mdBottom: '10px', delay: 0.6, rotate: -5 },
+  { img: scontChick, size: 'w-[28rem] md:w-[48rem] lg:w-[70rem]', left: '-75%', mdLeft: '-42%', bottom: '150px', mdBottom: '60px', delay: 0.6, rotate: -5 },
   // Meatballs — mobile only, far left corner
-  { img: scontMeatballs, size: 'w-[24rem]', left: '-95%', mdLeft: '-54%', bottom: '-250px', mdBottom: '-390px', delay: 0.8, rotate: 10, mobileOnly: true },
+  { img: scontMeatballs, size: 'w-[24rem]', left: '-95%', mdLeft: '-54%', bottom: '-200px', mdBottom: '-340px', delay: 0.8, rotate: 10, mobileOnly: true },
 ];
 
 // Falling starters — stacking on the right side
 // Note: container is w-1/2 so right % values are relative to half the screen
 const fallingStarters = [
   // Bottom right — American Fries
-  { img: scontAmericanFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-75%', mdRight: '-40%', bottom: '-70px', mdBottom: '-240px', delay: 0.2, rotate: 6 },
+  { img: scontAmericanFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-75%', mdRight: '-40%', bottom: '-20px', mdBottom: '-190px', delay: 0.2, rotate: 6 },
   // Nuggets — nestled between the two fries
-  { img: scontNuggets, size: 'w-[20rem] md:w-[32rem] lg:w-[45rem]', right: '-65%', mdRight: '-24%', bottom: '-20px', mdBottom: '-160px', delay: 0.25, rotate: -8 },
+  { img: scontNuggets, size: 'w-[20rem] md:w-[32rem] lg:w-[45rem]', right: '-65%', mdRight: '-24%', bottom: '30px', mdBottom: '-110px', delay: 0.25, rotate: -8 },
   // Fries (tilted -30°, overlapping American Fries from the left)
-  { img: scontFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-45%', mdRight: '-10%', bottom: '-70px', mdBottom: '-240px', delay: 0.3, rotate: -30 },
+  { img: scontFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-45%', mdRight: '-10%', bottom: '-20px', mdBottom: '-190px', delay: 0.3, rotate: -30 },
 ];
 
 export default function HomePage() {
@@ -560,10 +560,6 @@ export default function HomePage() {
 
         {/* Content — on top of falling food */}
         <div className="relative z-10 text-center px-6 flex flex-col items-center">
-          <div className="retro-badge-outline text-[#faf3e3] border-[#faf3e3] text-xs tracking-[0.3em] mb-8 hero-sub">
-            Mercato San Lorenzo — Palermo
-          </div>
-
           <h1
             className="hero-logo mb-8 relative cursor-pointer"
             onMouseEnter={handleLogoEnter}
