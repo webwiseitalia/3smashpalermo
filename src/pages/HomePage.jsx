@@ -533,6 +533,8 @@ export default function HomePage() {
                 alt=""
                 className="w-full h-auto object-contain"
                 loading="eager"
+                width="800"
+                height="800"
               />
             </div>
           ))}
@@ -553,6 +555,8 @@ export default function HomePage() {
                 alt=""
                 className="w-full h-auto object-contain"
                 loading="eager"
+                width="800"
+                height="800"
               />
             </div>
           ))}
@@ -583,6 +587,8 @@ export default function HomePage() {
               src={pressAnimation}
               alt=""
               className="absolute left-1/2 w-[90vw] max-w-[900px] pointer-events-none z-20"
+              width="900"
+              height="900"
               style={{
                 transform: 'translateX(-50%) translateY(-120%)',
                 top: 0,
@@ -594,6 +600,9 @@ export default function HomePage() {
               alt="3 Smash Palermo"
               title="3 Smash - Smash Burger Artigianali"
               className="w-[90vw] max-w-[900px] h-auto"
+              width="900"
+              height="300"
+              loading="eager"
               style={{ filter: 'brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(400%) hue-rotate(10deg) brightness(103%) contrast(96%)' }}
             />
           </h1>
@@ -674,8 +683,11 @@ export default function HomePage() {
                 <img
                   src={content8}
                   alt="Smash Night - Evento 3 Smash Palermo"
+                  title="Evento Smash Night - 3 Smash Palermo"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  width="600"
+                  height="650"
                 />
                 {/* Dark overlay for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a2040]/90 via-[#1a2040]/20 to-transparent" />
@@ -709,8 +721,11 @@ export default function HomePage() {
                 <img
                   src={content1}
                   alt="Smash Night - Post Instagram"
+                  title="Seguici su Instagram @3smashpalermo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
+                  width="600"
+                  height="650"
                 />
                 {/* Instagram-style indicator */}
                 <div className="absolute top-4 right-4 bg-[#faf3e3] text-[#2D2C72] w-10 h-10 rounded-full flex items-center justify-center border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
@@ -799,9 +814,12 @@ export default function HomePage() {
                     <div className="overflow-hidden pointer-events-none">
                       <img
                         src={item.img}
-                        alt="3 Smash Palermo"
+                        alt="3 Smash Palermo - Galleria"
+                        title="I momenti di 3 Smash Palermo"
                         className="w-full aspect-[4/3] object-cover"
                         loading="lazy"
+                        width="400"
+                        height="300"
                         draggable={false}
                       />
                     </div>
@@ -853,11 +871,11 @@ export default function HomePage() {
         <div className="brand-slider flex items-center gap-20 whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center gap-20 shrink-0">
-              <img src={brandCocaCola} alt="Coca-Cola" className="h-10 md:h-14 w-auto" />
-              <img src={brandNutella} alt="Nutella" className="h-10 md:h-14 w-auto" />
-              <img src={brandZuccato} alt="Zuccato" className="h-14 md:h-20 w-auto" />
-              <img src={brandGiacalone} alt="Giacalone Meat" className="h-14 md:h-20 w-auto" />
-              <img src={brandFontePane} alt="La Fonte del Pane" className="h-14 md:h-20 w-auto" />
+              <img src={brandCocaCola} alt="Coca-Cola" title="Partner: Coca-Cola" className="h-10 md:h-14 w-auto" loading="lazy" />
+              <img src={brandNutella} alt="Nutella" title="Partner: Nutella" className="h-10 md:h-14 w-auto" loading="lazy" />
+              <img src={brandZuccato} alt="Zuccato" title="Partner: Zuccato" className="h-14 md:h-20 w-auto" loading="lazy" />
+              <img src={brandGiacalone} alt="Giacalone Meat" title="Partner: Giacalone Meat" className="h-14 md:h-20 w-auto" loading="lazy" />
+              <img src={brandFontePane} alt="La Fonte del Pane" title="Partner: La Fonte del Pane" className="h-14 md:h-20 w-auto" loading="lazy" />
             </div>
           ))}
         </div>
@@ -938,6 +956,8 @@ export default function HomePage() {
                       title={`${item.name} - ${item.desc}`}
                       className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
+                      width="400"
+                      height="500"
                     />
                   </div>
                   <h3 className="text-[#2D2C72] text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase leading-[0.9] -mt-5 md:-mt-7 relative z-10 px-1" style={{ textShadow: '2px 2px 0 #faf3e3, -2px -2px 0 #faf3e3, 2px -2px 0 #faf3e3, -2px 2px 0 #faf3e3, 0 2px 0 #faf3e3, 0 -2px 0 #faf3e3, 2px 0 0 #faf3e3, -2px 0 0 #faf3e3' }}>
@@ -993,7 +1013,10 @@ export default function HomePage() {
                       <img
                         src={item.img}
                         alt={item.name}
+                        title={item.name}
                         className="h-40 w-auto object-contain drop-shadow-xl"
+                        width="200"
+                        height="160"
                         style={{ animation: 'fadeInHint 0.3s ease-out' }}
                         loading="lazy"
                       />
@@ -1005,8 +1028,11 @@ export default function HomePage() {
                       <img
                         src={item.img}
                         alt={item.name}
+                        title={item.name}
                         className="h-60 md:h-80 lg:h-96 w-auto object-contain drop-shadow-xl"
                         loading="lazy"
+                        width="400"
+                        height="384"
                       />
                     </div>
                   )}
@@ -1038,8 +1064,11 @@ export default function HomePage() {
                           <img
                             src={item.scontornato}
                             alt={item.name}
+                            title={item.name}
                             className="w-full h-full object-contain drop-shadow-xl"
                             loading="lazy"
+                            width="160"
+                            height="160"
                           />
                         </div>
                         {/* Info */}
@@ -1135,8 +1164,11 @@ export default function HomePage() {
                 <img
                   src={item.img}
                   alt={item.alt}
+                  title="3 Smash Palermo - Chi Siamo"
                   className="w-full h-full object-cover rounded-2xl border-4 border-[#faf3e3]/30"
                   loading="lazy"
+                  width="400"
+                  height="500"
                   style={{ boxShadow: '6px 6px 0 rgba(245,230,200,0.2)' }}
                 />
               </div>
@@ -1349,6 +1381,9 @@ export default function HomePage() {
                 alt="3 Smash Palermo - Logo"
                 title="3 Smash Palermo - Smash Burger Artigianali"
                 className="h-10 md:h-14 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-200"
+                loading="lazy"
+                width="120"
+                height="56"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
@@ -1377,6 +1412,11 @@ export default function HomePage() {
                   Cookie Policy
                 </Link>
               </div>
+            </div>
+            <div className="text-center pt-4">
+              <a href="https://webwiseitalia.com/" target="_blank" rel="noopener noreferrer" className="text-[#faf3e3]/40 hover:text-[#faf3e3]/60 text-xs transition-colors underline">
+                Powered by Webwise
+              </a>
             </div>
           </div>
         </div>

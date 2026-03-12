@@ -42,12 +42,18 @@ export default function MenuPage() {
           alt="3 Smash Palermo - Menu Smash Burger"
           title="I nostri Smash Burger: Chick, Pig, Beef e Intruso"
           className="w-full h-auto block"
+          loading="eager"
+          width="1200"
+          height="800"
         />
         <img
           src={menu2}
           alt="3 Smash Palermo - Menu Completo"
           title="Menu completo: Starters, Sweets, Bevande e Salse"
           className="w-full h-auto block"
+          loading="lazy"
+          width="1200"
+          height="800"
         />
       </div>
 
@@ -62,6 +68,9 @@ export default function MenuPage() {
                 alt="3 Smash Palermo - Logo"
                 title="3 Smash Palermo - Smash Burger Artigianali"
                 className="h-10 md:h-14 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-200"
+                loading="lazy"
+                width="120"
+                height="56"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
@@ -90,6 +99,11 @@ export default function MenuPage() {
                   Cookie Policy
                 </Link>
               </div>
+            </div>
+            <div className="text-center pt-4">
+              <a href="https://webwiseitalia.com/" target="_blank" rel="noopener noreferrer" className="text-[#faf3e3]/40 hover:text-[#faf3e3]/60 text-xs transition-colors underline">
+                Powered by Webwise
+              </a>
             </div>
           </div>
         </div>

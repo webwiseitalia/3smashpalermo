@@ -248,7 +248,11 @@ export default function LoadingScreen({ onFinished }) {
           }}>
             <img
               src={p.src}
-              alt=""
+              alt="3 Smash Palermo - Foto"
+              title="I momenti di 3 Smash Palermo"
+              width="340"
+              height="340"
+              loading="eager"
               style={{
                 width: '100%',
                 height: p.size - 26,
@@ -282,7 +286,11 @@ export default function LoadingScreen({ onFinished }) {
         }}>
           <img
             src={pressImage}
-            alt=""
+            alt="Pressa smash burger"
+            title="3 Smash - La nostra pressa"
+            width="320"
+            height="320"
+            loading="eager"
             style={{
               width: '100%',
               height: 'auto',
@@ -303,6 +311,10 @@ export default function LoadingScreen({ onFinished }) {
           <img
             src={isSmashed ? logoSmashed : logoNormal}
             alt="3 Smash Palermo"
+            title="3 Smash Palermo - Logo"
+            width="280"
+            height="140"
+            loading="eager"
             style={{
               width: '100%',
               height: 'auto',
