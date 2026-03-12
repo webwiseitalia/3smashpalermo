@@ -12,6 +12,9 @@ import sidesPatatine from '../assets/sides-patatine-nuggets.webp';
 // Brand logos
 import brandCocaCola from '../assets/brand/Coca-Cola_logo.svg';
 import brandNutella from '../assets/brand/Logo_Nutella.svg';
+import brandZuccato from '../assets/brand/logo_02-Photoroom.webp';
+import brandGiacalone from '../assets/brand/logo_04-Photoroom.webp';
+import brandFontePane from '../assets/brand/logo_05-Photoroom.webp';
 // Smash burger photos (blue background)
 import smashBeef from '../assets/smash/Beef.webp';
 import smashPork from '../assets/smash/Pork.webp';
@@ -852,10 +855,13 @@ export default function HomePage() {
       {/* ===== Brand Partners Slider ===== */}
       <section className="bg-[#faf3e3] overflow-hidden border-t-4 border-b-4 border-[#2D2C72] py-6">
         <div className="brand-slider flex items-center gap-20 whitespace-nowrap">
-          {[...Array(10)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center gap-20 shrink-0">
               <img src={brandCocaCola} alt="Coca-Cola" className="h-10 md:h-14 w-auto" />
               <img src={brandNutella} alt="Nutella" className="h-10 md:h-14 w-auto" />
+              <img src={brandZuccato} alt="Zuccato" className="h-14 md:h-20 w-auto" />
+              <img src={brandGiacalone} alt="Giacalone Meat" className="h-14 md:h-20 w-auto" />
+              <img src={brandFontePane} alt="La Fonte del Pane" className="h-14 md:h-20 w-auto" />
             </div>
           ))}
         </div>
