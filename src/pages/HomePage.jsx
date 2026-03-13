@@ -644,7 +644,7 @@ export default function HomePage() {
               <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
               <span>Palermo</span>
               <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
-              <span>Dal 2020</span>
+              <span>Dal 2025</span>
               <span className="text-[#2D2C72]/30 font-black text-3xl" style={{ fontFamily: 'system-ui' }}>✦</span>
             </span>
           ))}
@@ -786,7 +786,7 @@ export default function HomePage() {
               { img: content8, caption: 'Sul griddle', rotate: -3, top: '1%', left: '58%', w: 'w-[44%] md:w-[30%]', z: 3, desktopOnly: true },
               { img: content4, caption: 'The Pig 🐷', rotate: 14, top: '16%', left: '16%', w: 'w-[36%] md:w-[24%]', z: 1, desktopOnly: true },
               { img: content5, caption: 'Griddle life', rotate: -11, top: '40%', left: '60%', w: 'w-[38%] md:w-[25%]', z: 2, desktopOnly: true },
-              { img: content4, caption: 'Dal 2020 ❤️', rotate: 4, top: '52%', left: '60%', w: 'w-[42%] md:w-[28%]', z: 4, desktopOnly: true },
+              { img: content4, caption: 'Dal 2025 ❤️', rotate: 4, top: '52%', left: '60%', w: 'w-[42%] md:w-[28%]', z: 4, desktopOnly: true },
               /* Right edge */
               { img: content3, caption: 'San Lorenzo', rotate: -7, top: '8%', left: '76%', w: 'w-[36%] md:w-[24%]', z: 2, desktopOnly: true },
               { img: content5, caption: 'Smash lover', rotate: 11, top: '40%', left: '78%', w: 'w-[34%] md:w-[23%]', z: 1 },
