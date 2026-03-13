@@ -15,6 +15,7 @@ import brandNutella from '../assets/brand/Logo_Nutella.svg';
 import brandZuccato from '../assets/brand/logo_02-Photoroom.webp';
 import brandGiacalone from '../assets/brand/logo_04-Photoroom.webp';
 import brandFontePane from '../assets/brand/logo_05-Photoroom.webp';
+import brandWebwise from '../assets/brand/brand-1.webp';
 // Smash burger photos (blue background)
 import smashBeef from '../assets/smash/Beef.webp';
 import smashPork from '../assets/smash/Pork.webp';
@@ -385,7 +386,7 @@ export default function HomePage() {
   // Sweets
   const sweets = [
     { name: "Nutella Bun", desc: "Bun al cacao con Nutella", price: "2.50", img: sweetNutella, scontornato: scontNutellaBun },
-    { name: "Cookie", desc: "Con gocce di cioccolato", price: "1.50", img: sweetCookie, scontornato: scontCookie },
+    { name: "Cookie", desc: "", price: "1.50", img: sweetCookie, scontornato: scontCookie },
   ];
 
   // Bevande
@@ -876,6 +877,7 @@ export default function HomePage() {
               <img src={brandZuccato} alt="Zuccato" title="Partner: Zuccato" className="h-14 md:h-20 w-auto" loading="lazy" />
               <img src={brandGiacalone} alt="Giacalone Meat" title="Partner: Giacalone Meat" className="h-14 md:h-20 w-auto" loading="lazy" />
               <img src={brandFontePane} alt="La Fonte del Pane" title="Partner: La Fonte del Pane" className="h-14 md:h-20 w-auto" loading="lazy" />
+              <img src={brandWebwise} alt="Webwise" title="Partner: Webwise" className="h-14 md:h-20 w-auto" loading="lazy" />
             </div>
           ))}
         </div>
