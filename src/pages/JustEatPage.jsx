@@ -34,7 +34,7 @@ const scatteredFood = [
   { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '50%', delay: 0.7, rotate: 20 },
   { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '40%', delay: 0.25, rotate: -18 },
   { img: scontChickChock, size: 'w-[26rem] md:w-[44rem]', left: '25%', delay: 0.32, rotate: -14 },
-  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '55%', delay: 0.48, rotate: 16 },
+  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '55%', delay: 0.48, rotate: 16, bottom: '-80px' },
 ];
 
 export default function JustEatPage() {
@@ -69,7 +69,7 @@ export default function JustEatPage() {
           data-rotate={item.rotate}
           style={{
             left: item.left,
-            bottom: '-30px',
+            bottom: item.bottom || '-30px',
           }}
         >
           <img src={item.img} alt="" className="w-full h-auto" style={{ filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />

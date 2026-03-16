@@ -30,6 +30,7 @@ import content5 from '../assets/content/content-5.webp';
 import content6 from '../assets/content/content-6.webp';
 import content7 from '../assets/content/content-7.webp';
 import content8 from '../assets/content/content-8.webp';
+import postEvento from '../assets/psot/psot-1.webp';
 // Sweets
 import sweetCookie from '../assets/sweets/Cookie.webp';
 import sweetNutella from '../assets/sweets/Nutella Bun.webp';
@@ -705,7 +706,7 @@ export default function HomePage() {
             {/* Left — Landscape photo with event details */}
             <div className="flex-[2]">
               <div
-                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300"
+                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[700px] hover:-translate-y-1 transition-transform duration-300"
                 style={{ boxShadow: '8px 8px 0 #2D2C72' }}
               >
                 <img
@@ -723,17 +724,17 @@ export default function HomePage() {
                 {/* Event details overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                   <p className="text-[#faf3e3]/90 text-base md:text-lg max-w-xl leading-relaxed mb-6">
-                    Una serata speciale dedicata agli amanti dello smash burger. Musica dal vivo, birre artigianali e i nostri smash in edizione limitata.
+                    New Opening in Piazza Rivoluzione 11! Dalle 19 alle 22 tutti i nostri smash a 3€. Coca-Cola gratis per i primi 3 clienti!
                   </p>
                   <div className="flex flex-wrap items-center gap-3 md:gap-4">
                     <span className="bg-[#faf3e3] text-[#2D2C72] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
-                      Sab 15 Marzo
+                      Gio 19 Marzo
                     </span>
                     <span className="bg-[#faf3e3] text-[#2D2C72] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
-                      Ore 19:00
+                      Dalle 19 in poi
                     </span>
                     <span className="bg-[#2D2C72] text-[#faf3e3] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#faf3e3]" style={{ boxShadow: '3px 3px 0 rgba(245,230,200,0.3)' }}>
-                      Ingresso Libero
+                      Smash a 3€
                     </span>
                   </div>
                 </div>
@@ -741,19 +742,19 @@ export default function HomePage() {
             </div>
 
             {/* Right — Vertical photo (Instagram post style) */}
-            <div className="flex-[1]">
+            <a href="https://www.instagram.com/p/DV1KmZPiHac/" target="_blank" rel="noopener noreferrer" className="flex-[1] block">
               <div
-                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[650px] hover:-translate-y-1 transition-transform duration-300 group"
+                className="relative overflow-hidden rounded-2xl border-4 border-[#2D2C72] h-[400px] md:h-[550px] lg:h-[700px] hover:-translate-y-1 transition-transform duration-300 group cursor-pointer"
                 style={{ boxShadow: '8px 8px 0 #2D2C72' }}
               >
                 <img
-                  src={content1}
-                  alt="Smash Night - Post Instagram"
-                  title="Seguici su Instagram @3smashpalermo"
+                  src={postEvento}
+                  alt="Evento 3 Smash Palermo"
+                  title="Evento 3 Smash Palermo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
-                  width="600"
-                  height="650"
+                  width="1080"
+                  height="1320"
                 />
                 {/* Instagram-style indicator */}
                 <div className="absolute top-4 right-4 bg-[#faf3e3] text-[#2D2C72] w-10 h-10 rounded-full flex items-center justify-center border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
@@ -762,7 +763,7 @@ export default function HomePage() {
                   </svg>
                 </div>
               </div>
-            </div>
+            </a>
 
           </div>
         </div>
