@@ -437,6 +437,14 @@ export default function HomePage() {
 
           <div className="hidden md:flex items-center gap-3">
             <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="retro-btn text-xs tracking-[0.15em] py-2.5 px-5"
+            >
+              Ordina su Just Eat
+            </a>
+            <a
               href="https://instagram.com/3smashpalermo"
               target="_blank"
               rel="noopener noreferrer"
@@ -502,14 +510,27 @@ export default function HomePage() {
                 </motion.a>
               ))}
               <motion.a
-                href="https://instagram.com/3smashpalermo"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 retro-btn-cream retro-btn text-lg"
+                className="mt-8 retro-btn text-lg"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Ordina su Just Eat
+              </motion.a>
+              <motion.a
+                href="https://instagram.com/3smashpalermo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 retro-btn-cream retro-btn text-lg"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
               >
                 Instagram
               </motion.a>
