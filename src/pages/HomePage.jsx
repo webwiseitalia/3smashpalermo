@@ -132,7 +132,10 @@ export default function HomePage() {
           y: '-120%',
           duration: 0.5,
           ease: 'power2.in',
-          onComplete: () => { pressAnimating.current = false; }
+          onComplete: () => {
+            pressAnimating.current = false;
+            gsap.set(pressRef.current, { opacity: 0 });
+          }
         });
       });
     } else {
@@ -141,7 +144,10 @@ export default function HomePage() {
         y: '-120%',
         duration: 0.5,
         ease: 'power2.in',
-        onComplete: () => { pressAnimating.current = false; }
+        onComplete: () => {
+          pressAnimating.current = false;
+          gsap.set(pressRef.current, { opacity: 0 });
+        }
       });
     }
   };
@@ -212,6 +218,11 @@ export default function HomePage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Set press initial position via GSAP to avoid transform conflicts
+      if (pressRef.current) {
+        gsap.set(pressRef.current, { y: '-120%' });
+      }
+
       // Falling burgers animation — 3 giant burgers stacking on the left
       gsap.utils.toArray('.falling-food').forEach((el) => {
         const delay = parseFloat(el.dataset.delay) || 0;
@@ -508,7 +519,7 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* ===== HERO - Big Centered Logo ===== */}
-      <section id="home" className="min-h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col items-center justify-center" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
+      <section id="home" className="min-h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col items-center justify-center pt-[80px] md:pt-[130px]" style={{ paddingBottom: '120px' }}>
 
         {/* Grid texture — same as Chi Siamo */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
@@ -587,11 +598,10 @@ export default function HomePage() {
               ref={pressRef}
               src={pressAnimation}
               alt=""
-              className="absolute left-1/2 w-[90vw] max-w-[900px] pointer-events-none z-20"
+              className="absolute left-1/2 -translate-x-1/2 w-[90vw] max-w-[900px] pointer-events-none z-20"
               width="900"
               height="900"
               style={{
-                transform: 'translateX(-50%) translateY(-120%)',
                 top: 0,
                 opacity: 0,
               }}
