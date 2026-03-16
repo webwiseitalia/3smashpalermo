@@ -15,26 +15,26 @@ import scontRolly from '../assets/scontornati/Rolly.webp';
 import scontPorkins from "../assets/scontornati/Porkin's.webp";
 import scontCookie from '../assets/scontornati/Cookies.webp';
 import scontNutellaBun from '../assets/scontornati/Nutella Bun.webp';
-import scontChickChock from '../assets/scontornati/Chick - Chock.webp';
+
 import scontIntruso from '../assets/scontornati/Intruso.webp';
 
-// All food lands at bottom: 100px, scattered horizontally across the page
+// All food lands at bottom, per-item bottom offsets compensate for transparent padding in each image
 const scatteredFood = [
-  { img: scontBeef, size: 'w-[32rem] md:w-[52rem]', left: '-12%', delay: 0.1, rotate: 15 },
-  { img: scontFries, size: 'w-[30rem] md:w-[48rem]', left: '75%', delay: 0.2, rotate: -20 },
-  { img: scontNuggets, size: 'w-[26rem] md:w-[44rem]', left: '-18%', delay: 0.35, rotate: 10 },
-  { img: scontPig, size: 'w-[28rem] md:w-[46rem]', left: '80%', delay: 0.15, rotate: -12 },
-  { img: scontAmericanFries, size: 'w-[30rem] md:w-[48rem]', left: '5%', delay: 0.4, rotate: -8 },
-  { img: scontChick, size: 'w-[28rem] md:w-[46rem]', left: '60%', delay: 0.3, rotate: 18 },
-  { img: scontMeatballs, size: 'w-[24rem] md:w-[40rem]', left: '-8%', delay: 0.5, rotate: 22 },
-  { img: scontSasitz, size: 'w-[24rem] md:w-[40rem]', left: '85%', delay: 0.45, rotate: -15 },
-  { img: scontRolly, size: 'w-[26rem] md:w-[42rem]', left: '15%', delay: 0.55, rotate: -10 },
-  { img: scontPorkins, size: 'w-[26rem] md:w-[42rem]', left: '70%', delay: 0.6, rotate: 14 },
-  { img: scontCookie, size: 'w-[22rem] md:w-[36rem]', left: '30%', delay: 0.65, rotate: -25 },
-  { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '50%', delay: 0.7, rotate: 20 },
-  { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '40%', delay: 0.25, rotate: -18 },
-  { img: scontChickChock, size: 'w-[26rem] md:w-[44rem]', left: '25%', delay: 0.32, rotate: -14 },
-  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '55%', delay: 0.48, rotate: 16, bottom: '-80px' },
+  { img: scontBeef, size: 'w-[32rem] md:w-[52rem]', left: '-12%', delay: 0.1, rotate: 15, bottom: '-100px' },
+  { img: scontFries, size: 'w-[30rem] md:w-[48rem]', left: '72%', delay: 0.2, rotate: -20, bottom: '-50px' },
+  { img: scontNuggets, size: 'w-[26rem] md:w-[44rem]', left: '-15%', delay: 0.35, rotate: 10, bottom: '-70px' },
+  { img: scontPig, size: 'w-[28rem] md:w-[46rem]', left: '78%', delay: 0.15, rotate: -12, bottom: '-100px' },
+  { img: scontAmericanFries, size: 'w-[30rem] md:w-[48rem]', left: '3%', delay: 0.4, rotate: -8, bottom: '-35px' },
+  { img: scontChick, size: 'w-[28rem] md:w-[46rem]', left: '58%', delay: 0.3, rotate: 18, bottom: '-110px' },
+  { img: scontMeatballs, size: 'w-[24rem] md:w-[40rem]', left: '-5%', delay: 0.5, rotate: 22, bottom: '-200px' },
+  { img: scontSasitz, size: 'w-[24rem] md:w-[40rem]', left: '82%', delay: 0.45, rotate: -15, bottom: '-70px' },
+  { img: scontRolly, size: 'w-[26rem] md:w-[42rem]', left: '18%', delay: 0.55, rotate: -10, bottom: '-70px' },
+  { img: scontPorkins, size: 'w-[26rem] md:w-[42rem]', left: '68%', delay: 0.6, rotate: 14, bottom: '-80px' },
+  { img: scontCookie, size: 'w-[22rem] md:w-[36rem]', left: '32%', delay: 0.65, rotate: -25, bottom: '-25px' },
+  { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '48%', delay: 0.7, rotate: 20, bottom: '-90px' },
+  { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '38%', delay: 0.25, rotate: -18, bottom: '-100px' },
+
+  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '52%', delay: 0.48, rotate: 16, bottom: '-80px' },
 ];
 
 export default function JustEatPage() {
