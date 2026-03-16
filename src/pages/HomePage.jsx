@@ -69,7 +69,7 @@ const fallingFood = [
 // Note: container is w-1/2 so right % values are relative to half the screen
 const fallingStarters = [
   // Bottom right — American Fries
-  { img: scontAmericanFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-75%', mdRight: '-40%', bottom: '-20px', mdBottom: '-190px', delay: 0.2, rotate: 6 },
+  { img: scontAmericanFries, size: 'w-[22rem] md:w-[36rem] lg:w-[50rem]', right: '-75%', mdRight: '-40%', bottom: '-20px', mdBottom: '-20px', delay: 0.2, rotate: 6 },
   // Nuggets — nestled between the two fries
   { img: scontNuggets, size: 'w-[20rem] md:w-[32rem] lg:w-[45rem]', right: '-65%', mdRight: '-24%', bottom: '30px', mdBottom: '-110px', delay: 0.25, rotate: -8 },
   // Fries (tilted -30°, overlapping American Fries from the left)
@@ -414,7 +414,7 @@ export default function HomePage() {
 
       {/* ===== NAVBAR ===== */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#faf3e3]">
-        <div className="flex justify-between items-center px-6 md:px-12 py-4">
+        <div className="flex items-center px-6 md:px-12 py-4 relative">
           <a
             href="#home"
             className="relative z-10 hover:scale-105 transition-transform duration-200"
@@ -422,7 +422,7 @@ export default function HomePage() {
             <img src={logoHero} alt="3 Smash Palermo - Logo" title="3 Smash Palermo" className="h-10 md:h-14" width="120" height="56" loading="lazy" style={{ filter: 'brightness(0) saturate(100%) invert(22%) sepia(63%) saturate(1567%) hue-rotate(209deg) brightness(87%) contrast(92%)' }} />
           </a>
 
-          <div className="hidden md:flex gap-10 items-center">
+          <div className="hidden md:flex gap-10 items-center absolute left-1/2 -translate-x-1/2">
             {['Menu', 'Chi Siamo', 'Contatti'].map((item) => (
               <a
                 key={item}
@@ -435,15 +435,13 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="hidden md:flex items-center gap-3 ml-auto">
+            <Link
+              to="/ordina"
               className="retro-btn text-xs tracking-[0.15em] py-2.5 px-5"
             >
               Ordina su Just Eat
-            </a>
+            </Link>
             <a
               href="https://instagram.com/3smashpalermo"
               target="_blank"
@@ -510,9 +508,7 @@ export default function HomePage() {
                 </motion.a>
               ))}
               <motion.a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ordina"
                 className="mt-8 retro-btn text-lg"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -695,10 +691,10 @@ export default function HomePage() {
         {/* Giant overlapping title */}
         <div className="relative pt-16 md:pt-24 pb-0">
           <div className="px-6 md:px-10 lg:px-16 relative z-10">
-            <span className="retro-badge text-xs tracking-[0.3em] mb-4 inline-block reveal-section">Save the date</span>
+            <span className="retro-badge text-xs tracking-[0.3em] mb-4 md:mb-8 inline-block reveal-section">Non perderti nulla</span>
           </div>
           <h2 className="overlap-title text-[#2D2C72] text-[3.5rem] md:text-[6rem] lg:text-[9rem] xl:text-[11rem] font-display font-bold uppercase leading-[0.85] px-6 md:px-10 lg:px-16 relative z-20 mb-[-1.5rem] md:mb-[-3rem] lg:mb-[-5rem]">
-            Smash<br />Night
+            I Nostri<br />Eventi
           </h2>
         </div>
 
