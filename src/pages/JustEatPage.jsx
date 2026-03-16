@@ -16,34 +16,21 @@ import scontPorkins from "../assets/scontornati/Porkin's.webp";
 import scontCookie from '../assets/scontornati/Cookies.webp';
 import scontNutellaBun from '../assets/scontornati/Nutella Bun.webp';
 
-// Scattered food items across the whole page — different from hero layout
+// All food lands at bottom: 100px, scattered horizontally across the page
 const scatteredFood = [
-  // Top-left area
-  { img: scontBeef, size: 'w-[28rem] md:w-[45rem]', left: '-15%', top: '-5%', delay: 0.1, rotate: 15 },
-  // Top-right area
-  { img: scontFries, size: 'w-[26rem] md:w-[42rem]', right: '-10%', top: '0%', delay: 0.2, rotate: -20 },
-  // Mid-left — high
-  { img: scontNuggets, size: 'w-[22rem] md:w-[38rem]', left: '-20%', top: '20%', delay: 0.35, rotate: 10 },
-  // Mid-right — high
-  { img: scontPig, size: 'w-[24rem] md:w-[40rem]', right: '-15%', top: '18%', delay: 0.15, rotate: -12 },
-  // Center-left
-  { img: scontAmericanFries, size: 'w-[25rem] md:w-[42rem]', left: '-18%', top: '42%', delay: 0.4, rotate: -8 },
-  // Center-right
-  { img: scontChick, size: 'w-[24rem] md:w-[40rem]', right: '-12%', top: '40%', delay: 0.3, rotate: 18 },
-  // Lower-left
-  { img: scontMeatballs, size: 'w-[20rem] md:w-[35rem]', left: '-12%', top: '60%', delay: 0.5, rotate: 22 },
-  // Lower-right
-  { img: scontSasitz, size: 'w-[20rem] md:w-[34rem]', right: '-18%', top: '58%', delay: 0.45, rotate: -15 },
-  // Bottom-left
-  { img: scontRolly, size: 'w-[22rem] md:w-[36rem]', left: '-15%', top: '78%', delay: 0.55, rotate: -10 },
-  // Bottom-right
-  { img: scontPorkins, size: 'w-[22rem] md:w-[36rem]', right: '-10%', top: '76%', delay: 0.6, rotate: 14 },
-  // Bottom-center-left
-  { img: scontCookie, size: 'w-[18rem] md:w-[30rem]', left: '5%', top: '88%', delay: 0.65, rotate: -25 },
-  // Bottom-center-right
-  { img: scontNutellaBun, size: 'w-[18rem] md:w-[30rem]', right: '5%', top: '85%', delay: 0.7, rotate: 20 },
-  // Extra — pulled pork top center-ish
-  { img: scontPulledPork, size: 'w-[20rem] md:w-[34rem]', left: '2%', top: '5%', delay: 0.25, rotate: -18 },
+  { img: scontBeef, size: 'w-[28rem] md:w-[45rem]', left: '-12%', delay: 0.1, rotate: 15 },
+  { img: scontFries, size: 'w-[26rem] md:w-[42rem]', left: '75%', delay: 0.2, rotate: -20 },
+  { img: scontNuggets, size: 'w-[22rem] md:w-[38rem]', left: '-18%', delay: 0.35, rotate: 10 },
+  { img: scontPig, size: 'w-[24rem] md:w-[40rem]', left: '80%', delay: 0.15, rotate: -12 },
+  { img: scontAmericanFries, size: 'w-[25rem] md:w-[42rem]', left: '5%', delay: 0.4, rotate: -8 },
+  { img: scontChick, size: 'w-[24rem] md:w-[40rem]', left: '60%', delay: 0.3, rotate: 18 },
+  { img: scontMeatballs, size: 'w-[20rem] md:w-[35rem]', left: '-8%', delay: 0.5, rotate: 22 },
+  { img: scontSasitz, size: 'w-[20rem] md:w-[34rem]', left: '85%', delay: 0.45, rotate: -15 },
+  { img: scontRolly, size: 'w-[22rem] md:w-[36rem]', left: '15%', delay: 0.55, rotate: -10 },
+  { img: scontPorkins, size: 'w-[22rem] md:w-[36rem]', left: '70%', delay: 0.6, rotate: 14 },
+  { img: scontCookie, size: 'w-[18rem] md:w-[30rem]', left: '30%', delay: 0.65, rotate: -25 },
+  { img: scontNutellaBun, size: 'w-[18rem] md:w-[30rem]', left: '50%', delay: 0.7, rotate: 20 },
+  { img: scontPulledPork, size: 'w-[20rem] md:w-[34rem]', left: '40%', delay: 0.25, rotate: -18 },
 ];
 
 export default function JustEatPage() {
@@ -65,7 +52,7 @@ export default function JustEatPage() {
   }, []);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col">
+    <div ref={pageRef} className="h-screen bg-[#2D2C72] relative overflow-hidden flex flex-col">
       {/* Checkerboard top */}
       <div className="checkerboard-cream h-[50px] bg-[#2D2C72] shrink-0 relative z-20" />
 
@@ -76,7 +63,7 @@ export default function JustEatPage() {
           backgroundSize: '60px 60px'
         }} />
 
-        {/* Scattered food all over the page */}
+        {/* Food items — all land at bottom: 100px */}
         {scatteredFood.map((item, i) => (
           <div
             key={i}
@@ -84,9 +71,8 @@ export default function JustEatPage() {
             data-delay={item.delay}
             data-rotate={item.rotate}
             style={{
-              ...(item.left !== undefined && { left: item.left }),
-              ...(item.right !== undefined && { right: item.right }),
-              top: item.top,
+              left: item.left,
+              bottom: '100px',
             }}
           >
             <img src={item.img} alt="" className="w-full h-auto" style={{ filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
