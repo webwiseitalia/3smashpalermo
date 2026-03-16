@@ -724,7 +724,7 @@ export default function HomePage() {
                 {/* Event details overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                   <p className="text-[#faf3e3]/90 text-base md:text-lg max-w-xl leading-relaxed mb-6">
-                    New Opening in Piazza Rivoluzione 11! Dalle 19 alle 22 tutti i nostri smash a 3€. Coca-Cola gratis per i primi 3 clienti!
+                    New Opening in Piazza Rivoluzione 11! Dalle 19 alle 22 tutti i nostri smash a 3€. Menu completo gratis per i primi 3 clienti!
                   </p>
                   <div className="flex flex-wrap items-center gap-3 md:gap-4">
                     <span className="bg-[#faf3e3] text-[#2D2C72] px-4 py-2 rounded-full font-display font-bold text-sm md:text-base border-3 border-[#2D2C72]" style={{ boxShadow: '3px 3px 0 #2D2C72' }}>
