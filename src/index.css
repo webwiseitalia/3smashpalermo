@@ -360,6 +360,17 @@ img {
   box-shadow: 5px 5px 0 #2D2C72;
 }
 
+/* JustEat page food — responsive left positioning */
+.jeat-food {
+  left: var(--mob-left);
+}
+
+@media (min-width: 768px) {
+  .jeat-food {
+    left: var(--desk-left);
+  }
+}
+
 /* Wavy divider */
 .wavy-divider {
   height: 30px;

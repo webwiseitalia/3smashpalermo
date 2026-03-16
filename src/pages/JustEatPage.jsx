@@ -18,23 +18,22 @@ import scontNutellaBun from '../assets/scontornati/Nutella Bun.webp';
 
 import scontIntruso from '../assets/scontornati/Intruso.webp';
 
-// All food lands at bottom, per-item bottom offsets compensate for transparent padding in each image
+// Per-item bottom offsets compensate for transparent padding; mobileLeft spreads items on small screens
 const scatteredFood = [
-  { img: scontBeef, size: 'w-[32rem] md:w-[52rem]', left: '-12%', delay: 0.1, rotate: 15, bottom: '-100px' },
-  { img: scontFries, size: 'w-[30rem] md:w-[48rem]', left: '72%', delay: 0.2, rotate: -20, bottom: '-50px' },
-  { img: scontNuggets, size: 'w-[26rem] md:w-[44rem]', left: '-15%', delay: 0.35, rotate: 10, bottom: '-70px' },
-  { img: scontPig, size: 'w-[28rem] md:w-[46rem]', left: '78%', delay: 0.15, rotate: -12, bottom: '-100px' },
-  { img: scontAmericanFries, size: 'w-[30rem] md:w-[48rem]', left: '3%', delay: 0.4, rotate: -8, bottom: '-35px' },
-  { img: scontChick, size: 'w-[28rem] md:w-[46rem]', left: '58%', delay: 0.3, rotate: 18, bottom: '-110px' },
-  { img: scontMeatballs, size: 'w-[24rem] md:w-[40rem]', left: '-5%', delay: 0.5, rotate: 22, bottom: '-200px' },
-  { img: scontSasitz, size: 'w-[24rem] md:w-[40rem]', left: '82%', delay: 0.45, rotate: -15, bottom: '-70px' },
-  { img: scontRolly, size: 'w-[26rem] md:w-[42rem]', left: '18%', delay: 0.55, rotate: -10, bottom: '-70px' },
-  { img: scontPorkins, size: 'w-[26rem] md:w-[42rem]', left: '68%', delay: 0.6, rotate: 14, bottom: '-80px' },
-  { img: scontCookie, size: 'w-[22rem] md:w-[36rem]', left: '32%', delay: 0.65, rotate: -25, bottom: '-25px' },
-  { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '48%', delay: 0.7, rotate: 20, bottom: '-90px' },
-  { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '38%', delay: 0.25, rotate: -18, bottom: '-100px' },
-
-  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '52%', delay: 0.48, rotate: 16, bottom: '-80px' },
+  { img: scontBeef, size: 'w-[32rem] md:w-[52rem]', left: '-12%', mobileLeft: '-30%', delay: 0.1, rotate: 15, bottom: '-100px' },
+  { img: scontFries, size: 'w-[30rem] md:w-[48rem]', left: '72%', mobileLeft: '20%', delay: 0.2, rotate: -20, bottom: '-50px' },
+  { img: scontNuggets, size: 'w-[26rem] md:w-[44rem]', left: '-15%', mobileLeft: '-40%', delay: 0.35, rotate: 10, bottom: '-70px' },
+  { img: scontPig, size: 'w-[28rem] md:w-[46rem]', left: '78%', mobileLeft: '30%', delay: 0.15, rotate: -12, bottom: '-100px' },
+  { img: scontAmericanFries, size: 'w-[30rem] md:w-[48rem]', left: '3%', mobileLeft: '-20%', delay: 0.4, rotate: -8, bottom: '-35px' },
+  { img: scontChick, size: 'w-[28rem] md:w-[46rem]', left: '58%', mobileLeft: '15%', delay: 0.3, rotate: 18, bottom: '-110px' },
+  { img: scontMeatballs, size: 'w-[24rem] md:w-[40rem]', left: '-5%', mobileLeft: '-25%', delay: 0.5, rotate: 22, bottom: '-200px' },
+  { img: scontSasitz, size: 'w-[24rem] md:w-[40rem]', left: '82%', mobileLeft: '35%', delay: 0.45, rotate: -15, bottom: '-70px' },
+  { img: scontRolly, size: 'w-[26rem] md:w-[42rem]', left: '18%', mobileLeft: '-10%', delay: 0.55, rotate: -10, bottom: '-70px' },
+  { img: scontPorkins, size: 'w-[26rem] md:w-[42rem]', left: '68%', mobileLeft: '25%', delay: 0.6, rotate: 14, bottom: '-80px' },
+  { img: scontCookie, size: 'w-[22rem] md:w-[36rem]', left: '32%', mobileLeft: '5%', delay: 0.65, rotate: -25, bottom: '-25px' },
+  { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '48%', mobileLeft: '-15%', delay: 0.7, rotate: 20, bottom: '-90px' },
+  { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '38%', mobileLeft: '10%', delay: 0.25, rotate: -18, bottom: '-100px' },
+  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '52%', mobileLeft: '20%', delay: 0.48, rotate: 16, bottom: '-80px' },
 ];
 
 export default function JustEatPage() {
@@ -68,7 +67,8 @@ export default function JustEatPage() {
           data-delay={item.delay}
           data-rotate={item.rotate}
           style={{
-            left: item.left,
+            '--mob-left': item.mobileLeft,
+            '--desk-left': item.left,
             bottom: item.bottom || '-30px',
           }}
         >
