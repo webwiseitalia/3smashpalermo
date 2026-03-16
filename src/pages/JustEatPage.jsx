@@ -15,22 +15,26 @@ import scontRolly from '../assets/scontornati/Rolly.webp';
 import scontPorkins from "../assets/scontornati/Porkin's.webp";
 import scontCookie from '../assets/scontornati/Cookies.webp';
 import scontNutellaBun from '../assets/scontornati/Nutella Bun.webp';
+import scontChickChock from '../assets/scontornati/Chick - Chock.webp';
+import scontIntruso from '../assets/scontornati/Intruso.webp';
 
 // All food lands at bottom: 100px, scattered horizontally across the page
 const scatteredFood = [
-  { img: scontBeef, size: 'w-[28rem] md:w-[45rem]', left: '-12%', delay: 0.1, rotate: 15 },
-  { img: scontFries, size: 'w-[26rem] md:w-[42rem]', left: '75%', delay: 0.2, rotate: -20 },
-  { img: scontNuggets, size: 'w-[22rem] md:w-[38rem]', left: '-18%', delay: 0.35, rotate: 10 },
-  { img: scontPig, size: 'w-[24rem] md:w-[40rem]', left: '80%', delay: 0.15, rotate: -12 },
-  { img: scontAmericanFries, size: 'w-[25rem] md:w-[42rem]', left: '5%', delay: 0.4, rotate: -8 },
-  { img: scontChick, size: 'w-[24rem] md:w-[40rem]', left: '60%', delay: 0.3, rotate: 18 },
-  { img: scontMeatballs, size: 'w-[20rem] md:w-[35rem]', left: '-8%', delay: 0.5, rotate: 22 },
-  { img: scontSasitz, size: 'w-[20rem] md:w-[34rem]', left: '85%', delay: 0.45, rotate: -15 },
-  { img: scontRolly, size: 'w-[22rem] md:w-[36rem]', left: '15%', delay: 0.55, rotate: -10 },
-  { img: scontPorkins, size: 'w-[22rem] md:w-[36rem]', left: '70%', delay: 0.6, rotate: 14 },
-  { img: scontCookie, size: 'w-[18rem] md:w-[30rem]', left: '30%', delay: 0.65, rotate: -25 },
-  { img: scontNutellaBun, size: 'w-[18rem] md:w-[30rem]', left: '50%', delay: 0.7, rotate: 20 },
-  { img: scontPulledPork, size: 'w-[20rem] md:w-[34rem]', left: '40%', delay: 0.25, rotate: -18 },
+  { img: scontBeef, size: 'w-[32rem] md:w-[52rem]', left: '-12%', delay: 0.1, rotate: 15 },
+  { img: scontFries, size: 'w-[30rem] md:w-[48rem]', left: '75%', delay: 0.2, rotate: -20 },
+  { img: scontNuggets, size: 'w-[26rem] md:w-[44rem]', left: '-18%', delay: 0.35, rotate: 10 },
+  { img: scontPig, size: 'w-[28rem] md:w-[46rem]', left: '80%', delay: 0.15, rotate: -12 },
+  { img: scontAmericanFries, size: 'w-[30rem] md:w-[48rem]', left: '5%', delay: 0.4, rotate: -8 },
+  { img: scontChick, size: 'w-[28rem] md:w-[46rem]', left: '60%', delay: 0.3, rotate: 18 },
+  { img: scontMeatballs, size: 'w-[24rem] md:w-[40rem]', left: '-8%', delay: 0.5, rotate: 22 },
+  { img: scontSasitz, size: 'w-[24rem] md:w-[40rem]', left: '85%', delay: 0.45, rotate: -15 },
+  { img: scontRolly, size: 'w-[26rem] md:w-[42rem]', left: '15%', delay: 0.55, rotate: -10 },
+  { img: scontPorkins, size: 'w-[26rem] md:w-[42rem]', left: '70%', delay: 0.6, rotate: 14 },
+  { img: scontCookie, size: 'w-[22rem] md:w-[36rem]', left: '30%', delay: 0.65, rotate: -25 },
+  { img: scontNutellaBun, size: 'w-[22rem] md:w-[36rem]', left: '50%', delay: 0.7, rotate: 20 },
+  { img: scontPulledPork, size: 'w-[24rem] md:w-[40rem]', left: '40%', delay: 0.25, rotate: -18 },
+  { img: scontChickChock, size: 'w-[26rem] md:w-[44rem]', left: '25%', delay: 0.32, rotate: -14 },
+  { img: scontIntruso, size: 'w-[28rem] md:w-[46rem]', left: '55%', delay: 0.48, rotate: 16 },
 ];
 
 export default function JustEatPage() {
@@ -56,31 +60,31 @@ export default function JustEatPage() {
       {/* Checkerboard top */}
       <div className="checkerboard-cream h-[50px] bg-[#2D2C72] shrink-0 relative z-20" />
 
-      <div className="flex-1 flex items-center justify-center relative" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+      {/* Food items — land just above bottom checkerboard */}
+      {scatteredFood.map((item, i) => (
+        <div
+          key={i}
+          className={`jeat-food absolute ${item.size} pointer-events-none`}
+          data-delay={item.delay}
+          data-rotate={item.rotate}
+          style={{
+            left: item.left,
+            bottom: '-30px',
+          }}
+        >
+          <img src={item.img} alt="" className="w-full h-auto" style={{ filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
+        </div>
+      ))}
+
+      <div className="flex-1 flex items-start justify-center relative pt-8 md:pt-12">
         {/* Grid texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'linear-gradient(#faf3e3 1px, transparent 1px), linear-gradient(90deg, #faf3e3 1px, transparent 1px)',
           backgroundSize: '60px 60px'
         }} />
 
-        {/* Food items — all land at bottom: 100px */}
-        {scatteredFood.map((item, i) => (
-          <div
-            key={i}
-            className={`jeat-food absolute ${item.size} pointer-events-none`}
-            data-delay={item.delay}
-            data-rotate={item.rotate}
-            style={{
-              left: item.left,
-              bottom: '100px',
-            }}
-          >
-            <img src={item.img} alt="" className="w-full h-auto" style={{ filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
-          </div>
-        ))}
-
-        {/* Content — centered on top */}
-        <div className="relative z-10 text-center flex flex-col items-center gap-8 max-w-lg px-6">
+        {/* Content — centered, pushed up */}
+        <div className="relative z-10 text-center flex flex-col items-center gap-6 max-w-3xl px-6">
           <img
             src={logoHero}
             alt="3 Smash Palermo"
@@ -93,8 +97,9 @@ export default function JustEatPage() {
             Ordini Online
           </span>
 
-          <h1 className="text-[#faf3e3] text-5xl md:text-7xl lg:text-8xl font-display font-bold uppercase leading-[0.9]">
-            In Arrivo<br />A Breve
+          <h1 className="text-[#faf3e3] text-5xl md:text-7xl lg:text-8xl font-display font-bold uppercase leading-[0.9] whitespace-nowrap">
+            <span className="block">In Arrivo</span>
+            <span className="block">A Breve</span>
           </h1>
 
           <p className="text-[#faf3e3]/60 text-lg md:text-xl max-w-md leading-relaxed">
