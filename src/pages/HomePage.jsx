@@ -468,7 +468,7 @@ export default function HomePage() {
           </div>
 
           <motion.button
-            className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+            className="md:hidden ml-auto relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
@@ -530,6 +530,18 @@ export default function HomePage() {
                 transition={{ delay: 0.4, duration: 0.4 }}
               >
                 Instagram
+              </motion.a>
+              <motion.a
+                href="https://tiktok.com/@3smashpalermo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 retro-btn-cream retro-btn text-lg"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+              >
+                TikTok
               </motion.a>
             </nav>
           </motion.div>
