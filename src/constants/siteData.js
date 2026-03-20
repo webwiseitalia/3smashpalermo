@@ -8,7 +8,7 @@ export const siteData = {
   foundingYear: 2020,
 
   // URL
-  url: 'https://3smashpalermo.it',
+  url: 'https://3smashburger.com',
 
   // Contatti
   contact: {
